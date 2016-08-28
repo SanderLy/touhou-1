@@ -12,7 +12,7 @@ class Character():
         self.fname = fname
 
 
-    def animate(self, lower, upper, interval):
+    def animate(self, lower, upper, interval, loop = True):
         """
         lower is the first number of the frame sequence
         upper is the last number of the frame sequence
@@ -22,14 +22,21 @@ class Character():
         self.lower = lower
         self.interval = interval
         self.frames  =[]
+        self.loop = loop
         while self.lower <= self.upper:
             dname = 'gifs/' + str(self.fname) + '/' + str(self.lower) + '.png'
             tup = (dname, self.interval) 
             self.frames.append(tup)
             self.lower += 1
-        
-        return pyganim.PygAnimation(list(self.frames))
+        if self.loop:
+            return pyganim.PygAnimation(list(self.frames))
+        else:
+            return pyganim.PygAnimation(list(self.frames), False)
 
+
+#general variables
+
+#characters initialize
 hata = Character('hata')
 marisa = Character('marisa')
 
@@ -39,17 +46,25 @@ pygame.init()
 windowSurface = pygame.display.set_mode((1024, 600))
 pygame.display.set_caption('Pyganim Test 1')
 
+#hata animations
 hata_animation = hata.animate(2, 18, 0.05)
+
+#marisa animations
 marisa_idle = marisa.animate(332, 345, 0.05)
-marisa_forward_init = marisa.animate(0, 5, 0.05)
+marisa_forward_init = marisa.animate(0, 5, 0.05, False)
 marisa_forward = marisa.animate(4120, 4127, 0.05)
+marisa_backward = marisa.animate(6, 13, 0.05)
+marisa_attack = marisa.animate(14,34, 0.05, False)
 marisa_animation = marisa_idle
 
+#idle animations start
 hata_animation.play() # there is also a pause() and stop() method
 marisa_animation.play() # there is also a pause() and stop() method
+
+#default positions set for hata
 x = 0
 y = 0
-
+#default positions set for marisa
 x2 = 0
 y2 = 0
 
@@ -91,11 +106,11 @@ while True:
             y+=10
     if keys[pygame.K_LEFT]:
         if x2>0:
-            marisa_animation = marisa_forward
+            marisa_animation = marisa_backward
             marisa_animation.play()
             x2-=10
     if keys[pygame.K_RIGHT]:
-        if x2<914:
+        if x2<914:            
             marisa_animation = marisa_forward
             marisa_animation.play()
             x2+=10            
@@ -105,7 +120,10 @@ while True:
     if keys[pygame.K_DOWN]:
         if y2 < 524:
             y2+=10
-            #60 is da magic numbah
+    if keys[pygame.K_z]:
+        marisa_animation = marisa_attack
+        marisa_animation.play()
+
     hata_animation.blit(windowSurface, (x, y))
     marisa_animation.blit(windowSurface, (x2, y2))
 

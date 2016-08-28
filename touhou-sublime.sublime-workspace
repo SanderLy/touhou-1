@@ -1,0 +1,929 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"try",
+				"try	Try/Except"
+			],
+			[
+				"marg",
+				"margin"
+			],
+			[
+				"fa",
+				"fadeIn"
+			],
+			[
+				"padd",
+				"padding-left"
+			],
+			[
+				"margin",
+				"margin-left"
+			],
+			[
+				"align",
+				"align-self"
+			],
+			[
+				"arr",
+				"arrayIndices"
+			],
+			[
+				"prev",
+				"prev_indices"
+			],
+			[
+				"arra",
+				"arrayVal"
+			],
+			[
+				"array",
+				"arrayIndices"
+			],
+			[
+				"dat",
+				"data2"
+			],
+			[
+				"_",
+				"_POST"
+			],
+			[
+				"visual",
+				"visual_category"
+			],
+			[
+				"on",
+				"onsubmit	Attr"
+			],
+			[
+				"onke",
+				"onkeypress	Attr"
+			],
+			[
+				"htm",
+				"htmlspecialchars"
+			],
+			[
+				"ac",
+				"action	Attr"
+			],
+			[
+				"mar",
+				"margin-top"
+			],
+			[
+				"ali",
+				"align-items"
+			],
+			[
+				"mat",
+				"matches"
+			],
+			[
+				"test",
+				"testing"
+			],
+			[
+				"strip",
+				"stripslashes"
+			],
+			[
+				"ht",
+				"htmlspecialchars"
+			],
+			[
+				"get",
+				"getElementById"
+			],
+			[
+				"p",
+				"p	Tag"
+			],
+			[
+				"data",
+				"dataString"
+			],
+			[
+				"scr",
+				"script2"
+			],
+			[
+				"in",
+				"input	Tag"
+			],
+			[
+				"backroun",
+				"background-size"
+			],
+			[
+				"backrou",
+				"background-repeat"
+			],
+			[
+				"bac",
+				"background-image"
+			],
+			[
+				"margin-",
+				"margin-left"
+			],
+			[
+				"backgr",
+				"background-image"
+			],
+			[
+				"backr",
+				"background-image"
+			],
+			[
+				"backgroun",
+				"background-image"
+			],
+			[
+				"u",
+				"url()"
+			],
+			[
+				"back",
+				"background-image"
+			],
+			[
+				"unse",
+				"unset"
+			],
+			[
+				"_S",
+				"_SESSION"
+			],
+			[
+				"aar",
+				"arrayIndices"
+			],
+			[
+				"user",
+				"userAnswer"
+			],
+			[
+				"var",
+				"var_dump"
+			],
+			[
+				"pa",
+				"placeholder	Attr"
+			],
+			[
+				"sess",
+				"SESSION"
+			],
+			[
+				"ob_get",
+				"ob_get_contents"
+			],
+			[
+				"Fra",
+				"Fraction"
+			],
+			[
+				"fra",
+				"frac2"
+			],
+			[
+				"len",
+				"length_sides"
+			],
+			[
+				"fr",
+				"frac2"
+			],
+			[
+				"lcd",
+				"lcd2"
+			],
+			[
+				"lcm",
+				"lcmA"
+			],
+			[
+				"lc",
+				"lcd1"
+			],
+			[
+				"frac",
+				"frac"
+			],
+			[
+				"de",
+				"denum"
+			],
+			[
+				"s",
+				"simplify"
+			],
+			[
+				"mic",
+				"micro"
+			],
+			[
+				"date",
+				"date_load"
+			],
+			[
+				"time",
+				"time_post"
+			],
+			[
+				"timer",
+				"time_pre"
+			],
+			[
+				"timep",
+				"time_post"
+			],
+			[
+				"a",
+				"arrayIndices"
+			],
+			[
+				"shuff",
+				"shuffled_indices"
+			],
+			[
+				"__",
+				"__	__magic__"
+			],
+			[
+				"las",
+				"lastname"
+			],
+			[
+				"fi",
+				"firstname"
+			],
+			[
+				"fir",
+				"first"
+			],
+			[
+				"ans",
+				"ans2"
+			],
+			[
+				"tes",
+				"test1"
+			],
+			[
+				"tes2",
+				"test2"
+			],
+			[
+				"perm",
+				"permutations"
+			],
+			[
+				"item",
+				"item_conv"
+			],
+			[
+				"L",
+				"Lconvert"
+			],
+			[
+				"Lc",
+				"Lcombined2"
+			],
+			[
+				"l",
+				"Lcombined"
+			],
+			[
+				"Lpo",
+				"LpossibTuple"
+			],
+			[
+				"Str",
+				"strN"
+			],
+			[
+				"current",
+				"current_index"
+			],
+			[
+				"if",
+				"if	if …"
+			],
+			[
+				"session",
+				"session_destroy"
+			],
+			[
+				"hea",
+				"head"
+			],
+			[
+				"curre",
+				"currentIndex"
+			],
+			[
+				"mys",
+				"mysqli"
+			],
+			[
+				"chec",
+				"checkConnection"
+			],
+			[
+				"print",
+				"print_r"
+			],
+			[
+				"Fisher",
+				"FisherYatesShuffle"
+			],
+			[
+				"mysql",
+				"mysql_close"
+			],
+			[
+				"for",
+				"form	Tag"
+			],
+			[
+				"f",
+				"False"
+			],
+			[
+				"pd",
+				"PODP"
+			],
+			[
+				"pri",
+				"prime_odd"
+			],
+			[
+				"str",
+				"str1"
+			],
+			[
+				"border-",
+				"border-color"
+			],
+			[
+				"background",
+				"background-color"
+			],
+			[
+				"bor",
+				"border-top"
+			],
+			[
+				"table",
+				"table-cell"
+			],
+			[
+				"bot",
+				"text-bottom"
+			],
+			[
+				"text",
+				"text-anchor"
+			],
+			[
+				"max",
+				"max-width"
+			],
+			[
+				"inli",
+				"inline-flex"
+			],
+			[
+				"lis",
+				"list2"
+			],
+			[
+				"list",
+				"list2"
+			],
+			[
+				"li",
+				"list2"
+			],
+			[
+				"ica",
+				"icaptcha_header"
+			],
+			[
+				"bak",
+				"background-position"
+			],
+			[
+				"st",
+				"style	Tag"
+			],
+			[
+				"padding",
+				"padding-top"
+			],
+			[
+				"btn",
+				"btnAudio"
+			],
+			[
+				"b",
+				"btnImage"
+			],
+			[
+				"text-a",
+				"text-align"
+			],
+			[
+				"bacl",
+				"background-color"
+			],
+			[
+				"inlin",
+				"inline-block"
+			],
+			[
+				"border",
+				"border-radius"
+			],
+			[
+				"top",
+				"margin-top"
+			],
+			[
+				"di",
+				"div	Tag"
+			],
+			[
+				"wid",
+				"width"
+			],
+			[
+				"re",
+				"retrieve_indices"
+			],
+			[
+				"ret",
+				"retrieve"
+			],
+			[
+				"mysql_fe",
+				"mysql_fetch_row"
+			],
+			[
+				"db",
+				"dbpass"
+			],
+			[
+				"Sig",
+				"SignUpForm"
+			],
+			[
+				"Si",
+				"SignUpAdmin"
+			],
+			[
+				"aut",
+				"auto_now_add"
+			],
+			[
+				"dj",
+				"django19"
+			],
+			[
+				"d",
+				"django19"
+			],
+			[
+				"font",
+				"font-size"
+			],
+			[
+				"h",
+				"h1	Tag"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "game.py",
+			"settings":
+			{
+				"buffer_size": 3637,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"settings":
+			{
+				"buffer_size": 0,
+				"line_ending": "Windows"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"console":
+	{
+		"height": 0.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/C/Touhou"
+	],
+	"file_history":
+	[
+		"/C/Touhou/player.py",
+		"/C/Touhou/move.py",
+		"/C/test/test1_pyganim.py",
+		"/C/test/pyganim.py",
+		"/C/test/pyganim.pyc",
+		"/C/Touhou/game.py",
+		"/C/Python27/Scripts/test.py",
+		"/C/Touhou/test.py",
+		"/C/Touhou/rcade.py",
+		"/C/Python34/Scripts/AnimatedGif.py",
+		"/C/Python34/Scripts/gui01.py",
+		"/C/Users/Little Garden/Desktop/drive-download-20160822T021631Z/buttons.py",
+		"/C/wamp/www/icaptcha/index.php",
+		"/C/wamp/www/sample-snippet/index.php",
+		"/C/wamp/www/icaptcha/style.css",
+		"/C/wamp/www/icaptcha/phpFiles/checkAns.php",
+		"/C/wamp/www/icaptcha/style2.css",
+		"/C/wamp/www/icaptcha/image.php",
+		"/C/wamp/www/icaptcha/phpFiles/database.php",
+		"/C/wamp/www/icaptcha/phpFiles/gen_image.php",
+		"/C/Users/Little Garden/Desktop/style.css",
+		"/C/wamp/www/icaptcha/scripts/script.js",
+		"/C/Users/Little Garden/Downloads/database.php.html",
+		"/C/wamp/www/icaptcha/bg/13.png",
+		"/C/wamp/www/icaptcha-backup/index.php",
+		"/C/wamp/www/icaptcha-backup/image.php",
+		"/C/wamp/www/icaptcha-backup/phpFiles/database.php",
+		"/C/wamp/www/icaptcha-backup/phpFiles/checkAns.php",
+		"/C/wamp/www/icaptcha-backup/scripts/script.js",
+		"/C/wamp/www/icaptcha-backup/phpFiles/gen_image.php",
+		"/C/wamp/www/icaptcha-backup/phpFiles/doit.php",
+		"/C/wamp/www/icaptcha-backup/scripts/h.php",
+		"/C/wamp/www/icaptcha-backup/phpFiles/post_image.php",
+		"/C/wamp/www/icaptcha-backup/phpFiles/checkANs.php",
+		"/C/wamp/www/icaptcha-backup/regex.php",
+		"/C/wamp/www/icaptcha-backup/phpFiles/image.php",
+		"/C/wamp/www/icaptcha-backup/style.css",
+		"/C/wamp/www/icaptcha-backup/phpFiles/pre_image.php",
+		"/C/wamp/www/icaptcha-backup/ui.php",
+		"/C/wamp/www/icaptcha-backup/pre_image.php",
+		"/C/wamp/www/icaptcha-backup/gen_image.php",
+		"/C/wamp/www/icaptcha-backup/home.php",
+		"/C/Users/Little Garden/Desktop/icaptcha.PublishSettings",
+		"/C/Python34/Scripts/regex02.py",
+		"/C/Users/Little Garden/Downloads/icaptcha-backup/index.php",
+		"/C/wamp/www/icaptcha-backup/try.php",
+		"/C/wamp/www/icaptcha-backup/index2.php",
+		"/C/wamp/www/iCAPTCHA/scripts/script.js",
+		"/C/wamp/www/iCAPTCHA/style.css",
+		"/C/wamp/www/icaptcha-backup/database.php",
+		"/C/Users/Little Garden/Downloads/icaptcha/scripts/script.js",
+		"/C/wamp/www/icaptcha/post_image.php",
+		"/C/wamp/www/icaptcha/try.php",
+		"/C/wamp/www/iCAPTCHA/pre_image.php",
+		"/C/wamp/www/icaptcha/scripts/script2.js",
+		"/E/IDM Downloads/Compressed/zoom-master/zoom-master/demo.html",
+		"/C/wamp/www/icaptcha/index2.php",
+		"/C/wamp/www/icaptcha/jquery/jquery.zoom.min.js",
+		"/C/wamp/www/iCAPTCHA/jquery/jquery-3.0.0.min.js",
+		"/E/IDM Downloads/Compressed/zoom-master/zoom-master/jquery.zoom.min.js",
+		"/E/IDM Downloads/Compressed/zoom-master/zoom-master/jquery.zoom.js",
+		"/C/wamp/www/iCAPTCHA/image.php",
+		"/C/wamp/www/iCAPTCHA/database.php",
+		"/C/wamp/www/iCAPTCHA/stylesheet.css",
+		"/C/Python34/Scripts/sample.txt",
+		"/C/Python34/Scripts/dir.py",
+		"/C/Python34/Scripts/fract.py",
+		"/C/wamp/www/icaptcha/main.php",
+		"/C/wamp/www/icaptcha/ui.php",
+		"/C/wamp/www/codesnippet/stylesheet.css",
+		"/C/wamp/www/icaptcha/styles/stylesheet.css",
+		"/C/wamp/www/iCAPTCHA/jquery/script.js",
+		"/C/wamp/www/codesnippet/index.php",
+		"/C/wamp/www/codesnippet/style2.css",
+		"/C/wamp/www/jQuery/index.php",
+		"/C/wamp/www/iCAPTCHA/index.php",
+		"/C/wamp/www/iCAPTCHA/index2.php",
+		"/C/wamp/www/icaptcha/backup.php",
+		"/C/Python34/Scripts/cdw01.py",
+		"/C/Python34/Scripts/cdw02.py",
+		"/C/Python34/Scripts/mp01.py",
+		"/C/wamp/www/iCAPTCHA/imgttf.php",
+		"/C/wamp/www/img/index.php",
+		"/C/wamp/www/img/image.php",
+		"/C/wamp/www/img/imgfuncf.php",
+		"/C/wamp/www/icaptcha/home.php",
+		"/C/Users/Little Garden/Downloads/KanColle/imgttf.php",
+		"/C/wamp/www/icaptcha/poly.php",
+		"/C/Python34/Scripts/poly.py",
+		"/C/Users/Little Garden/Pictures/meme/1.py",
+		"/C/wamp/www/icaptcha/imgttf.php",
+		"/C/wamp/www/iCAPTCHA/poly.php",
+		"/C/wamp/www/bk/index.php",
+		"/C/wamp/www/bk/database.php",
+		"/C/Python34/Scripts/inherit.py",
+		"/C/Python34/Scripts/fun01.py",
+		"/C/Python34/Scripts/fun02.py",
+		"/C/Python34/Scripts/cor.py",
+		"/C/Python34/Scripts/traul.py",
+		"/C/Python34/Scripts/mp02.py",
+		"/C/wamp/www/iCAPTCHA/main.php",
+		"/C/Python34/Scripts/prelim01.py",
+		"/C/Python34/Scripts/class_calling.py",
+		"/C/Python34/Scripts/classes01.py",
+		"/C/Python34/Scripts/IO01.py",
+		"/C/wamp/www/iCAPTCHA/sql_testing.php",
+		"/C/Python34/Scripts/hands04.py",
+		"/C/Python34/Scripts/lambda.py",
+		"/C/Python34/Scripts/hands05.py",
+		"/C/Python34/Scripts/hands03.py",
+		"/C/wamp/www/College of Law1/css/about.css",
+		"/C/wamp/www/iCAPTCHA/css backup.css",
+		"/C/Python34/Scripts/hands02.py",
+		"/C/Python34/Scripts/hands01.py",
+		"/C/wamp/www/codesnippet/scripts/sc.js",
+		"/C/wamp/www/codesnippet/scripts/script.js",
+		"/C/wamp/www/codesnippet/scripts/scripts.js",
+		"/C/wamp/www/iCAPTCHA/jquery/jquery-ui.min.js",
+		"/C/wamp/www/codesnippet/icaptcha_snippet.php",
+		"/C/wamp/www/iCAPTCHA/jquery/external/jquery/jquery.js",
+		"/C/Python34/Scripts/word_count.py",
+		"/C/Python34/Scripts/inventory.py",
+		"/C/Python34/Scripts/letter_count.py",
+		"/C/wamp/www/API/index.html",
+		"/C/wamp/www/API/test.txt",
+		"/C/wamp/www/API/rest.php",
+		"/C/wamp/www/iCAPTCHA/jquery/icaptcha.xml",
+		"/C/wamp/www/iCAPTCHA/print.py"
+	],
+	"find":
+	{
+		"height": 34.0
+	},
+	"find_in_files":
+	{
+		"height": 90.0,
+		"where_history":
+		[
+			""
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"05",
+			"0.1",
+			"hata",
+			"pack",
+			"228px",
+			"?>\n",
+			".com",
+			"checkAns",
+			"fast",
+			"getenv",
+			"'questions'",
+			"print_r",
+			"var_dump",
+			"incorrect",
+			"echo",
+			"dump",
+			"var_du",
+			"$arrayIndices[0]",
+			"lo",
+			"hello",
+			"msg",
+			"name",
+			"lysander",
+			"      \n",
+			"password",
+			"update",
+			"    \n",
+			"_POST",
+			"20",
+			"load_time",
+			"load_tim",
+			"print_r",
+			"updateRecord",
+			"record",
+			"update",
+			"items",
+			"Arthur",
+			"sql_testing",
+			"None",
+			"True",
+			"}",
+			"png",
+			"/* ============================================== */",
+			"nav li",
+			"nav li {\n		display: block;\n		float: none;\n		width: 100%;\n	}",
+			"@media",
+			"47C9AF",
+			"100px",
+			"draggable",
+			"f",
+			";\n"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			".net",
+			"slow",
+			"$_SERVER",
+			"'acsm_af0f08532c7e6fe'"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 1,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "game.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3637,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3089,
+								3089
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1077.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 0,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 27.0
+	},
+	"input":
+	{
+		"height": 31.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "Packages/Python/Python.sublime-build",
+	"project": "touhou-sublime.sublime-project",
+	"replace":
+	{
+		"height": 62.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 221.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

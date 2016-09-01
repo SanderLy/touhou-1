@@ -515,14 +515,7 @@
 			"file": "game.py",
 			"settings":
 			{
-				"buffer_size": 3637,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"settings":
-			{
-				"buffer_size": 0,
+				"buffer_size": 3329,
 				"line_ending": "Windows"
 			}
 		}
@@ -559,7 +552,8 @@
 	},
 	"expanded_folders":
 	[
-		"/C/Touhou"
+		"/C/touhou-1",
+		"/C/touhou-1/gifs"
 	],
 	"file_history":
 	[
@@ -781,7 +775,7 @@
 	"groups":
 	[
 		{
-			"selected": 1,
+			"selected": 0,
 			"sheets":
 			[
 				{
@@ -790,15 +784,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 3637,
+						"buffer_size": 3329,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								3089,
-								3089
+								1224,
+								1224
 							]
 						],
 						"settings":
@@ -808,34 +802,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 1077.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 0,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Text/Plain text.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 648.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,

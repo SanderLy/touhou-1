@@ -30,7 +30,7 @@ class Character():
             self.frames.append(tup)
             self.lower += 1
         
-        return pyganim.PygAnimation(list(self.frames))
+        return pyganim.PygAnimation(list(self.frames))       
 
     def move_up(self):
         self.y-=10

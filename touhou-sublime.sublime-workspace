@@ -4,6 +4,62 @@
 		"selected_items":
 		[
 			[
+				"get",
+				"getlower"
+			],
+			[
+				"read",
+				"readlines"
+			],
+			[
+				"col",
+				"columnspan"
+			],
+			[
+				"press",
+				"press_event"
+			],
+			[
+				"pr",
+				"projX"
+			],
+			[
+				"proj",
+				"projY"
+			],
+			[
+				"projec",
+				"projectile"
+			],
+			[
+				"prj",
+				"projY"
+			],
+			[
+				"pro",
+				"projX"
+			],
+			[
+				"pyga",
+				"pygame"
+			],
+			[
+				"por",
+				"projx"
+			],
+			[
+				"project",
+				"projectile_frames"
+			],
+			[
+				"wind",
+				"windowSurface"
+			],
+			[
+				"__",
+				"__init"
+			],
+			[
 				"try",
 				"try	Try/Except"
 			],
@@ -94,10 +150,6 @@
 			[
 				"ht",
 				"htmlspecialchars"
-			],
-			[
-				"get",
-				"getElementById"
 			],
 			[
 				"p",
@@ -250,10 +302,6 @@
 			[
 				"shuff",
 				"shuffled_indices"
-			],
-			[
-				"__",
-				"__	__magic__"
 			],
 			[
 				"las",
@@ -466,56 +514,31 @@
 			[
 				"re",
 				"retrieve_indices"
-			],
-			[
-				"ret",
-				"retrieve"
-			],
-			[
-				"mysql_fe",
-				"mysql_fetch_row"
-			],
-			[
-				"db",
-				"dbpass"
-			],
-			[
-				"Sig",
-				"SignUpForm"
-			],
-			[
-				"Si",
-				"SignUpAdmin"
-			],
-			[
-				"aut",
-				"auto_now_add"
-			],
-			[
-				"dj",
-				"django19"
-			],
-			[
-				"d",
-				"django19"
-			],
-			[
-				"font",
-				"font-size"
-			],
-			[
-				"h",
-				"h1	Tag"
 			]
 		]
 	},
 	"buffers":
 	[
 		{
-			"file": "game.py",
+			"file": "/G/handson.py",
 			"settings":
 			{
-				"buffer_size": 3329,
+				"buffer_size": 5203,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/C/Users/Little Garden/Desktop/sample.txt",
+			"settings":
+			{
+				"buffer_size": 128,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"settings":
+			{
+				"buffer_size": 0,
 				"line_ending": "Windows"
 			}
 		}
@@ -557,9 +580,18 @@
 	],
 	"file_history":
 	[
+		"/C/Python27/Scripts/entry.py",
+		"/C/Users/Little Garden/Desktop/drive-download-20160822T021631Z/entry.py",
+		"/C/Users/Little Garden/Desktop/sample.txt",
+		"/C/Python27/Scripts/checkbutton.py",
+		"/C/touhou-1/marisa.py",
+		"/C/touhou-1/game.py",
+		"/C/touhou-1/character.py",
+		"/C/Users/Little Garden/Desktop/GameDevelopment-gh-pages/examples/sprites/game.js",
+		"/C/test/test3_pyganim.py",
+		"/C/test/test1_pyganim.py",
 		"/C/Touhou/player.py",
 		"/C/Touhou/move.py",
-		"/C/test/test1_pyganim.py",
 		"/C/test/pyganim.py",
 		"/C/test/pyganim.pyc",
 		"/C/Touhou/game.py",
@@ -675,16 +707,7 @@
 		"/C/wamp/www/codesnippet/scripts/script.js",
 		"/C/wamp/www/codesnippet/scripts/scripts.js",
 		"/C/wamp/www/iCAPTCHA/jquery/jquery-ui.min.js",
-		"/C/wamp/www/codesnippet/icaptcha_snippet.php",
-		"/C/wamp/www/iCAPTCHA/jquery/external/jquery/jquery.js",
-		"/C/Python34/Scripts/word_count.py",
-		"/C/Python34/Scripts/inventory.py",
-		"/C/Python34/Scripts/letter_count.py",
-		"/C/wamp/www/API/index.html",
-		"/C/wamp/www/API/test.txt",
-		"/C/wamp/www/API/rest.php",
-		"/C/wamp/www/iCAPTCHA/jquery/icaptcha.xml",
-		"/C/wamp/www/iCAPTCHA/print.py"
+		"/C/wamp/www/codesnippet/icaptcha_snippet.php"
 	],
 	"find":
 	{
@@ -703,6 +726,12 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"elf.lower.get() and self.digits.get() and self.under.get()",
+			"25",
+			"window",
+			"loop",
+			"nextFrame",
+			"play",
 			"05",
 			"0.1",
 			"hata",
@@ -780,32 +809,86 @@
 			[
 				{
 					"buffer": 0,
-					"file": "game.py",
+					"file": "/G/handson.py",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 3329,
+						"buffer_size": 5203,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1224,
-								1224
+								3914,
+								3914
 							]
 						],
 						"settings":
 						{
 							"syntax": "Packages/Python/Python.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 648.0,
+						"translation.y": 2430.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "/C/Users/Little Garden/Desktop/sample.txt",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 128,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								51,
+								51
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 0,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
 					"type": "text"
 				}
 			]
@@ -813,7 +896,7 @@
 	],
 	"incremental_find":
 	{
-		"height": 27.0
+		"height": 26.0
 	},
 	"input":
 	{
@@ -850,7 +933,7 @@
 	"project": "touhou-sublime.sublime-project",
 	"replace":
 	{
-		"height": 62.0
+		"height": 48.0
 	},
 	"save_all_on_build": true,
 	"select_file":

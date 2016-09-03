@@ -1,13 +1,13 @@
 import pygame
-from pygame.locals import *
-from marisa import *
-from mamizou import *
-from bullet import *
 import sys
 import time
 import pyganim
 import os
-
+from pygame.locals import *
+from marisa import *
+from mamizou import *
+from bullet import *
+from mob import *
 os.environ['SDL_VIDEO_WINDOW_POS'] = "%d,%d" % (50,50) # set initial screen position
 
 
@@ -36,16 +36,26 @@ marisa_animation = marisa_idle
 
 
 # Projectile Animation for marisa
-flag = False
+
 press_event  = 0
 now = 0
 rate = 300
 #---------------------------------
 
+#mob respawn rate 
+
+click_event = 0
+mob_rate = 300
+
+resource = 500
+#---------------------------------
+
+#printing of label
+font = pygame.font.Font(None, 50)
+lblRes = font.render(str(resource),1,(0,0,0))
 
 marisa_animation.play()
 mainClock = pygame.time.Clock()
-print mainClock
 BGCOLOR = (100, 50, 50)
 cooldown = 1
 
@@ -61,7 +71,10 @@ while True:
                 marisa_animation.pause()
                 marisa_animation = marisa_idle
                 marisa_animation.play()
+
+
     keys = pygame.key.get_pressed()  #checking pressed keys
+    mouse = pygame.mouse.get_pressed()
 
     for projectile in projectile_list:
         if projectile.rect.x > 1000:
@@ -103,6 +116,13 @@ while True:
             bullet.rect.y = marisa.rect.y+25
             projectile_list.add(bullet)
             press_event = pygame.time.get_ticks()
+    if mouse[0]:
+        if now - click_event >= mob_rate:
+            mob = Mob('mob',0,1,0.85,3,'mob')
+            sprites_list.add(mob)
+            click_event = now
+
+
 
     projectile_list.update()
     sprites_list.update()
@@ -112,7 +132,7 @@ while True:
     
     for sprite in collide_list:
         # print sprite 
-        if sprite.ctype == 'character':
+        if sprite.ctype == 'character' or sprite.ctype == 'mob':
             sprite.hp -= 1
             if sprite.hp <= 0:
                sprite.kill()
@@ -129,8 +149,12 @@ while True:
             sprite.animation2.blit(windowSurface, (sprite.rect.x, sprite.rect.y))
         else:
             sprite.animation2.blit(windowSurface, (sprite.rect.x, sprite.rect.y))
-    pygame.display.update()
+
+    
     projectile_list.draw(windowSurface)
     sprites_list.draw(windowSurface)
+    windowSurface.blit(lblRes,(450,50))
     pygame.display.flip()
+    pygame.display.update()
+    
     mainClock.tick(30) # Feel free to experiment with any FPS setting.

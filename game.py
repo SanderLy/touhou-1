@@ -1,46 +1,49 @@
 import pygame
 from pygame.locals import *
 from marisa import *
+from mamizou import *
 from bullet import *
 import sys
 import time
 import pyganim
+import os
 
+os.environ['SDL_VIDEO_WINDOW_POS'] = "%d,%d" % (50,50) # set initial screen position
 
 
 pygame.init()
 
-# set up the window
+#set up the window
 windowSurface = pygame.display.set_mode((1024, 600))
 pygame.display.set_caption('Project Touhou: Minus 1.0')
 
-
+#create the list of sprites
 projectile_list =  pygame.sprite.Group()
 sprites_list = pygame.sprite.Group()
 collide_list = pygame.sprite.Group()
-hata = Character('hata',2,18,0.05, 10, 'character')
-marisa = Marisa('marisa',332,345,0.05, 10)
-sprites_list.add(hata)
+
+#instantiate the sprites
+marisa = Marisa('marisa',332,345,0.05, 10,'character')
+mamizou = Mamizou('mamizou',1,15,0.09,10,'character')
+
+#add each sprite inside the list of sprites for hitbox checking
 sprites_list.add(marisa)
-hata_animation = hata.animate(2, 18, 0.05)
+sprites_list.add(mamizou)
+
 marisa_idle = marisa.animate(332, 345, 0.05)
-marisa_forward_init = marisa.animate(0, 5, 0.05)
 marisa_forward = marisa.animate(4120, 4127, 0.05)
 marisa_animation = marisa_idle
 
 
-#################### Projectile Animation for marisa
-projectile_frames = pygame.image.load('gifs/marisa/projectile.png')
-projX = 0; projY = 0 #coordinates of the projectile for later use
+# Projectile Animation for marisa
 flag = False
 press_event  = 0
 now = 0
 rate = 300
-###################
+#---------------------------------
 
 
-hata_animation.play() # there is also a pause() and stop() method
-marisa_animation.play() # there is also a pause() and stop() method
+marisa_animation.play()
 mainClock = pygame.time.Clock()
 print mainClock
 BGCOLOR = (100, 50, 50)
@@ -70,18 +73,13 @@ while True:
     x-axis right boundary = frame width - model width - 10
     y-axis bottom boundary = frame height - model height
     """
-    if keys[pygame.K_RIGHT]:
-        if hata.rect.x<931:
-            hata.rect.x += 10
-    if keys[pygame.K_LEFT]:
-        if hata.rect.x > 0:
-            hata.rect.x-=10
+   
     if keys[pygame.K_UP]:
-        if hata.rect.y > 0:
-            hata.rect.y-=10
+        if mamizou.rect.y > 0:
+            mamizou.rect.y-=10
     if keys[pygame.K_DOWN]:
-        if hata.rect.y < 430:
-            hata.rect.y+=10
+        if mamizou.rect.y < 430:
+            mamizou.rect.y+=10
     if keys[pygame.K_a]:
         if marisa.rect.x>0:
             marisa_animation = marisa_forward
@@ -113,7 +111,7 @@ while True:
     collide_list = pygame.sprite.groupcollide(sprites_list, projectile_list, False, True)
     
     for sprite in collide_list:
-        print sprite 
+        # print sprite 
         if sprite.ctype == 'character':
             sprite.hp -= 1
             if sprite.hp <= 0:

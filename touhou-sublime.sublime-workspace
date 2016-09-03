@@ -4,8 +4,36 @@
 		"selected_items":
 		[
 			[
+				"py",
+				"pyganim"
+			],
+			[
+				"pr",
+				"projectile"
+			],
+			[
+				"proj",
+				"projectile"
+			],
+			[
+				"proje",
+				"projectile_list"
+			],
+			[
 				"get",
-				"getlower"
+				"get_ticks"
+			],
+			[
+				"pro",
+				"projectile_list"
+			],
+			[
+				"f",
+				"fname"
+			],
+			[
+				"projec",
+				"projectile_frames"
 			],
 			[
 				"read",
@@ -20,24 +48,8 @@
 				"press_event"
 			],
 			[
-				"pr",
-				"projX"
-			],
-			[
-				"proj",
-				"projY"
-			],
-			[
-				"projec",
-				"projectile"
-			],
-			[
 				"prj",
 				"projY"
-			],
-			[
-				"pro",
-				"projX"
 			],
 			[
 				"pyga",
@@ -400,10 +412,6 @@
 				"form	Tag"
 			],
 			[
-				"f",
-				"False"
-			],
-			[
 				"pd",
 				"PODP"
 			],
@@ -506,40 +514,26 @@
 			[
 				"di",
 				"div	Tag"
-			],
-			[
-				"wid",
-				"width"
-			],
-			[
-				"re",
-				"retrieve_indices"
 			]
 		]
 	},
 	"buffers":
 	[
 		{
-			"file": "/G/handson.py",
+			"file": "game.py",
 			"settings":
 			{
-				"buffer_size": 5203,
+				"buffer_size": 3263,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "/C/Users/Little Garden/Desktop/sample.txt",
+			"file": "bullet.py",
 			"settings":
 			{
-				"buffer_size": 128,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"settings":
-			{
-				"buffer_size": 0,
-				"line_ending": "Windows"
+				"buffer_size": 292,
+				"line_ending": "Windows",
+				"name": "class Bullet()"
 			}
 		}
 	],
@@ -580,9 +574,11 @@
 	],
 	"file_history":
 	[
+		"/C/touhou-1/trybullets.py",
+		"/C/Users/Little Garden/Desktop/sample.txt",
+		"/G/handson.py",
 		"/C/Python27/Scripts/entry.py",
 		"/C/Users/Little Garden/Desktop/drive-download-20160822T021631Z/entry.py",
-		"/C/Users/Little Garden/Desktop/sample.txt",
 		"/C/Python27/Scripts/checkbutton.py",
 		"/C/touhou-1/marisa.py",
 		"/C/touhou-1/game.py",
@@ -705,9 +701,7 @@
 		"/C/Python34/Scripts/hands01.py",
 		"/C/wamp/www/codesnippet/scripts/sc.js",
 		"/C/wamp/www/codesnippet/scripts/script.js",
-		"/C/wamp/www/codesnippet/scripts/scripts.js",
-		"/C/wamp/www/iCAPTCHA/jquery/jquery-ui.min.js",
-		"/C/wamp/www/codesnippet/icaptcha_snippet.php"
+		"/C/wamp/www/codesnippet/scripts/scripts.js"
 	],
 	"find":
 	{
@@ -809,28 +803,29 @@
 			[
 				{
 					"buffer": 0,
-					"file": "/G/handson.py",
+					"file": "game.py",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 5203,
+						"buffer_size": 3263,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								3914,
-								3914
+								1402,
+								1402
 							]
 						],
 						"settings":
 						{
 							"syntax": "Packages/Python/Python.sublime-syntax",
-							"translate_tabs_to_spaces": false
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 2430.0,
+						"translation.y": 775.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
@@ -838,57 +833,31 @@
 				},
 				{
 					"buffer": 1,
-					"file": "/C/Users/Little Garden/Desktop/sample.txt",
+					"file": "bullet.py",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 128,
+						"buffer_size": 292,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								51,
-								51
+								195,
+								195
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/Text/Plain text.tmLanguage"
+							"auto_name": "class Bullet()",
+							"syntax": "Packages/Python/Python.sublime-syntax"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 0,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Text/Plain text.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
 					"type": "text"
 				}
 			]

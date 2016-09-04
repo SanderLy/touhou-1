@@ -204,13 +204,20 @@ while True:
     collide_list.update()
 
     #returns a dictionary{[sprites_list]:[projectile_list]}
+    collide_list2 = pygame.sprite.groupcollide(projectile_list, sprites_list, False, False)
+    for projectile in collide_list2:
+        if projectile.btype == 'character':
+            dmg = 5
+
+
     collide_list = pygame.sprite.groupcollide(sprites_list, projectile_list, False, True)
     #check sprite if character or mob
     #checks if a sprite hits 0 hp per collide
     for sprite in collide_list:
         # print sprite
         if sprite.ctype == 'character' or sprite.ctype == 'mob':
-            sprite.hp -= 1
+            sprite.hp -= dmg
+            print sprite.hp
             if sprite.hp <= 0:
                 x-=20
                 if x < 0:

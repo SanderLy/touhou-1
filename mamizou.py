@@ -7,3 +7,4 @@ class Mamizou(Character):
 		self.ctype = 'character'
 		self.rect.x = 920
 		self.rect.y = 0
+		

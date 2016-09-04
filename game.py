@@ -180,13 +180,13 @@ while True:
                 rand = random.randint(8,15)
 
             if mob.fname == 'normal':
-                bullet_mob = Bullet('normal','mob')
+                bullet_mob = Bullet('normal','mob',2)
                 bullet_mob.rect.x = mob.rect.x - 200
                 bullet_mob.rect.y = mob.rect.y + 72
                 rand = random.randint(7,15)
 
             if mob.fname == 'large':
-                bullet_mob = Bullet('large','mob')
+                bullet_mob = Bullet('large','mob',3)
                 bullet_mob.rect.x = mob.rect.x - 200
                 bullet_mob.rect.y = mob.rect.y + 110
                 rand = random.randint(6,15)
@@ -207,8 +207,7 @@ while True:
     #sets damage of colliding projectile
     collide_list2 = pygame.sprite.groupcollide(projectile_list, sprites_list, False, False)
     for projectile in collide_list2:
-        if projectile.btype == 'character':
-            dmg = projectile.dmg
+        dmg = projectile.dmg
 
     #returns a dictionary{[sprites_list]:[projectile_list]}
     collide_list = pygame.sprite.groupcollide(sprites_list, projectile_list, False, True)

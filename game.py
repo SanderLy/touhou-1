@@ -152,7 +152,7 @@ while True:
                 projectile_list.add(bullet)
             press_event = pygame.time.get_ticks()
 
-    if mouse[0]:
+    if mouse[0] and mamizou.alive():
         if now - click_event >= mob_rate:
             if current_mob == 1 and resource >= 150:
                 mob = Mob('small',0,1,0.25,3,'mob')
@@ -166,11 +166,6 @@ while True:
             sprites_list.add(mob)
             mob_list.add(mob)
             click_event = now
-                
-
-
-    # for mob in mob_list:
-        # if mob.fname == 'small':
             
     for mob in mob_list:
             if mob.fname == 'small':

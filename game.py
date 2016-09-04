@@ -143,11 +143,17 @@ while True:
             marisa.move_down()
     if keys[pygame.K_j]:
         if now - press_event >= rate:
-            bullet = Bullet('marisa')
-            bullet.rect.x = marisa.rect.x+76
-            bullet.rect.y = marisa.rect.y+25
-            projectile_list.add(bullet)
+            if marisa.alive():
+                bullet = Bullet('marisa','character')
+                bullet.rect.x = marisa.rect.x+76
+                bullet.rect.y = marisa.rect.y+25
+                projectile_list.add(bullet)
             press_event = pygame.time.get_ticks()
+            if mamizou.alive():
+                bullet2 = Bullet('marisa','mob')
+                bullet2.rect.x = mamizou.rect.x-100
+                bullet2.rect.y = mamizou.rect.y-50
+                projectile_list.add(bullet2)
     if mouse[0]:
         if now - click_event >= mob_rate:
             if resource > 1000: #1000 is the cost of the mob
@@ -156,16 +162,20 @@ while True:
                 click_event = now
                 resource -= 500
 
-
+    #resource increase per tick
     resource+=5
+
+    #update for sprite lists
     projectile_list.update()
     sprites_list.update()
     collide_list.update()
 
+    #returns a dictionary{[sprites_list]:[projectile_list]}
     collide_list = pygame.sprite.groupcollide(sprites_list, projectile_list, False, True)
-    
+    #check sprite if character or mob
+    #checks if a sprite hits 0 hp per collide
     for sprite in collide_list:
-        # print sprite 
+        # print sprite
         if sprite.ctype == 'character' or sprite.ctype == 'mob':
             sprite.hp -= 1
             if sprite.hp <= 0:
@@ -175,12 +185,9 @@ while True:
                 sprite.kill()
                 #print sprite.hp
 
-    for projectile in projectile_list:
-        hit_list = pygame.sprite.spritecollide(projectile, sprites_list, False)
-        for hit in hit_list:
-            projectile_list.remove(projectile)
-            sprites_list.remove(projectile)
     
+    #check if sprite is alive (hp != 0)
+    #play appropriate animation
     for sprite in sprites_list:
         if sprite.alive():
             sprite.animation2.blit(windowSurface, (sprite.rect.x, sprite.rect.y))

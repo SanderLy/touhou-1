@@ -7,20 +7,25 @@ import pyganim
 class Character(pygame.sprite.Sprite):
     def __init__(self, fname, lower, upper, interval, hp, ctype ='', x = 0, y = 0):
         """
-        fname is the folder name of the character sprite 
+        fname is the folder name of the character sprite
+        ctype for type of character 
         """
         self.fname = fname
         self.hp = hp
         self.ctype = ctype
         super(Character,self).__init__()
+        #static image for hitbox
         self.image = pygame.image.load('gifs/' + str(self.fname) + '/' + 'hitbox' + '.png').convert_alpha()
         self.rect = self.image.get_rect()
         self.rect.x = x
         self.rect.y = y
+        #frames for death frame
         self.dframes = [('gifs/' + str(self.fname) + '/' + 'hitbox' + '.png', 0.05)]    
         self.animation = pyganim.PygAnimation(list(self.dframes))
+        self.animation.loop = False
         self.animation.play()
 
+        #frame for alive(idle) animation
         self.upper = upper
         self.lower = lower
         self.interval = interval

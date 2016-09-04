@@ -3,6 +3,7 @@ import sys
 import time
 import pyganim
 import os
+import random
 from pygame.locals import *
 from marisa import *
 from mamizou import *
@@ -21,6 +22,7 @@ pygame.display.set_caption('Project Touhou: Minus 1.0')
 projectile_list =  pygame.sprite.Group()
 sprites_list = pygame.sprite.Group()
 collide_list = pygame.sprite.Group()
+mob_list = pygame.sprite.Group()
 
 #instantiate the sprites
 hp = pygame.image.load('hp_bar/marisa_health.png').convert_alpha()
@@ -49,7 +51,7 @@ rate = 300
 click_event = 0
 mob_rate = 300
 
-resource = 5000
+resource = 500
 
 #---------------------------------
 
@@ -149,17 +151,52 @@ while True:
                 bullet.rect.y = marisa.rect.y+25
                 projectile_list.add(bullet)
             press_event = pygame.time.get_ticks()
-            
+
     if mouse[0]:
         if now - click_event >= mob_rate:
-            if resource > 1000: #1000 is the cost of the mob
-                mob = Mob('mob',mob_lower,mob_upper,0.25,3,'mob')
-                sprites_list.add(mob)
-                click_event = now
-                resource -= 500
+            if current_mob == 1 and resource >= 150:
+                mob = Mob('small',0,1,0.25,3,'mob')
+                resource -= 150
+            if current_mob == 2 and resource >= 250:
+                mob = Mob('normal',0,1,0.25,6,'mob')
+                resource -= 250
+            if current_mob == 3 and resource >= 400:
+                mob = Mob('large',0,1,0.25,15,'mob')
+                resource -= 400
+            sprites_list.add(mob)
+            mob_list.add(mob)
+            click_event = now
+                
+
+
+    # for mob in mob_list:
+        # if mob.fname == 'small':
+            
+    for mob in mob_list:
+            if mob.fname == 'small':
+                bullet_mob = Bullet('small','mob')
+                bullet_mob.rect.x = mob.rect.x - 10
+                bullet_mob.rect.y = mob.rect.y + 35
+                rand = random.randint(8,15)
+
+            if mob.fname == 'normal':
+                bullet_mob = Bullet('normal','mob')
+                bullet_mob.rect.x = mob.rect.x - 200
+                bullet_mob.rect.y = mob.rect.y + 72
+                rand = random.randint(7,15)
+
+            if mob.fname == 'large':
+                bullet_mob = Bullet('large','mob')
+                bullet_mob.rect.x = mob.rect.x - 200
+                bullet_mob.rect.y = mob.rect.y + 110
+                rand = random.randint(6,15)
+
+            if now - mob.last_fire >= rand * 100:
+                projectile_list.add(bullet_mob)
+                mob.last_fire = now
 
     #resource increase per tick
-    resource+=5
+    resource+=1
 
     #update for sprite lists
     projectile_list.update()

@@ -4,8 +4,60 @@
 		"selected_items":
 		[
 			[
+				"prin",
+				"print"
+			],
+			[
+				"mob",
+				"mob_upper"
+			],
+			[
+				"ty",
+				"type_mob"
+			],
+			[
+				"KEY",
+				"KEYDOWN"
+			],
+			[
+				"mo",
+				"mob_upper"
+			],
+			[
+				"spr",
+				"sprites_list"
+			],
+			[
+				"srp",
+				"sprites_list"
+			],
+			[
+				"mov",
+				"move_down"
+			],
+			[
+				"mami",
+				"mamizou"
+			],
+			[
+				"get",
+				"get_pressed"
+			],
+			[
+				"move",
+				"move_down"
+			],
+			[
+				"mam",
+				"mamizou"
+			],
+			[
 				"py",
-				"pyganim"
+				"pygame"
+			],
+			[
+				"ma",
+				"mamizou_idle"
 			],
 			[
 				"pr",
@@ -18,10 +70,6 @@
 			[
 				"proje",
 				"projectile_list"
-			],
-			[
-				"get",
-				"get_ticks"
 			],
 			[
 				"pro",
@@ -466,54 +514,6 @@
 			[
 				"li",
 				"list2"
-			],
-			[
-				"ica",
-				"icaptcha_header"
-			],
-			[
-				"bak",
-				"background-position"
-			],
-			[
-				"st",
-				"style	Tag"
-			],
-			[
-				"padding",
-				"padding-top"
-			],
-			[
-				"btn",
-				"btnAudio"
-			],
-			[
-				"b",
-				"btnImage"
-			],
-			[
-				"text-a",
-				"text-align"
-			],
-			[
-				"bacl",
-				"background-color"
-			],
-			[
-				"inlin",
-				"inline-block"
-			],
-			[
-				"border",
-				"border-radius"
-			],
-			[
-				"top",
-				"margin-top"
-			],
-			[
-				"di",
-				"div	Tag"
 			]
 		]
 	},
@@ -523,17 +523,24 @@
 			"file": "game.py",
 			"settings":
 			{
-				"buffer_size": 3263,
+				"buffer_size": 5292,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "bullet.py",
+			"file": "mob.py",
 			"settings":
 			{
-				"buffer_size": 292,
-				"line_ending": "Windows",
-				"name": "class Bullet()"
+				"buffer_size": 357,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "character.py",
+			"settings":
+			{
+				"buffer_size": 2076,
+				"line_ending": "Windows"
 			}
 		}
 	],
@@ -569,18 +576,20 @@
 	},
 	"expanded_folders":
 	[
-		"/C/touhou-1",
-		"/C/touhou-1/gifs"
+		"/C/touhou-1"
 	],
 	"file_history":
 	[
+		"/C/touhou-1/mamizou.py",
+		"/C/touhou-1/marisa.py",
+		"/C/touhou-1 backup/game.py",
+		"/C/touhou-1/bullet.py",
 		"/C/touhou-1/trybullets.py",
 		"/C/Users/Little Garden/Desktop/sample.txt",
 		"/G/handson.py",
 		"/C/Python27/Scripts/entry.py",
 		"/C/Users/Little Garden/Desktop/drive-download-20160822T021631Z/entry.py",
 		"/C/Python27/Scripts/checkbutton.py",
-		"/C/touhou-1/marisa.py",
 		"/C/touhou-1/game.py",
 		"/C/touhou-1/character.py",
 		"/C/Users/Little Garden/Desktop/GameDevelopment-gh-pages/examples/sprites/game.js",
@@ -698,10 +707,7 @@
 		"/C/wamp/www/College of Law1/css/about.css",
 		"/C/wamp/www/iCAPTCHA/css backup.css",
 		"/C/Python34/Scripts/hands02.py",
-		"/C/Python34/Scripts/hands01.py",
-		"/C/wamp/www/codesnippet/scripts/sc.js",
-		"/C/wamp/www/codesnippet/scripts/script.js",
-		"/C/wamp/www/codesnippet/scripts/scripts.js"
+		"/C/Python34/Scripts/hands01.py"
 	],
 	"find":
 	{
@@ -720,6 +726,16 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"current",
+			"mob",
+			"blit",
+			"print",
+			"hata",
+			"alive",
+			"animation2",
+			"print",
+			"hata",
+			"init",
 			"elf.lower.get() and self.digits.get() and self.under.get()",
 			"25",
 			"window",
@@ -807,15 +823,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 3263,
+						"buffer_size": 5292,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1402,
-								1402
+								2207,
+								2207
 							]
 						],
 						"settings":
@@ -825,7 +841,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 775.0,
+						"translation.y": 1458.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
@@ -833,28 +849,57 @@
 				},
 				{
 					"buffer": 1,
-					"file": "bullet.py",
+					"file": "mob.py",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 292,
+						"buffer_size": 357,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								195,
-								195
+								357,
+								357
 							]
 						],
 						"settings":
 						{
-							"auto_name": "class Bullet()",
 							"syntax": "Packages/Python/Python.sublime-syntax"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "character.py",
+					"semi_transient": true,
+					"settings":
+					{
+						"buffer_size": 2076,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								415,
+								509
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 216.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 1,

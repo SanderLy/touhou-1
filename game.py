@@ -111,7 +111,7 @@ while True:
     mouse = pygame.mouse.get_pressed()
 
     for projectile in projectile_list:
-        if projectile.rect.x > 1000:
+        if projectile.rect.x > 1000 or projectile.rect.x < 0:
             projectile_list.remove(projectile)
 
 

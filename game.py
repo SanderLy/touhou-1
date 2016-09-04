@@ -149,11 +149,7 @@ while True:
                 bullet.rect.y = marisa.rect.y+25
                 projectile_list.add(bullet)
             press_event = pygame.time.get_ticks()
-            if mamizou.alive():
-                bullet2 = Bullet('marisa','mob')
-                bullet2.rect.x = mamizou.rect.x-100
-                bullet2.rect.y = mamizou.rect.y-50
-                projectile_list.add(bullet2)
+            
     if mouse[0]:
         if now - click_event >= mob_rate:
             if resource > 1000: #1000 is the cost of the mob

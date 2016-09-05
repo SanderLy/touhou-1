@@ -25,6 +25,7 @@ projectile_list =  pygame.sprite.Group()
 sprites_list = pygame.sprite.Group()
 collide_list = pygame.sprite.Group()
 mob_list = pygame.sprite.Group()
+skill_list = pygame.sprite.Group()
 
 #instantiate ui's
 container_p1 = pygame.image.load('UI/marisa_hp.png').convert_alpha()
@@ -169,6 +170,14 @@ while True:
                 bullet.rect.y = marisa.rect.y+25
                 projectile_list.add(bullet)
             press_event = pygame.time.get_ticks()
+    if keys[pygame.K_k]:
+        if now - press_event >= rate:
+            if marisa.alive():
+                bullet = Bullet('marisa','character',1)
+                bullet.rect.x = marisa.rect.x+76
+                bullet.rect.y = marisa.rect.y+25
+                skill_list.add(bullet)
+            press_event = pygame.time.get_ticks()
 
     if mouse[0] and mamizou.alive():
         if now - click_event >= mob_rate and pygame.mouse.get_pos()[0] >= 556:
@@ -215,6 +224,32 @@ while True:
     projectile_list.update()
     sprites_list.update()
     collide_list.update()
+    skill_list.update()
+
+     #pierce skill || total damage = 5: dependent on the projectile speed
+    skill_collide2 = pygame.sprite.groupcollide(skill_list, sprites_list, False, False)
+    for projectile in skill_collide2:
+        skill_dmg = projectile.dmg
+    skill_collide = pygame.sprite.groupcollide(sprites_list, skill_list, False, False)
+    for sprite in skill_collide:
+        if sprite.ctype == 'character' or sprite.ctype == 'mob':
+            sprite.hp -= skill_dmg
+            if sprite.fname=='marisa':
+                if marisa.hp> 1:
+                    x_p1 = x_p1 + 306/(30/skill_dmg)# 30 is the full hp of marisa
+                if marisa.hp ==1:
+                    x_p1 += x_p1
+            if sprite.fname== 'mamizou':
+                if mamizou.hp> 1:
+                    x_p2 = x_p2 + 306/(50/skill_dmg)#50 full hp of mamizou
+                if mamizou.hp ==1:
+                    x_p2 += x_p2
+            if sprite.hp <= 0:
+                if sprite.ctype == 'mob':
+                        x-=20
+                if x < 0:
+                    x = 226
+                sprite.kill()
 
     
     #sets damage of colliding projectile
@@ -222,6 +257,7 @@ while True:
     for projectile in collide_list2:
         dmg = projectile.dmg
 
+   
     #returns a dictionary{[sprites_list]:[projectile_list]}
     collide_list = pygame.sprite.groupcollide(sprites_list, projectile_list, False, True)
 
@@ -263,6 +299,7 @@ while True:
     
     projectile_list.draw(windowSurface)
     sprites_list.draw(windowSurface)
+    skill_list.draw(windowSurface)
     windowSurface.blit(container_p1,(0,0))
     windowSurface.blit(container_p2,(583,0))
     windowSurface.blit(crop_hp1,(125,22))

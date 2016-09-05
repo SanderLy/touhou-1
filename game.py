@@ -20,6 +20,9 @@ pygame.display.set_caption('Project Touhou: Minus 1.0')
 background = pygame.image.load('UI/game_bg.png')
 
 
+#misc initializations
+skill_press = False
+
 #create the list of sprites
 projectile_list =  pygame.sprite.Group()
 sprites_list = pygame.sprite.Group()
@@ -38,10 +41,12 @@ p2_hp = pygame.image.load('UI/health_bar.png')
 #instantiate sprites
 marisa = Marisa('marisa',332,345,0.05, 30,'character')
 mamizou = Mamizou('mamizou',1,15,0.09,50,'character')
+laser = Character('skill',11,18,0.05,1,'character')
 
 #add each sprite inside the list of sprites for hitbox checking
 sprites_list.add(marisa)
 sprites_list.add(mamizou)
+
 
 marisa_idle = marisa.animate(332, 345, 0.05)
 marisa_forward = marisa.animate(4120, 4127, 0.05)
@@ -173,9 +178,12 @@ while True:
     if keys[pygame.K_k]:
         if now - press_event >= 1500:
             if marisa.alive():
+                skill_press = True
                 skill = Bullet('marisa','skill',0.25,True)
                 skill.rect.x = marisa.rect.x+80
                 skill.rect.y = marisa.rect.y-75
+                laser.rect.x = marisa.rect.x+80
+                laser.rect.y = marisa.rect.y-75
                 skill_list.add(skill)
             press_event = pygame.time.get_ticks()
 
@@ -226,7 +234,7 @@ while True:
     collide_list.update()
     skill_list.update()
 
-     #pierce skill || total damage = 5: dependent on the projectile speed
+     #pierce skill
     skill_collide2 = pygame.sprite.groupcollide(skill_list, sprites_list, False, False)
     for projectile in skill_collide2:
         skill_dmg = projectile.dmg
@@ -299,8 +307,10 @@ while True:
     if len(skill_list) > 0:
         if now - press_event > 1000:
             skill_list.remove(skill)
+            skill_press = False
+    if skill_press == True:
+        sprites_list.add(laser)
 
-    
     projectile_list.draw(windowSurface)
     sprites_list.draw(windowSurface)
     skill_list.draw(windowSurface)

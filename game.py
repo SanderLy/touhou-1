@@ -151,20 +151,20 @@ while True:
     if keys[pygame.K_DOWN]:
         if mamizou.rect.y < 530:
             mamizou.rect.y+=10
-    if keys[pygame.K_a]:
+    if keys[pygame.K_a] and skill_press == False:
         if marisa.rect.x>0:
             marisa_animation = marisa_forward
             marisa_animation.play()
             marisa.move_left()
-    if keys[pygame.K_d]:
+    if keys[pygame.K_d] and skill_press == False:
         if marisa.rect.x<914 and marisa.rect.x < 456:
             marisa_animation = marisa_forward
             marisa_animation.play()
             marisa.move_right()         
-    if keys[pygame.K_w]:
+    if keys[pygame.K_w] and skill_press == False:
         if marisa.rect.y > 80:
             marisa.move_up()
-    if keys[pygame.K_s]:
+    if keys[pygame.K_s] and skill_press == False:
         if marisa.rect.y < 524:
             marisa.move_down()
     if keys[pygame.K_j]:

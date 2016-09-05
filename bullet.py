@@ -1,9 +1,12 @@
 import pygame
 class Bullet(pygame.sprite.Sprite):
-	def __init__(self,fname,btype, dmg = 1):
+	def __init__(self,fname,btype, dmg = 1, stype = False):
 		super(Bullet,self).__init__()
 		self.fname = fname
-		self.image = pygame.image.load('gifs/'+self.fname+'/projectile.png').convert_alpha()
+		if stype == False:
+			self.image = pygame.image.load('gifs/'+self.fname+'/projectile.png').convert_alpha()			
+		if stype == True:
+			self.image = pygame.image.load('gifs/'+self.fname+'/skill.png').convert_alpha()
 		self.rect = self.image.get_rect()
 		self.btype = btype
 		self.dmg = dmg
@@ -13,3 +16,5 @@ class Bullet(pygame.sprite.Sprite):
 			self.rect.x +=25
 		if self.btype == 'mob':
 			self.rect.x -= 25
+		if self.btype == 'skill':
+			self.rect.x += 0

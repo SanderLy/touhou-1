@@ -173,9 +173,9 @@ while True:
     if keys[pygame.K_k]:
         if now - press_event >= rate:
             if marisa.alive():
-                bullet = Bullet('marisa','character',1)
-                bullet.rect.x = marisa.rect.x+76
-                bullet.rect.y = marisa.rect.y+25
+                bullet = Bullet('marisa','skill',1,True)
+                bullet.rect.x = marisa.rect.x+80
+                bullet.rect.y = marisa.rect.y-75
                 skill_list.add(bullet)
             press_event = pygame.time.get_ticks()
 

@@ -171,7 +171,7 @@ while True:
             press_event = pygame.time.get_ticks()
 
     if mouse[0] and mamizou.alive():
-        if now - click_event >= mob_rate:
+        if now - click_event >= mob_rate and pygame.mouse.get_pos()[0] >= 556:
             if current_mob == 1 and resource >= 150:
                 mob = Mob('small',0,1,0.25,3,'mob')
                 resource -= 150

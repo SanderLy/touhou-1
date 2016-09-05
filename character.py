@@ -14,11 +14,7 @@ class Character(pygame.sprite.Sprite):
         self.hp = hp
         self.ctype = ctype
         super(Character,self).__init__()
-        #static image for hitbox
-        self.image = pygame.image.load('gifs/' + str(self.fname) + '/' + 'hitbox' + '.png').convert_alpha()
-        self.rect = self.image.get_rect()
-        self.rect.x = x
-        self.rect.y = y
+        
         #frames for death frame
         self.dframes = [('gifs/' + str(self.fname) + '/' + 'hitbox' + '.png', 0.05)]    
         self.animation = pyganim.PygAnimation(list(self.dframes))
@@ -37,6 +33,14 @@ class Character(pygame.sprite.Sprite):
             self.lower += 1
         self.animation2 = pyganim.PygAnimation(list(self.frames))
         self.animation2.play()
+        self.setHitbox(x,y)
+
+    def setHitbox(self,x,y):
+        #static image for hitbox
+        self.image = pygame.image.load('gifs/' + str(self.fname) + '/' + 'hitbox' + '.png').convert_alpha()
+        self.rect = self.image.get_rect()
+        self.rect.x = x
+        self.rect.y = y
 
     
     def animate(self, lower, upper, interval):

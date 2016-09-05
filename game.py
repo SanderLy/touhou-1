@@ -17,6 +17,8 @@ pygame.init()
 #set up the window
 windowSurface = pygame.display.set_mode((1024, 600))
 pygame.display.set_caption('Project Touhou: Minus 1.0')
+background = pygame.image.load('UI/game_bg.png')
+
 
 #create the list of sprites
 projectile_list =  pygame.sprite.Group()
@@ -24,11 +26,17 @@ sprites_list = pygame.sprite.Group()
 collide_list = pygame.sprite.Group()
 mob_list = pygame.sprite.Group()
 
-#instantiate the sprites
-hp = pygame.image.load('hp_bar/marisa_health.png').convert_alpha()
-mp = pygame.image.load('hp_bar/mp.png').convert_alpha()
-marisa = Marisa('marisa',332,345,0.05, 10,'character')
-mamizou = Mamizou('mamizou',1,15,0.09,10,'character')
+#instantiate ui's
+container_p1 = pygame.image.load('UI/marisa_hp.png').convert_alpha()
+container_p2 = pygame.image.load('UI/mamizou_hp.png').convert_alpha()
+mp = pygame.image.load('UI/mp.png').convert_alpha()
+p1_hp = pygame.image.load('UI/health_bar.png')
+p2_hp = pygame.image.load('UI/health_bar.png')
+
+
+#instantiate sprites
+marisa = Marisa('marisa',332,345,0.05, 30,'character')
+mamizou = Mamizou('mamizou',1,15,0.09,50,'character')
 
 #add each sprite inside the list of sprites for hitbox checking
 sprites_list.add(marisa)
@@ -42,8 +50,9 @@ marisa_animation = marisa_idle
 # Projectile Animation for marisa
 
 press_event  = 0
-now = 0
+snow = 0
 rate = 300
+time = 180
 #---------------------------------
 
 #mob respawn rate 
@@ -62,6 +71,7 @@ current_mob = 1
 
 #printing of label
 font = pygame.font.Font(None, 35)
+time_f = pygame.font.Font(None, 50)
 
 marisa_animation.play()
 mainClock = pygame.time.Clock()
@@ -70,19 +80,27 @@ cooldown = 1
 
 #---------------------------------
 
-#try animationn of mp bar
-MPx =122
-MPy = 44
-mp_rect = mp.get_rect()
-x = 226
-while True:
-    windowSurface.fill(BGCOLOR)
-    now = pygame.time.get_ticks()
-    lblRes = font.render(str(resource),1,(0,0,0))# show lable
+#animationn of hp and mp bars
 
-    #changing of mp bar
+x = 226
+x_p1 = 0
+x_p2 = 0
+
+while True:
+
+    windowSurface.blit(background,(0,0))
+    now = pygame.time.get_ticks()
+    lblRes = font.render(str(resource),1,(255,255,100))# show label
+    lblTime = time_f.render(str(time),1,(200,70,25))# show label
+    
+    #changing of hp and mp bar
     chop_rect = (0,0,x,0)
+    chop_p1 = (0,0,x_p1,0)
+    chop_p2 = (0,0,x_p2,0)
+
     crop_mp = pygame.transform.chop(mp,chop_rect)
+    crop_hp1 = pygame.transform.chop(p1_hp,chop_p1)
+    crop_hp2 = pygame.transform.chop(p2_hp,chop_p2)
     
 
     for event in pygame.event.get():
@@ -122,7 +140,7 @@ while True:
     """
    
     if keys[pygame.K_UP]:
-        if mamizou.rect.y > 0:
+        if mamizou.rect.y > 80:
             mamizou.rect.y-=10
     if keys[pygame.K_DOWN]:
         if mamizou.rect.y < 530:
@@ -133,12 +151,12 @@ while True:
             marisa_animation.play()
             marisa.move_left()
     if keys[pygame.K_d]:
-        if marisa.rect.x<914:
+        if marisa.rect.x<914 and marisa.rect.x < 456:
             marisa_animation = marisa_forward
             marisa_animation.play()
             marisa.move_right()         
     if keys[pygame.K_w]:
-        if marisa.rect.y > 0:
+        if marisa.rect.y > 80:
             marisa.move_up()
     if keys[pygame.K_s]:
         if marisa.rect.y < 524:
@@ -146,7 +164,7 @@ while True:
     if keys[pygame.K_j]:
         if now - press_event >= rate:
             if marisa.alive():
-                bullet = Bullet('marisa','character',5)
+                bullet = Bullet('marisa','character',1)
                 bullet.rect.x = marisa.rect.x+76
                 bullet.rect.y = marisa.rect.y+25
                 projectile_list.add(bullet)
@@ -176,13 +194,13 @@ while True:
 
             if mob.fname == 'normal':
                 bullet_mob = Bullet('normal','mob',2)
-                bullet_mob.rect.x = mob.rect.x - 200
-                bullet_mob.rect.y = mob.rect.y + 72
+                bullet_mob.rect.x = mob.rect.x - 75
+                bullet_mob.rect.y = mob.rect.y + 35
                 rand = random.randint(7,15)
 
             if mob.fname == 'large':
                 bullet_mob = Bullet('large','mob',3)
-                bullet_mob.rect.x = mob.rect.x - 200
+                bullet_mob.rect.x = mob.rect.x - -50
                 bullet_mob.rect.y = mob.rect.y + 110
                 rand = random.randint(6,15)
 
@@ -210,12 +228,23 @@ while True:
     #check sprite if character or mob
     #checks if a sprite hits 0 hp per collide
     for sprite in collide_list:
-        # print sprite
         if sprite.ctype == 'character' or sprite.ctype == 'mob':
             sprite.hp -= dmg
-            print sprite.hp
+            if sprite.fname=='marisa':
+                print "dmg: " + str(dmg)
+                if marisa.hp> 1:
+                    x_p1 = x_p1 + 306/(30/dmg)# 30 is the full hp of marisa
+                if marisa.hp ==1:
+                    x_p1 += x_p1
+            if sprite.fname== 'mamizou':
+                if mamizou.hp> 1:
+                    x_p2 = x_p2 + 306/(50/dmg)#50 full hp of mamizou
+                if mamizou.hp ==1:
+                    x_p2 += x_p2
+            print mamizou.hp
             if sprite.hp <= 0:
-                x-=20
+                if sprite.ctype == 'mob':
+                        x-=20
                 if x < 0:
                     x = 226
                 sprite.kill()
@@ -228,14 +257,19 @@ while True:
         if sprite.alive():
             sprite.animation2.blit(windowSurface, (sprite.rect.x, sprite.rect.y))
         else:
-            sprite.animation2.blit(windowSurface, (sprite.rect.x, sprite.rect.y))
+            sprite.animation.blit(windowSurface, (sprite.rect.x, sprite.rect.y))
+
 
     
     projectile_list.draw(windowSurface)
     sprites_list.draw(windowSurface)
-    windowSurface.blit(hp,(0,0))
-    windowSurface.blit(crop_mp,(MPx,MPy)) #122 and 44
-    windowSurface.blit(lblRes,(450,50))
+    windowSurface.blit(container_p1,(0,0))
+    windowSurface.blit(container_p2,(583,0))
+    windowSurface.blit(crop_hp1,(125,22))
+    windowSurface.blit(crop_hp2,(591,22))
+    windowSurface.blit(crop_mp,(122,44)) #122 and 44
+    windowSurface.blit(lblRes,(600,50))
+    windowSurface.blit(lblTime,(480,20))
     pygame.display.flip()
     pygame.display.update()
     

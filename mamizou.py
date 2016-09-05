@@ -6,5 +6,5 @@ class Mamizou(Character):
 		Character.__init__(self, fname, lower, upper, interval, hp, ctype = '', x=0, y=0)
 		self.ctype = 'character'
 		self.rect.x = 920
-		self.rect.y = 0
+		self.rect.y = 80
 		

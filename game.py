@@ -171,12 +171,12 @@ while True:
                 projectile_list.add(bullet)
             press_event = pygame.time.get_ticks()
     if keys[pygame.K_k]:
-        if now - press_event >= rate:
+        if now - press_event >= 1500:
             if marisa.alive():
-                bullet = Bullet('marisa','skill',1,True)
-                bullet.rect.x = marisa.rect.x+80
-                bullet.rect.y = marisa.rect.y-75
-                skill_list.add(bullet)
+                skill = Bullet('marisa','skill',0.25,True)
+                skill.rect.x = marisa.rect.x+80
+                skill.rect.y = marisa.rect.y-75
+                skill_list.add(skill)
             press_event = pygame.time.get_ticks()
 
     if mouse[0] and mamizou.alive():
@@ -234,6 +234,7 @@ while True:
     for sprite in skill_collide:
         if sprite.ctype == 'character' or sprite.ctype == 'mob':
             sprite.hp -= skill_dmg
+            print sprite.hp
             if sprite.fname=='marisa':
                 if marisa.hp> 1:
                     x_p1 = x_p1 + 306/(30/skill_dmg)# 30 is the full hp of marisa
@@ -295,6 +296,9 @@ while True:
         else:
             sprite.animation.blit(windowSurface, (sprite.rect.x, sprite.rect.y))
 
+    if len(skill_list) > 0:
+        if now - press_event > 1000:
+            skill_list.remove(skill)
 
     
     projectile_list.draw(windowSurface)

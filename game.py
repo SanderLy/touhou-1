@@ -177,7 +177,7 @@ while True:
             press_event = pygame.time.get_ticks()
     if keys[pygame.K_k]:
         if now - press_event >= 1500:
-            if marisa.alive():
+            if marisa.alive() and x == 0:
                 skill_press = True
                 skill = Bullet('marisa','skill',0.25,True)
                 skill.rect.x = marisa.rect.x+80
@@ -291,7 +291,7 @@ while True:
                 if sprite.ctype == 'mob':
                         x-=20
                 if x < 0:
-                    x = 226
+                    x = 0
                 sprite.kill()
                 #print sprite.hp
 
@@ -308,6 +308,7 @@ while True:
         if now - press_event > 1000:
             skill_list.remove(skill)
             skill_press = False
+            x = 226 # reset mp to empty
     if skill_press == True:
         sprites_list.add(laser)
 

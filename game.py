@@ -320,7 +320,7 @@ while True:
     windowSurface.blit(container_p1,(0,0))
     windowSurface.blit(container_p2,(583,0))
     windowSurface.blit(crop_hp1,(125,22))
-    windowSurface.blit(crop_hp2,(591,22))
+    windowSurface.blit(crop_hp2,(591 + x_p2,22))
     windowSurface.blit(crop_mp,(122,44)) #122 and 44
     windowSurface.blit(lblRes,(600,50))
     windowSurface.blit(lblTime,(480,20))

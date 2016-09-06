@@ -288,13 +288,15 @@ while True:
                     x_p2 += x_p2
             print mamizou.hp
             if sprite.hp <= 0:
-                if sprite.ctype == 'mob':
+                if sprite.ctype == 'mob' and mob.fname == 'small':
                         x-=20
+                if sprite.ctype == 'mob' and mob.fname == 'normal':
+                        x-=30
+                if sprite.ctype == 'mob' and mob.fname == 'large':
+                        x-=50
                 if x < 0:
                     x = 0
                 sprite.kill()
-                #print sprite.hp
-
     
     #check if sprite is alive (hp != 0)
     #play appropriate animation

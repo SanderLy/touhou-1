@@ -13,6 +13,8 @@ os.environ['SDL_VIDEO_WINDOW_POS'] = "%d,%d" % (50,50) # set initial screen posi
 
 
 pygame.init()
+skill_press = False
+skill_rate = 1500
 
 #set up the window
 windowSurface = pygame.display.set_mode((1024, 600))
@@ -20,14 +22,13 @@ pygame.display.set_caption('Project Touhou: Minus 1.0')
 background = pygame.image.load('UI/game_bg.png')
 
 
-#misc initializations
-skill_press = False
-
 #create the list of sprites
 projectile_list =  pygame.sprite.Group()
 sprites_list = pygame.sprite.Group()
 collide_list = pygame.sprite.Group()
+skill_collide = pygame.sprite.Group()
 mob_list = pygame.sprite.Group()
+deco_list = pygame.sprite.Group()
 skill_list = pygame.sprite.Group()
 
 #instantiate ui's
@@ -41,11 +42,12 @@ p2_hp = pygame.image.load('UI/health_bar.png')
 #instantiate sprites
 marisa = Marisa('marisa',332,345,0.05, 30,'character')
 mamizou = Mamizou('mamizou',1,15,0.09,50,'character')
-laser = Character('skill',11,18,0.05,1,'character')
+laser = Character('skill',11,18,0.025,90,'character')
 
 #add each sprite inside the list of sprites for hitbox checking
 sprites_list.add(marisa)
 sprites_list.add(mamizou)
+deco_list.add(laser)
 
 
 marisa_idle = marisa.animate(332, 345, 0.05)
@@ -167,24 +169,25 @@ while True:
     if keys[pygame.K_s] and skill_press == False:
         if marisa.rect.y < 524:
             marisa.move_down()
-    if keys[pygame.K_j]:
+    if keys[pygame.K_j] and skill_press == False:
         if now - press_event >= rate:
             if marisa.alive():
                 bullet = Bullet('marisa','character',1)
                 bullet.rect.x = marisa.rect.x+76
                 bullet.rect.y = marisa.rect.y+25
                 projectile_list.add(bullet)
+                skill_press = False
             press_event = pygame.time.get_ticks()
-    if keys[pygame.K_k]:
+    if keys[pygame.K_k] and skill_press == False:
         if now - press_event >= 1500:
-            if marisa.alive() and x == 0:
-                skill_press = True
-                skill = Bullet('marisa','skill',0.25,True)
-                skill.rect.x = marisa.rect.x+80
-                skill.rect.y = marisa.rect.y-75
-                laser.rect.x = marisa.rect.x+80
-                laser.rect.y = marisa.rect.y-75
-                skill_list.add(skill)
+            if marisa.alive():# and x == 0:
+               skill_press = True
+               skill = Bullet('marisa', 'skill', 0.2, True)
+               skill.rect.x = marisa.rect.x+90
+               skill.rect.y = marisa.rect.y+15
+               laser.rect.x = marisa.rect.x + 90
+               laser.rect.y = marisa.rect.y - 85
+               skill_list.add(skill)
             press_event = pygame.time.get_ticks()
 
     if mouse[0] and mamizou.alive():
@@ -232,9 +235,10 @@ while True:
     projectile_list.update()
     sprites_list.update()
     collide_list.update()
+    deco_list.update()
     skill_list.update()
 
-     #pierce skill
+   #pierce skill
     skill_collide2 = pygame.sprite.groupcollide(skill_list, sprites_list, False, False)
     for projectile in skill_collide2:
         skill_dmg = projectile.dmg
@@ -259,7 +263,7 @@ while True:
                 if x < 0:
                     x = 226
                 sprite.kill()
-
+     
     
     #sets damage of colliding projectile
     collide_list2 = pygame.sprite.groupcollide(projectile_list, sprites_list, False, False)
@@ -306,17 +310,17 @@ while True:
         else:
             sprite.animation.blit(windowSurface, (sprite.rect.x, sprite.rect.y))
 
-    if len(skill_list) > 0:
-        if now - press_event > 1000:
-            skill_list.remove(skill)
-            skill_press = False
-            x = 226 # reset mp to empty
+    #skill animation
     if skill_press == True:
-        sprites_list.add(laser)
+        laser.animation2.blit(windowSurface, (marisa.rect.x+90,marisa.rect.y-85))
+        if now - press_event > skill_rate:
+            skill_press = False
+            skill_list.remove(skill)
 
+    skill_list.draw(windowSurface)
     projectile_list.draw(windowSurface)
     sprites_list.draw(windowSurface)
-    skill_list.draw(windowSurface)
+    deco_list.draw (windowSurface)
     windowSurface.blit(container_p1,(0,0))
     windowSurface.blit(container_p2,(583,0))
     windowSurface.blit(crop_hp1,(125,22))

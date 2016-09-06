@@ -4,9 +4,9 @@ class Bullet(pygame.sprite.Sprite):
 		super(Bullet,self).__init__()
 		self.fname = fname
 		if stype == False:
-			self.image = pygame.image.load('gifs/'+self.fname+'/projectile.png').convert_alpha()			
-		if stype == True:
-			self.image = pygame.image.load('gifs/'+self.fname+'/skill.png').convert_alpha()
+			self.image = pygame.image.load('gifs/'+self.fname+'/projectile.png').convert_alpha()
+		else:
+			self.image = pygame.image.load('gifs/'+self.fname+'/skill.png').convert_alpha()	
 		self.rect = self.image.get_rect()
 		self.btype = btype
 		self.dmg = dmg

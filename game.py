@@ -279,12 +279,12 @@ while True:
                 print "dmg: " + str(dmg)
                 if marisa.hp> 1:
                     x_p1 = x_p1 + 306/(30/dmg)# 30 is the full hp of marisa
-                if marisa.hp ==1:
+                if marisa.hp <1:
                     x_p1 += x_p1
             if sprite.fname== 'mamizou':
                 if mamizou.hp> 1:
                     x_p2 = x_p2 + 306/(50/dmg)#50 full hp of mamizou
-                if mamizou.hp ==1:
+                if mamizou.hp <1:
                     x_p2 += x_p2
             print mamizou.hp
             if sprite.hp <= 0:

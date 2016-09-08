@@ -1,1 +1,1 @@
-Homuh u pedo
+Timmy is a pedo

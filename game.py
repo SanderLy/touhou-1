@@ -126,7 +126,7 @@ while True:
         if event.type == QUIT or (event.type == KEYDOWN and event.key == K_ESCAPE):
             pygame.quit()
             sys.exit()
-        if event.type == KEYUP:
+        if event.type == KEYUP and skill_press == False:
             if event.key == K_d:# or event.key == K_j or event.key == K_k:
                 marisa.animation2 = marisa.animate(332,345,0.05)
                 marisa.animation2.play()
@@ -140,7 +140,7 @@ while True:
                 if current_mob > 3: 
                     current_mob = 1
                     pointer_index = 671 # reset to the first type of mob
-            if event.key == K_d:                
+            if event.key == K_d and skill_press == False:                
                 marisa.animation2 = marisa.animate(4120,4127,0.05)
                 marisa.animation2.play()
 
@@ -199,8 +199,11 @@ while True:
             press_event = pygame.time.get_ticks()
     if keys[pygame.K_k] and skill_press == False:
         if now - skill_press_event >= 1500:
+            x = 0
             if marisa.alive() and x == 0:
                skill_press = True
+               marisa.animation2 = marisa.animate(128,129,0.1)
+               marisa.animation2.play()
                skill = Bullet('marisa', 'skill', 0.2, True)
                skill.rect.x = marisa.rect.x+90
                skill.rect.y = marisa.rect.y+15
@@ -335,7 +338,9 @@ while True:
     #skill animation
     if skill_press == True:
         laser.animation2.blit(windowSurface, (marisa.rect.x+90,marisa.rect.y-85))
-        if now - press_event > skill_rate:
+        if now - skill_press_event > skill_rate:
+            marisa.animation2 = marisa.animate(332,345,0.05)
+            marisa.animation2.play()
             skill_press = False
             skill_list.remove(skill)
 

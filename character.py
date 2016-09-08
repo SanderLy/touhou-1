@@ -21,7 +21,7 @@ class Character(pygame.sprite.Sprite):
         self.animation.loop = False
         self.animation.play()
 
-        #frame for alive(idle) animation
+        #frames for alive(idle) animation
         self.upper = upper
         self.lower = lower
         self.interval = interval

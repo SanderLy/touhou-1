@@ -4,6 +4,22 @@
 		"selected_items":
 		[
 			[
+				"ski",
+				"skill_press"
+			],
+			[
+				"draw",
+				"draw_win"
+			],
+			[
+				"def",
+				"def_win"
+			],
+			[
+				"sho",
+				"shoot_win"
+			],
+			[
 				"skill",
 				"skill_press"
 			],
@@ -498,22 +514,6 @@
 			[
 				"table",
 				"table-cell"
-			],
-			[
-				"bot",
-				"text-bottom"
-			],
-			[
-				"text",
-				"text-anchor"
-			],
-			[
-				"max",
-				"max-width"
-			],
-			[
-				"inli",
-				"inline-flex"
 			]
 		]
 	},
@@ -523,7 +523,15 @@
 			"file": "game.py",
 			"settings":
 			{
-				"buffer_size": 10972,
+				"buffer_size": 12786,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "character.py",
+			"settings":
+			{
+				"buffer_size": 2322,
 				"line_ending": "Windows"
 			}
 		}
@@ -698,6 +706,10 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"332",
+			"press_event",
+			"skill_rate",
+			"container_p1",
 			"skill_press",
 			"laser",
 			"now",
@@ -813,15 +825,15 @@
 					"file": "game.py",
 					"settings":
 					{
-						"buffer_size": 10972,
+						"buffer_size": 12786,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
+								4096,
+								4096
 							]
 						],
 						"settings":
@@ -831,7 +843,35 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 1749.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "character.py",
+					"settings":
+					{
+						"buffer_size": 2322,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								716,
+								716
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 405.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"

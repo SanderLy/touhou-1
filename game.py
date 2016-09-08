@@ -204,7 +204,7 @@ while True:
                skill_press = True
                marisa.animation2 = marisa.animate(128,129,0.1)
                marisa.animation2.play()
-               skill = Bullet('marisa', 'skill', 0.2, True)
+               skill = Bullet('marisa', 'skill', 0.4, True)
                skill.rect.x = marisa.rect.x+90
                skill.rect.y = marisa.rect.y+15
                laser.rect.x = marisa.rect.x + 90
@@ -344,15 +344,6 @@ while True:
             skill_press = False
             skill_list.remove(skill)
 
-    #check for victor
-    if not marisa.alive():
-        windowSurface.blit(shoot_win, (0,200))
-    if not mamizou.alive():
-        windowSurface.blit(def_win, (0,200))
-    if not marisa.alive() and not mamizou.alive():
-        windowSurface.blit(draw_win, (0,200))
-
-
     skill_list.draw(windowSurface)
     projectile_list.draw(windowSurface)
     sprites_list.draw(windowSurface)
@@ -364,12 +355,12 @@ while True:
     windowSurface.blit(crop_hp2,(591 + x_p2,22))
     windowSurface.blit(crop_mp,(122,44)) #122 and 44
     windowSurface.blit(lblRes,(600,50))
-    windowSurface.blit(lblTime,(480,20))
+    windowSurface.blit(lblTime,(480,20))    
     #check for victor
     if not marisa.alive():
-        windowSurface.blit(shoot_win, (0,200))
-    if not mamizou.alive():
         windowSurface.blit(def_win, (0,200))
+    if not mamizou.alive():
+        windowSurface.blit(shoot_win, (0,200))
     pygame.display.flip()
     pygame.display.update()
     

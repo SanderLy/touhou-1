@@ -40,6 +40,10 @@ mp = pygame.image.load('UI/mp.png').convert_alpha()
 p1_hp = pygame.image.load('UI/health_bar.png')
 p2_hp = pygame.image.load('UI/health_bar.png')
 frame = 0 # for timer countdown
+shoot_win = pygame.image.load('UI/shooter_win.png').convert_alpha()
+def_win = pygame.image.load('UI/defender_win.png').convert_alpha()
+draw_win = pygame.image.load('UI/draw.png').convert_alpha()
+
 
 #instantiate sprites
 marisa = Marisa('marisa',332,345,0.05, 30,'character')
@@ -298,7 +302,6 @@ while True:
             if x < 0:
                 x = 0
             if sprite.fname=='marisa':
-                print "dmg: " + str(dmg)
                 if marisa.hp> 1:
                     x_p1 = x_p1 + 306/(30/dmg)# 30 is the full hp of marisa
                 if marisa.hp <1:
@@ -308,7 +311,6 @@ while True:
                     x_p2 = x_p2 + 306/(50/dmg)#50 full hp of mamizou
                 if mamizou.hp < 1:
                     x_p2 += x_p2
-            print mamizou.hp
             if sprite.hp <= 0:
                 if sprite.ctype == 'mob' and mob.fname == 'small':
                         x-=20
@@ -319,6 +321,7 @@ while True:
                 if x < 0:
                     x = 0
                 sprite.kill()
+             
     
     #check if sprite is alive (hp != 0)
     #play appropriate animation
@@ -335,6 +338,15 @@ while True:
             skill_press = False
             skill_list.remove(skill)
 
+    #check for victor
+    if not marisa.alive():
+        windowSurface.blit(shoot_win, (0,200))
+    if not mamizou.alive():
+        windowSurface.blit(def_win, (0,200))
+    if not marisa.alive() and not mamizou.alive():
+        windowSurface.blit(draw_win, (0,200))
+
+
     skill_list.draw(windowSurface)
     projectile_list.draw(windowSurface)
     sprites_list.draw(windowSurface)
@@ -347,6 +359,11 @@ while True:
     windowSurface.blit(crop_mp,(122,44)) #122 and 44
     windowSurface.blit(lblRes,(600,50))
     windowSurface.blit(lblTime,(480,20))
+    #check for victor
+    if not marisa.alive():
+        windowSurface.blit(shoot_win, (0,200))
+    if not mamizou.alive():
+        windowSurface.blit(def_win, (0,200))
     pygame.display.flip()
     pygame.display.update()
     

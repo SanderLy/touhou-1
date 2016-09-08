@@ -4,135 +4,31 @@
 		"selected_items":
 		[
 			[
-				"mam",
-				"mamizou_rect"
+				"skill",
+				"skill_press"
 			],
 			[
-				"rec",
-				"rectangele"
+				"skil",
+				"skill_collide"
 			],
 			[
-				"su",
-				"surface"
+				"anim",
+				"animation2"
 			],
 			[
-				"d",
-				"dmg"
+				"laser",
+				"laser_animation"
 			],
 			[
-				"x",
-				"x_p1"
-			],
-			[
-				"cro",
-				"crop_hp1"
-			],
-			[
-				"spr",
-				"sprite"
-			],
-			[
-				"chop_p",
-				"chop_p1"
-			],
-			[
-				"x_p",
-				"x_p1"
-			],
-			[
-				"get",
-				"get_rect"
-			],
-			[
-				"hp",
-				"hpP1"
-			],
-			[
-				"tim",
-				"time_f"
-			],
-			[
-				"lbl",
-				"lblTime"
-			],
-			[
-				"con",
-				"container_p1"
-			],
-			[
-				"ba",
-				"background"
-			],
-			[
-				"ma",
-				"mamizou"
-			],
-			[
-				"coll",
-				"collide_list"
-			],
-			[
-				"Spr",
-				"sprites"
-			],
-			[
-				"list",
-				"collide_list"
-			],
-			[
-				"hi",
-				"hitbox_rect"
-			],
-			[
-				"mp",
-				"mp"
-			],
-			[
-				"cr",
-				"crop_mp"
-			],
-			[
-				"prin",
-				"print"
-			],
-			[
-				"mob",
-				"mob_upper"
-			],
-			[
-				"ty",
-				"type_mob"
-			],
-			[
-				"KEY",
-				"KEYDOWN"
-			],
-			[
-				"mo",
-				"mob_upper"
-			],
-			[
-				"srp",
+				"sprite",
 				"sprites_list"
 			],
 			[
-				"mov",
-				"move_down"
+				"pro",
+				"projectile"
 			],
 			[
-				"mami",
-				"mamizou"
-			],
-			[
-				"move",
-				"move_down"
-			],
-			[
-				"py",
-				"pygame"
-			],
-			[
-				"pr",
+				"projec",
 				"projectile"
 			],
 			[
@@ -141,19 +37,63 @@
 			],
 			[
 				"proje",
-				"projectile_list"
+				"projectile"
 			],
 			[
-				"pro",
-				"projectile_list"
+				"collid",
+				"collide_list2"
+			],
+			[
+				"bullet",
+				"bullet_mob"
+			],
+			[
+				"bull",
+				"bullet_mob"
+			],
+			[
+				"mob",
+				"mob_list"
+			],
+			[
+				"g",
+				"Group"
+			],
+			[
+				"colli",
+				"collide_list"
+			],
+			[
+				"window",
+				"windowSurface"
+			],
+			[
+				"hata",
+				"hata_animation"
+			],
+			[
+				"spri",
+				"sprites_list"
+			],
+			[
+				"hit",
+				"hit_list"
+			],
+			[
+				"py",
+				"pyganim"
+			],
+			[
+				"pr",
+				"projectile"
+			],
+			[
+				"get",
+				"get_ticks"
 			],
 			[
 				"f",
 				"fname"
-			],
-			[
-				"projec",
-				"projectile_frames"
 			],
 			[
 				"read",
@@ -514,21 +454,84 @@
 			[
 				"chec",
 				"checkConnection"
+			],
+			[
+				"print",
+				"print_r"
+			],
+			[
+				"Fisher",
+				"FisherYatesShuffle"
+			],
+			[
+				"mysql",
+				"mysql_close"
+			],
+			[
+				"for",
+				"form	Tag"
+			],
+			[
+				"pd",
+				"PODP"
+			],
+			[
+				"pri",
+				"prime_odd"
+			],
+			[
+				"str",
+				"str1"
+			],
+			[
+				"border-",
+				"border-color"
+			],
+			[
+				"background",
+				"background-color"
+			],
+			[
+				"bor",
+				"border-top"
+			],
+			[
+				"table",
+				"table-cell"
+			],
+			[
+				"bot",
+				"text-bottom"
+			],
+			[
+				"text",
+				"text-anchor"
+			],
+			[
+				"max",
+				"max-width"
+			],
+			[
+				"inli",
+				"inline-flex"
 			]
 		]
 	},
 	"buffers":
 	[
+		{
+			"file": "game.py",
+			"settings":
+			{
+				"buffer_size": 10972,
+				"line_ending": "Windows"
+			}
+		}
 	],
 	"build_system": "",
-	"build_system_choices":
-	[
-	],
-	"build_varint": "",
 	"command_palette":
 	{
 		"height": 0.0,
-		"last_filter": "",
 		"selected_items":
 		[
 		],
@@ -536,10 +539,7 @@
 	},
 	"console":
 	{
-		"height": 0.0,
-		"history":
-		[
-		]
+		"height": 0.0
 	},
 	"distraction_free":
 	{
@@ -550,27 +550,24 @@
 		"side_bar_visible": false,
 		"status_bar_visible": false
 	},
-	"expanded_folders":
-	[
-		"/C/touhou-1"
-	],
 	"file_history":
 	[
-		"/C/touhou-1/mamizou.py",
-		"/C/touhou-1/marisa.py",
-		"/C/touhou-1/character.py",
-		"/C/touhou-1/game.py",
-		"/C/touhou-1/rect.py",
-		"/C/touhou-1/mob.py",
-		"/C/touhou-1/bullet.py",
-		"/C/Users/Little Garden/Desktop/rect.py",
+		"/C/Git/touhou-1/bullet.py",
+		"/C/Git/touhou-1/game.py",
+		"/C/Git/touhou-1/character.py",
+		"/C/Git/touhou-1/marisa.py",
+		"/C/Git/touhou-1/mob.py",
+		"/C/Git/touhou-1/mamizou.py",
+		"/C/Git/touhou-1/trybullets.py",
 		"/C/touhou-1/trybullets.py",
-		"/C/touhou-1 backup/game.py",
 		"/C/Users/Little Garden/Desktop/sample.txt",
 		"/G/handson.py",
 		"/C/Python27/Scripts/entry.py",
 		"/C/Users/Little Garden/Desktop/drive-download-20160822T021631Z/entry.py",
 		"/C/Python27/Scripts/checkbutton.py",
+		"/C/touhou-1/marisa.py",
+		"/C/touhou-1/game.py",
+		"/C/touhou-1/character.py",
 		"/C/Users/Little Garden/Desktop/GameDevelopment-gh-pages/examples/sprites/game.js",
 		"/C/test/test3_pyganim.py",
 		"/C/test/test1_pyganim.py",
@@ -682,16 +679,15 @@
 		"/C/Python34/Scripts/hands04.py",
 		"/C/Python34/Scripts/lambda.py",
 		"/C/Python34/Scripts/hands05.py",
-		"/C/Python34/Scripts/hands03.py",
-		"/C/wamp/www/College of Law1/css/about.css"
+		"/C/Python34/Scripts/hands03.py"
 	],
 	"find":
 	{
-		"height": 35.0
+		"height": 34.0
 	},
 	"find_in_files":
 	{
-		"height": 90.0,
+		"height": 0.0,
 		"where_history":
 		[
 			""
@@ -702,37 +698,34 @@
 		"case_sensitive": false,
 		"find_history":
 		[
-			"collide",
-			"mob",
+			"skill_press",
+			"laser",
+			"now",
+			"play",
+			"sprites_list",
+			"skill",
 			"hitbox",
-			"mp_rect",
-			"hp",
-			"mp",
-			"25",
-			"100",
-			"hp",
-			"sprite",
-			"mamizou",
-			"mam",
-			"mamiz",
-			".image",
-			"marisa.x",
-			"mp",
-			"blit",
-			"mp",
-			"blit",
-			"hp",
-			"hp_bar",
-			"current",
+			"press_event",
+			"self",
+			"pos",
+			"mouse",
+			"keypress",
+			"now",
+			"press",
+			"marisa",
+			"import",
 			"mob",
-			"blit",
-			"print",
+			".add",
+			"x",
 			"hata",
-			"alive",
-			"animation2",
-			"print",
+			".add",
+			"rect.x",
+			"animate",
+			".add",
 			"hata",
-			"init",
+			"block_list",
+			"sprites_list",
+			"block_list",
 			"elf.lower.get() and self.digits.get() and self.under.get()",
 			"25",
 			"window",
@@ -797,6 +790,7 @@
 		"regex": false,
 		"replace_history":
 		[
+			"bullet",
 			".net",
 			"slow",
 			"$_SERVER",
@@ -811,8 +805,37 @@
 	"groups":
 	[
 		{
+			"selected": 0,
 			"sheets":
 			[
+				{
+					"buffer": 0,
+					"file": "game.py",
+					"settings":
+					{
+						"buffer_size": 10972,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
 			]
 		}
 	],
@@ -851,8 +874,6 @@
 	{
 		"height": 0.0
 	},
-	"pinned_build_system": "Packages/Python/Python.sublime-build",
-	"project": "touhou-sublime.sublime-project",
 	"replace":
 	{
 		"height": 48.0
@@ -861,7 +882,6 @@
 	"select_file":
 	{
 		"height": 0.0,
-		"last_filter": "",
 		"selected_items":
 		[
 		],
@@ -870,32 +890,15 @@
 	"select_project":
 	{
 		"height": 0.0,
-		"last_filter": "",
 		"selected_items":
 		[
 		],
 		"width": 0.0
-	},
-	"select_symbol":
-	{
-		"height": 0.0,
-		"last_filter": "",
-		"selected_items":
-		[
-		],
-		"width": 0.0
-	},
-	"selected_group": 0,
-	"settings":
-	{
 	},
 	"show_minimap": true,
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
 	"side_bar_width": 221.0,
-	"status_bar_visible": true,
-	"template_settings":
-	{
-	}
+	"status_bar_visible": true
 }

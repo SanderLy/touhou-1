@@ -64,6 +64,7 @@ marisa_animation = marisa_idle
 # Projectile Animation for marisa
 
 press_event  = 0
+skill_press_event = 0
 snow = 0
 rate = 300
 time = 180
@@ -197,7 +198,7 @@ while True:
                 skill_press = False
             press_event = pygame.time.get_ticks()
     if keys[pygame.K_k] and skill_press == False:
-        if now - press_event >= 1500:
+        if now - skill_press_event >= 1500:
             if marisa.alive() and x == 0:
                skill_press = True
                skill = Bullet('marisa', 'skill', 0.2, True)
@@ -207,7 +208,7 @@ while True:
                laser.rect.y = marisa.rect.y - 85
                skill_list.add(skill)
                x = 226
-            press_event = pygame.time.get_ticks()
+            skill_press_event = pygame.time.get_ticks()
 
     if mouse[0] and mamizou.alive():
         if now - click_event >= mob_rate and pygame.mouse.get_pos()[0] >= 556 and pygame.mouse.get_pos()[1] >= 100:

@@ -36,7 +36,9 @@ skill_list = pygame.sprite.Group()
 container_p1 = pygame.image.load('UI/marisa_hp.png').convert_alpha()
 container_p2 = pygame.image.load('UI/mamizou_hp.png').convert_alpha()
 pointer  = pygame.image.load('UI/summon_pointer.png').convert_alpha()
+timer_bg  = pygame.image.load('UI/time_bg.png').convert_alpha()
 pointer_index = 671 #position of small mob
+
 mp = pygame.image.load('UI/mp.png').convert_alpha()
 p1_hp = pygame.image.load('UI/health_bar.png')
 p2_hp = pygame.image.load('UI/health_bar.png')
@@ -83,8 +85,8 @@ current_mob = 1
 
 
 #printing of label
-font = pygame.font.Font(None, 35)
-time_f = pygame.font.Font(None, 50)
+font = pygame.font.Font("UI/HighlandGothicFLF.ttf", 25)
+time_f = pygame.font.Font("UI/HighlandGothicFLF.ttf", 40)
 
 marisa_animation.play()
 mainClock = pygame.time.Clock()
@@ -105,7 +107,7 @@ while game_flag:
     now = pygame.time.get_ticks()
     now2 = pygame.time.get_ticks()
     lblRes = font.render(str(resource),1,(255,255,100))# show label
-    lblTime = time_f.render(str(time),1,(200,70,25))# show label
+    lblTime = time_f.render(str(time),1,(255,255,255))# show label
     
     #changing of hp and mp bar
     chop_rect = (0,0,x,0)
@@ -265,6 +267,8 @@ while game_flag:
     skill_collide2 = pygame.sprite.groupcollide(skill_list, sprites_list, False, False)
     for projectile in skill_collide2:
         skill_dmg = projectile.dmg
+
+    #projectiles
     skill_collide = pygame.sprite.groupcollide(sprites_list, skill_list, False, False)
     for sprite in skill_collide:
         if sprite.ctype == 'character' or sprite.ctype == 'mob':
@@ -273,12 +277,12 @@ while game_flag:
             if sprite.fname=='marisa':
                 if marisa.hp> 1:
                     x_p1 = x_p1 + 306/(30/skill_dmg)# 30 is the full hp of marisa
-                if marisa.hp ==1:
+                if marisa.hp <=1:
                     x_p1 += x_p1
             if sprite.fname== 'mamizou':
                 if mamizou.hp> 1:
                     x_p2 = x_p2 + 306/(50/skill_dmg)#50 full hp of mamizou
-                if mamizou.hp ==1:
+                if mamizou.hp <= 1:
                     x_p2 += x_p2
             if sprite.hp <= 0:
                 if sprite.ctype == 'mob':
@@ -359,12 +363,13 @@ while game_flag:
     deco_list.draw (windowSurface)
     windowSurface.blit(container_p1,(0,0))
     windowSurface.blit(container_p2,(583,0))
+    windowSurface.blit(timer_bg,(447.5,0))
     windowSurface.blit(pointer,(pointer_index,60)) #673 = small, 742 = normal,
     windowSurface.blit(crop_hp1,(125,22))
     windowSurface.blit(crop_hp2,(591 + x_p2,22))
     windowSurface.blit(crop_mp,(122,44)) #122 and 44
     windowSurface.blit(lblRes,(600,50))
-    windowSurface.blit(lblTime,(480,20))
+    windowSurface.blit(lblTime,(478,-3))
     #check for victor
     if not marisa.alive():
         windowSurface.blit(shoot_win, (0,200))

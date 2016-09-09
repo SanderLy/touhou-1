@@ -18,6 +18,7 @@ skill_press = False
 skill_rate = 1500
 death_init = True
 
+
 #set up the window
 windowSurface = pygame.display.set_mode((1024, 600))
 pygame.display.set_caption('Project Touhou: Minus 1.0')
@@ -424,6 +425,8 @@ while game_flag:
             marisa_death.animation2.loop = False
             marisa_death.animation2.play()
             death_init = False
+            for sprite in sprites_list:
+                sprite.ctype = ''
         elif marisa_death.animation2.isFinished():
             marisa_death.animation2 = marisa.animate(32,35,0.1)
             marisa_death.animation2.loop = True
@@ -437,6 +440,8 @@ while game_flag:
             mamizou_death.animation2.loop = False
             mamizou_death.animation2.play()
             death_init = False
+            for sprite in sprites_list:
+                sprite.ctype = ''
         elif mamizou_death.animation2.isFinished():
             mamizou_death.animation2 = mamizou.animate(23,27,0.1)
             mamizou_death.animation2.loop = True

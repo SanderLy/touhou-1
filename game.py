@@ -39,6 +39,9 @@ pointer  = pygame.image.load('UI/summon_pointer.png').convert_alpha()
 timer_bg  = pygame.image.load('UI/time_bg.png').convert_alpha()
 mob_normal_cd  = pygame.image.load('UI/mob_cd_blank.png').convert_alpha()
 mob_large_cd  = pygame.image.load('UI/mob_cd_blank.png').convert_alpha()
+charge_1 = pygame.image.load('UI/skill_charge_empty.png').convert_alpha()
+charge_2 = pygame.image.load('UI/skill_charge_empty.png').convert_alpha()
+charge_3 = pygame.image.load('UI/skill_charge_empty.png').convert_alpha()
 pointer_index = 671 #position of small mob
 
 mp = pygame.image.load('UI/mp.png').convert_alpha()
@@ -67,7 +70,6 @@ marisa_animation = marisa_idle
 
 
 # Projectile Animation for marisa
-
 press_event  = 0
 skill_press_event = 0
 snow = 0
@@ -104,6 +106,7 @@ cooldown = 1
 x = 226
 x_p1 = 0
 x_p2 = 0
+charges = 0
 
 while game_flag:
 
@@ -122,11 +125,12 @@ while game_flag:
     crop_hp1 = pygame.transform.chop(p1_hp,chop_p1)
     crop_hp2 = pygame.transform.chop(p2_hp,chop_p2)
 
+    #decreases the timer on screen
     frame+=1
-    
     if frame == 30: # 30 = 1 sec
         time-=1
         frame = 0
+
     
 
     for event in pygame.event.get():
@@ -206,7 +210,7 @@ while game_flag:
     if keys[pygame.K_k] and skill_press == False:
         if now - skill_press_event >= 1500:
             x = 0
-            if marisa.alive() and x == 0:
+            if marisa.alive() and x == 0 and charges > 0:
                skill_press = True
                marisa.animation2 = marisa.animate(128,129,0.1)
                marisa.animation2.play()
@@ -217,6 +221,7 @@ while game_flag:
                laser.rect.y = marisa.rect.y - 85
                skill_list.add(skill)
                x = 226
+               charges-=1
             skill_press_event = pygame.time.get_ticks()
 
     #summonning of mobs
@@ -341,8 +346,27 @@ while game_flag:
                 if sprite.ctype == 'mob' and mob.fname == 'large':
                         x-=50
                 if x < 0:
-                    x = 0
+                    x = 266
+                    if charges < 4:
+                        charges+=1
+                print charges
                 sprite.kill()
+    if charges == 0:
+        charge_1 = pygame.image.load('UI/skill_charge_empty.png').convert_alpha()
+        charge_2 = pygame.image.load('UI/skill_charge_empty.png').convert_alpha()
+        charge_3 = pygame.image.load('UI/skill_charge_empty.png').convert_alpha()
+    if charges == 1:
+        charge_1 = pygame.image.load('UI/skill_charge.png').convert_alpha()
+        charge_2 = pygame.image.load('UI/skill_charge_empty.png').convert_alpha()
+        charge_3 = pygame.image.load('UI/skill_charge_empty.png').convert_alpha()
+    if charges == 2:
+        charge_1 = pygame.image.load('UI/skill_charge.png').convert_alpha()
+        charge_2 = pygame.image.load('UI/skill_charge.png').convert_alpha()
+        charge_3 = pygame.image.load('UI/skill_charge_empty.png').convert_alpha()
+    if charges == 3:
+        charge_1 = pygame.image.load('UI/skill_charge.png').convert_alpha()
+        charge_2 = pygame.image.load('UI/skill_charge.png').convert_alpha()
+        charge_3 = pygame.image.load('UI/skill_charge.png').convert_alpha()
              
     
     #check if sprite is alive (hp != 0)
@@ -378,9 +402,12 @@ while game_flag:
     windowSurface.blit(container_p1,(0,0))
     windowSurface.blit(container_p2,(583,0))
     windowSurface.blit(timer_bg,(447.5,0))
-    windowSurface.blit(pointer,(pointer_index,60)) #673 = small, 742 = normal,
+    windowSurface.blit(pointer,(pointer_index,60)) #673 = small, 742 = normal
     windowSurface.blit(mob_normal_cd,(737,40)) #cooldown locations 737 = normal, 803 = large
     windowSurface.blit(mob_large_cd,(803,40)) #cooldown locations 737 = normal, 803 = large
+    windowSurface.blit(charge_1,(360,50))
+    windowSurface.blit(charge_2,(385,50))
+    windowSurface.blit(charge_3,(410,50))
     windowSurface.blit(crop_hp1,(125,22))
     windowSurface.blit(crop_hp2,(591 + x_p2,22))
     windowSurface.blit(crop_mp,(122,44)) #122 and 44

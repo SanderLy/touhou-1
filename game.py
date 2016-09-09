@@ -13,12 +13,16 @@ os.environ['SDL_VIDEO_WINDOW_POS'] = "%d,%d" % (50,50) # set initial screen posi
 
 
 pygame.init()
+
+#misc initializations
 game_flag = True
 skill_press = False
 skill_rate = 1500
 death_init = True
 skill_animate = False
 sprite_hit = False
+r_f = True
+go = False
 
 #set up the window
 windowSurface = pygame.display.set_mode((1024, 600))
@@ -64,6 +68,7 @@ marisa_death = Character('marisa',32,35,0.1,'') #19 31 false loop 32 35 true loo
 marisa_death.animation = marisa.animate(19,31,0.1)
 mamizou_death = Character('mamizou',23,27,0.1,'') #16 22 false loop 23 27 true loop
 mob_death = Character('death',0,1,0.05,'')
+ready_fight = Character('ready_fight',0,70,0.05,'')
 
 #add each sprite inside the list of sprites for hitbox checking
 sprites_list.add(marisa)
@@ -113,7 +118,7 @@ cooldown = 1
 x = 226
 x_p1 = 0
 x_p2 = 0
-charges = 3
+charges = 0
 
 while game_flag:
     
@@ -127,7 +132,17 @@ while game_flag:
     marisa_y = marisa.rect.y
     mamizou_x = mamizou.rect.x
     mamizou_y = mamizou.rect.y
-    
+
+    #ready fight start windowSurface.blit(def_win, (0,200))
+    if r_f == True:
+        ready_fight.animation = ready_fight.animate(0,70,0.05)
+        ready_fight.animation.loop = False
+        ready_fight.animation.play()
+        r_f = False 
+    if r_f == False and ready_fight.animation.isFinished():
+        go = True
+   
+
     #changing of hp and mp bar
     chop_rect = (0,0,x,0)
     chop_p1 = (0,0,x_p1,0)
@@ -137,49 +152,50 @@ while game_flag:
     crop_hp1 = pygame.transform.chop(p1_hp,chop_p1)
     crop_hp2 = pygame.transform.chop(p2_hp,chop_p2)
 
-    #decreases the timer on screen
-    frame+=1
-    if frame == 30: # 30 = 1 sec
-        time-=1
-        frame = 0
-    if charges == 3:
-        x = 226    
+    if go == True:
+        #decreases the timer on screen
+        frame+=1
+        if frame == 30: # 30 = 1 sec
+            time-=1
+            frame = 0
+        if charges == 3:
+            x = 226    
 
-    for event in pygame.event.get():
-        if event.type == QUIT or (event.type == KEYDOWN and event.key == K_ESCAPE):
-            game_flag = False       
-        if event.type == KEYUP and skill_press == False:
-            if event.key == K_d:# or event.key == K_j or event.key == K_k:
-                marisa.animation2 = marisa.animate(332,345,0.05)
-                marisa.animation2.play()
-                # marisa_animation.pause()
-                # marisa_animation = marisa_idle
-                # marisa_animation.play()
-        if event.type == KEYDOWN: #  changing the type of mob     
-            if event.key == K_RIGHT:
-                current_mob+=1
-                pointer_index+=70
-                if current_mob > 3: 
-                    current_mob = 1
-                    pointer_index = 671 # reset to the first type of mob
-            if event.key == K_d and skill_press == False:                
-                marisa.animation2 = marisa.animate(4120,4127,0.05)
-                marisa.animation2.play()
+        for event in pygame.event.get():
+            if event.type == QUIT or (event.type == KEYDOWN and event.key == K_ESCAPE):
+                game_flag = False       
+            if event.type == KEYUP and skill_press == False:
+                if event.key == K_d:# or event.key == K_j or event.key == K_k:
+                    marisa.animation2 = marisa.animate(332,345,0.05)
+                    marisa.animation2.play()
+                    # marisa_animation.pause()
+                    # marisa_animation = marisa_idle
+                    # marisa_animation.play()
+            if event.type == KEYDOWN: #  changing the type of mob     
+                if event.key == K_RIGHT:
+                    current_mob+=1
+                    pointer_index+=70
+                    if current_mob > 3: 
+                        current_mob = 1
+                        pointer_index = 671 # reset to the first type of mob
+                if event.key == K_d and skill_press == False:                
+                    marisa.animation2 = marisa.animate(4120,4127,0.05)
+                    marisa.animation2.play()
 
-            # if event.key == K_j:
-            #     marisa.animation2 = marisa.animate(125,129,0.1)
-            #     marisa.animation2.play()
+                # if event.key == K_j:
+                #     marisa.animation2 = marisa.animate(125,129,0.1)
+                #     marisa.animation2.play()
 
-            if event.key == K_LEFT:
-                current_mob-=1
-                pointer_index-=70
-                if current_mob < 1 : 
-                    current_mob = 3
-                    pointer_index = 811 # move to the last type of mob
-    mob_lower, mob_upper = type_mob[current_mob]
-       
-    keys = pygame.key.get_pressed()  #checking pressed keys and mousebuttons
-    mouse = pygame.mouse.get_pressed()
+                if event.key == K_LEFT:
+                    current_mob-=1
+                    pointer_index-=70
+                    if current_mob < 1 : 
+                        current_mob = 3
+                        pointer_index = 811 # move to the last type of mob
+        mob_lower, mob_upper = type_mob[current_mob]
+           
+        keys = pygame.key.get_pressed()  #checking pressed keys and mousebuttons
+        mouse = pygame.mouse.get_pressed()
 
     for projectile in projectile_list:
         if projectile.rect.x > 1000 or projectile.rect.x < 0:
@@ -191,76 +207,76 @@ while game_flag:
     x-axis right boundary = frame width - model width - 10
     y-axis bottom boundary = frame height - model height
     """
-   
-    if keys[pygame.K_UP] and mamizou.alive():
-        if mamizou.rect.y > 80:
-            mamizou.rect.y-=10
-    if keys[pygame.K_DOWN] and mamizou.alive():
-        if mamizou.rect.y < 530:
-            mamizou.rect.y+=10
-    if keys[pygame.K_a] and skill_press == False and marisa.alive():
-        if marisa.rect.x>0:
-            marisa.move_left()
-    if keys[pygame.K_d] and skill_press == False:
-        if marisa.rect.x<914 and marisa.rect.x < 456 and marisa.alive():
-            marisa.move_right()         
-    if keys[pygame.K_w] and skill_press == False and marisa.alive():
-        if marisa.rect.y > 80:
-            marisa.move_up()
-    if keys[pygame.K_s] and skill_press == False and marisa.alive():
-        if marisa.rect.y < 524:
-            marisa.move_down()
-    if keys[pygame.K_j] and skill_press == False and marisa.alive():
-        if now - press_event >= rate:
-            if marisa.alive():
-                bullet = Bullet('marisa','character',1)
-                bullet.rect.x = marisa.rect.x+76
-                bullet.rect.y = marisa.rect.y+25
-                projectile_list.add(bullet)
-                skill_press = False
-            press_event = pygame.time.get_ticks()
-    if keys[pygame.K_k] and skill_press == False and marisa.alive():
-        if now - skill_press_event >= 1500:
-            if marisa.alive() and charges > 0:
-               skill_press = True
-               marisa.animation2 = marisa.animate(125,127,0.1)
-               marisa.animation2.loop = False
-               marisa.animation2.play()
-               skill = Bullet('marisa', 'skill', 0.5, True)
-               skill.rect.x = marisa.rect.x+90
-               skill.rect.y = marisa.rect.y+15
-               laser.rect.x = marisa.rect.x + 90
-               laser.rect.y = marisa.rect.y - 85
-               
-               x = 226
-               charges-=1
-            skill_press_event = pygame.time.get_ticks()
+    if go == True:
+        if keys[pygame.K_UP] and mamizou.alive():
+            if mamizou.rect.y > 80:
+                mamizou.rect.y-=10
+        if keys[pygame.K_DOWN] and mamizou.alive():
+            if mamizou.rect.y < 530:
+                mamizou.rect.y+=10
+        if keys[pygame.K_a] and skill_press == False and marisa.alive():
+            if marisa.rect.x>0:
+                marisa.move_left()
+        if keys[pygame.K_d] and skill_press == False:
+            if marisa.rect.x<914 and marisa.rect.x < 456 and marisa.alive():
+                marisa.move_right()         
+        if keys[pygame.K_w] and skill_press == False and marisa.alive():
+            if marisa.rect.y > 80:
+                marisa.move_up()
+        if keys[pygame.K_s] and skill_press == False and marisa.alive():
+            if marisa.rect.y < 524:
+                marisa.move_down()
+        if keys[pygame.K_j] and skill_press == False and marisa.alive():
+            if now - press_event >= rate:
+                if marisa.alive():
+                    bullet = Bullet('marisa','character',1)
+                    bullet.rect.x = marisa.rect.x+76
+                    bullet.rect.y = marisa.rect.y+25
+                    projectile_list.add(bullet)
+                    skill_press = False
+                press_event = pygame.time.get_ticks()
+        if keys[pygame.K_k] and skill_press == False and marisa.alive():
+            if now - skill_press_event >= 1500:
+                if marisa.alive() and charges > 0:
+                   skill_press = True
+                   marisa.animation2 = marisa.animate(125,127,0.1)
+                   marisa.animation2.loop = False
+                   marisa.animation2.play()
+                   skill = Bullet('marisa', 'skill', 0.5, True)
+                   skill.rect.x = marisa.rect.x+90
+                   skill.rect.y = marisa.rect.y+15
+                   laser.rect.x = marisa.rect.x + 90
+                   laser.rect.y = marisa.rect.y - 85
+                   
+                   x = 226
+                   charges-=1
+                skill_press_event = pygame.time.get_ticks()
 
-    #summonning of mobs
-    if mouse[0] and mamizou.alive():
-        if now - click_event >= mob_rate and pygame.mouse.get_pos()[0] >= 556 and pygame.mouse.get_pos()[1] >= 100:
-            if current_mob == 1 and resource >= 150:
-                mob = Mob('small',0,1,0.25,3,'mob')
-                resource -= 150
-                click_event = now
-            if now - click_event >= cd_normal and current_mob == 2 and resource >= 250:
-                mob = Mob('normal',0,1,0.25,6,'mob')
-                resource -= 250
-                click_event = now
-                mob_normal_cd  = pygame.image.load('UI/mob_cd_fill.png').convert_alpha()
-            if now - click_event >= cd_large and current_mob == 3 and resource >= 400:
-                mob = Mob('large',0,1,0.25,15,'mob') 
-                resource -= 400
-                click_event = now
-                mob_large_cd  = pygame.image.load('UI/mob_cd_fill.png').convert_alpha()
-            
-            sprites_list.add(mob)
-            mob_list.add(mob)
+        #summonning of mobs
+        if mouse[0] and mamizou.alive():
+            if now - click_event >= mob_rate and pygame.mouse.get_pos()[0] >= 556 and pygame.mouse.get_pos()[1] >= 100:
+                if current_mob == 1 and resource >= 150:
+                    mob = Mob('small',0,1,0.25,3,'mob')
+                    resource -= 150
+                    click_event = now
+                if now - click_event >= cd_normal and current_mob == 2 and resource >= 250:
+                    mob = Mob('normal',0,1,0.25,6,'mob')
+                    resource -= 250
+                    click_event = now
+                    mob_normal_cd  = pygame.image.load('UI/mob_cd_fill.png').convert_alpha()
+                if now - click_event >= cd_large and current_mob == 3 and resource >= 400:
+                    mob = Mob('large',0,1,0.25,15,'mob') 
+                    resource -= 400
+                    click_event = now
+                    mob_large_cd  = pygame.image.load('UI/mob_cd_fill.png').convert_alpha()
+                
+                sprites_list.add(mob)
+                mob_list.add(mob)
     #removing cooldownz
-    if now - click_event >= cd_normal:
-        mob_normal_cd  = pygame.image.load('UI/mob_cd_blank.png').convert_alpha()
-    if now - click_event >= cd_large:
-        mob_large_cd  = pygame.image.load('UI/mob_cd_blank.png').convert_alpha()
+        if now - click_event >= cd_normal:
+            mob_normal_cd  = pygame.image.load('UI/mob_cd_blank.png').convert_alpha()
+        if now - click_event >= cd_large:
+            mob_large_cd  = pygame.image.load('UI/mob_cd_blank.png').convert_alpha()
             
             
     for mob in mob_list:
@@ -287,7 +303,8 @@ while game_flag:
                 mob.last_fire = now
 
     #resource increase per tick
-    resource+=1
+    if go == True:
+        resource+=1
 
     #update for sprite lists
     projectile_list.update()
@@ -451,6 +468,7 @@ while game_flag:
     windowSurface.blit(crop_mp,(122,44)) #122 and 44
     windowSurface.blit(lblRes,(600,50))
     windowSurface.blit(lblTime,(478,-3))
+    ready_fight.animation.blit(windowSurface, (0,200))
 
     #check for victor
     if not marisa.alive():

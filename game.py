@@ -17,6 +17,7 @@ game_flag = True
 skill_press = False
 skill_rate = 1500
 death_init = True
+skill_animate = False
 
 
 #set up the window
@@ -114,6 +115,7 @@ x_p2 = 0
 charges = 0
 
 while game_flag:
+    charges = 3
 
     windowSurface.blit(background,(0,0))
     now = pygame.time.get_ticks()
@@ -210,7 +212,7 @@ while game_flag:
     if keys[pygame.K_j] and skill_press == False and marisa.alive():
         if now - press_event >= rate:
             if marisa.alive():
-                bullet = Bullet('marisa','character',100)
+                bullet = Bullet('marisa','character',1)
                 bullet.rect.x = marisa.rect.x+76
                 bullet.rect.y = marisa.rect.y+25
                 projectile_list.add(bullet)
@@ -220,14 +222,15 @@ while game_flag:
         if now - skill_press_event >= 1500:
             if marisa.alive() and charges > 0:
                skill_press = True
-               marisa.animation2 = marisa.animate(128,129,0.1)
+               marisa.animation2 = marisa.animate(125,127,0.1)
+               marisa.animation2.loop = False
                marisa.animation2.play()
                skill = Bullet('marisa', 'skill', 0.2, True)
                skill.rect.x = marisa.rect.x+90
                skill.rect.y = marisa.rect.y+15
                laser.rect.x = marisa.rect.x + 90
                laser.rect.y = marisa.rect.y - 85
-               skill_list.add(skill)
+               
                x = 226
                charges-=1
             skill_press_event = pygame.time.get_ticks()
@@ -390,11 +393,19 @@ while game_flag:
 
     #skill animation
     if skill_press == True:
-        laser.animation2.blit(windowSurface, (marisa.rect.x+90,marisa.rect.y-85))
+        if now - skill_press_event > 290:
+            if skill_animate == False:
+                marisa.animation2 = marisa.animate(128,129,0.2)
+                marisa.animation2.loop = True
+                marisa.animation2.play()
+                skill_animate = True
+            skill_list.add(skill)
+            laser.animation2.blit(windowSurface, (marisa.rect.x+90,marisa.rect.y-85))
         if now - skill_press_event > skill_rate:
             marisa.animation2 = marisa.animate(332,345,0.05)
             marisa.animation2.play()
             skill_press = False
+            skill_animate = False
             skill_list.remove(skill)   
 
 
@@ -418,7 +429,6 @@ while game_flag:
     windowSurface.blit(lblTime,(478,-3))
 
     #check for victor
-    #19 31 false loop 32 35 true loop
     if not marisa.alive():
         if death_init == True:
             marisa_death.animation2 = marisa.animate(19,31,0.1)

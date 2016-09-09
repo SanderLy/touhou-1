@@ -49,6 +49,10 @@ while menu_flag:
 					pygame.mixer.music.fadeout(1000)
 					execfile('game.py')
 					sys.exit()
+				elif menu_cursor_index == 1:
+					pygame.mixer.music.fadeout(1000)
+					execfile('htp.py')
+					sys.exit()
 				elif menu_cursor_index == 2:
 					pygame.mixer.music.fadeout(1000)
 					pygame.quit()

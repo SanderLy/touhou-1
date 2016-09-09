@@ -4,6 +4,94 @@
 		"selected_items":
 		[
 			[
+				"m",
+				"music"
+			],
+			[
+				"true",
+				"True"
+			],
+			[
+				"ready",
+				"ready_fight"
+			],
+			[
+				"anim",
+				"animation"
+			],
+			[
+				"ani",
+				"animation"
+			],
+			[
+				"mob_death",
+				"mob_death_animation"
+			],
+			[
+				"mari",
+				"marisa_x"
+			],
+			[
+				"an",
+				"animate"
+			],
+			[
+				"marisa",
+				"marisa_y"
+			],
+			[
+				"animat",
+				"animation2"
+			],
+			[
+				"mami",
+				"mami_ideath"
+			],
+			[
+				"mamiz",
+				"mamizou_death"
+			],
+			[
+				"death",
+				"death_init"
+			],
+			[
+				"a",
+				"animation"
+			],
+			[
+				"mam",
+				"mamizou_y"
+			],
+			[
+				"mamizou",
+				"mamizou_death"
+			],
+			[
+				"anima",
+				"animation2"
+			],
+			[
+				"mamizo",
+				"mamizou_death"
+			],
+			[
+				"wo",
+				"windowSurface"
+			],
+			[
+				"vict",
+				"victory_event"
+			],
+			[
+				"vic",
+				"victory_event"
+			],
+			[
+				"victo",
+				"victory_event"
+			],
+			[
 				"ski",
 				"skill_press"
 			],
@@ -26,10 +114,6 @@
 			[
 				"skil",
 				"skill_collide"
-			],
-			[
-				"anim",
-				"animation2"
 			],
 			[
 				"laser",
@@ -384,10 +468,6 @@
 				"time_post"
 			],
 			[
-				"a",
-				"arrayIndices"
-			],
-			[
 				"shuff",
 				"shuffled_indices"
 			],
@@ -434,91 +514,27 @@
 			[
 				"l",
 				"Lcombined"
-			],
-			[
-				"Lpo",
-				"LpossibTuple"
-			],
-			[
-				"Str",
-				"strN"
-			],
-			[
-				"current",
-				"current_index"
-			],
-			[
-				"if",
-				"if	if …"
-			],
-			[
-				"session",
-				"session_destroy"
-			],
-			[
-				"hea",
-				"head"
-			],
-			[
-				"curre",
-				"currentIndex"
-			],
-			[
-				"mys",
-				"mysqli"
-			],
-			[
-				"chec",
-				"checkConnection"
-			],
-			[
-				"print",
-				"print_r"
-			],
-			[
-				"Fisher",
-				"FisherYatesShuffle"
-			],
-			[
-				"mysql",
-				"mysql_close"
-			],
-			[
-				"for",
-				"form	Tag"
-			],
-			[
-				"pd",
-				"PODP"
-			],
-			[
-				"pri",
-				"prime_odd"
-			],
-			[
-				"str",
-				"str1"
-			],
-			[
-				"border-",
-				"border-color"
-			],
-			[
-				"background",
-				"background-color"
-			],
-			[
-				"bor",
-				"border-top"
-			],
-			[
-				"table",
-				"table-cell"
 			]
 		]
 	},
 	"buffers":
 	[
+		{
+			"file": "game.py",
+			"settings":
+			{
+				"buffer_size": 20415,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "menu.py",
+			"settings":
+			{
+				"buffer_size": 1588,
+				"line_ending": "Windows"
+			}
+		}
 	],
 	"build_system": "",
 	"command_palette":
@@ -544,12 +560,13 @@
 	},
 	"file_history":
 	[
-		"/C/Git/onelinerizer/game.py",
+		"/C/Git/touhou-1/mob.py",
 		"/C/Git/touhou-1/character.py",
 		"/C/Git/touhou-1/game.py",
+		"/C/Git/touhou-1/menu.py",
+		"/C/Git/onelinerizer/game.py",
 		"/C/Git/touhou-1/bullet.py",
 		"/C/Git/touhou-1/marisa.py",
-		"/C/Git/touhou-1/mob.py",
 		"/C/Git/touhou-1/mamizou.py",
 		"/C/Git/touhou-1/trybullets.py",
 		"/C/touhou-1/trybullets.py",
@@ -670,8 +687,7 @@
 		"/C/Python34/Scripts/IO01.py",
 		"/C/wamp/www/iCAPTCHA/sql_testing.php",
 		"/C/Python34/Scripts/hands04.py",
-		"/C/Python34/Scripts/lambda.py",
-		"/C/Python34/Scripts/hands05.py"
+		"/C/Python34/Scripts/lambda.py"
 	],
 	"find":
 	{
@@ -690,6 +706,24 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"sprite_hit",
+			"sprite_x",
+			"charges = 0",
+			"y",
+			"100)",
+			"mamizou",
+			"print",
+			"False",
+			"100",
+			"mob",
+			"animation = ",
+			"animation",
+			"print",
+			"< 0",
+			"shoot_win",
+			"charges",
+			"sys",
+			"charges",
 			"/((\\r\\n|\\n|\\r)$)|(^(\\r\\n|\\n|\\r))|^\\s*$",
 			"^\\s*$",
 			"^\\s*",
@@ -792,6 +826,7 @@
 		"regex": true,
 		"replace_history":
 		[
+			"marisa",
 			"",
 			"bullet",
 			".net",
@@ -808,8 +843,64 @@
 	"groups":
 	[
 		{
+			"selected": 0,
 			"sheets":
 			[
+				{
+					"buffer": 0,
+					"file": "game.py",
+					"settings":
+					{
+						"buffer_size": 20415,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								18884,
+								18884
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 7209.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "menu.py",
+					"settings":
+					{
+						"buffer_size": 1588,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1304,
+								1304
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 185.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
 			]
 		}
 	],

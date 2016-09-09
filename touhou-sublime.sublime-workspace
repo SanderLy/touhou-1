@@ -531,7 +531,15 @@
 			"file": "menu.py",
 			"settings":
 			{
-				"buffer_size": 1588,
+				"buffer_size": 1699,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "htp.py",
+			"settings":
+			{
+				"buffer_size": 744,
 				"line_ending": "Windows"
 			}
 		}
@@ -706,6 +714,7 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"quit",
 			"sprite_hit",
 			"sprite_x",
 			"charges = 0",
@@ -858,8 +867,8 @@
 						"selection":
 						[
 							[
-								18884,
-								18884
+								4887,
+								4891
 							]
 						],
 						"settings":
@@ -869,7 +878,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 7209.0,
+						"translation.y": 4192.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -879,15 +888,15 @@
 					"file": "menu.py",
 					"settings":
 					{
-						"buffer_size": 1588,
+						"buffer_size": 1699,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1304,
-								1304
+								1295,
+								1303
 							]
 						],
 						"settings":
@@ -896,7 +905,34 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 185.0,
+						"translation.y": 305.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "htp.py",
+					"settings":
+					{
+						"buffer_size": 744,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								490,
+								490
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"

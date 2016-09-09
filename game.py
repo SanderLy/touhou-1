@@ -23,6 +23,9 @@ skill_animate = False
 sprite_hit = False
 r_f = True
 go = False
+go_l = False
+ready_event = 0
+r_f_done = False
 
 #bgm play and sfx initializations
 pygame.mixer.music.load('sfx/bgm2.ogg')
@@ -139,15 +142,21 @@ while game_flag:
     mamizou_x = mamizou.rect.x
     mamizou_y = mamizou.rect.y
 
-    #ready fight start windowSurface.blit(def_win, (0,200))
+    #ready fight start 
+
     if r_f == True:
         ready_fight.animation = ready_fight.animate(0,70,0.05)
         ready_fight.animation.loop = False
         ready_fight.animation.play()
-        r_f = False 
-    if r_f == False and ready_fight.animation.isFinished():
+        pygame.mixer.Sound('sfx/game_ready.ogg').play()
+        ready_event = pygame.time.get_ticks()
+        r_f = False     
+    if now - ready_event >= 2750 and r_f_done == False:
+        pygame.mixer.Sound('sfx/game_fight.ogg').play()
+        r_f_done = True
+    if r_f == False and ready_fight.animation.isFinished() and go_l == False: #go_l to prevent go = True per main loop
         go = True
-   
+        go_l = True
 
     #changing of hp and mp bar
     chop_rect = (0,0,x,0)

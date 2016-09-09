@@ -519,22 +519,6 @@
 	},
 	"buffers":
 	[
-		{
-			"file": "game.py",
-			"settings":
-			{
-				"buffer_size": 12786,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "character.py",
-			"settings":
-			{
-				"buffer_size": 2322,
-				"line_ending": "Windows"
-			}
-		}
 	],
 	"build_system": "",
 	"command_palette":
@@ -560,9 +544,10 @@
 	},
 	"file_history":
 	[
-		"/C/Git/touhou-1/bullet.py",
-		"/C/Git/touhou-1/game.py",
+		"/C/Git/onelinerizer/game.py",
 		"/C/Git/touhou-1/character.py",
+		"/C/Git/touhou-1/game.py",
+		"/C/Git/touhou-1/bullet.py",
 		"/C/Git/touhou-1/marisa.py",
 		"/C/Git/touhou-1/mob.py",
 		"/C/Git/touhou-1/mamizou.py",
@@ -686,8 +671,7 @@
 		"/C/wamp/www/iCAPTCHA/sql_testing.php",
 		"/C/Python34/Scripts/hands04.py",
 		"/C/Python34/Scripts/lambda.py",
-		"/C/Python34/Scripts/hands05.py",
-		"/C/Python34/Scripts/hands03.py"
+		"/C/Python34/Scripts/hands05.py"
 	],
 	"find":
 	{
@@ -706,6 +690,12 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"/((\\r\\n|\\n|\\r)$)|(^(\\r\\n|\\n|\\r))|^\\s*$",
+			"^\\s*$",
+			"^\\s*",
+			"^\\s*$",
+			"dead",
+			"died",
 			"332",
 			"press_event",
 			"skill_rate",
@@ -799,9 +789,10 @@
 		"highlight": true,
 		"in_selection": false,
 		"preserve_case": false,
-		"regex": false,
+		"regex": true,
 		"replace_history":
 		[
+			"",
 			"bullet",
 			".net",
 			"slow",
@@ -812,70 +803,13 @@
 		"show_context": true,
 		"use_buffer2": true,
 		"whole_word": false,
-		"wrap": true
+		"wrap": false
 	},
 	"groups":
 	[
 		{
-			"selected": 0,
 			"sheets":
 			[
-				{
-					"buffer": 0,
-					"file": "game.py",
-					"settings":
-					{
-						"buffer_size": 12786,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								4096,
-								4096
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 1749.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "character.py",
-					"settings":
-					{
-						"buffer_size": 2322,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								716,
-								716
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 405.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				}
 			]
 		}
 	],
@@ -910,6 +844,10 @@
 		]
 	},
 	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 100.0
+	},
 	"output.find_results":
 	{
 		"height": 0.0

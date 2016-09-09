@@ -16,11 +16,7 @@ pygame.init()
 game_flag = True
 skill_press = False
 skill_rate = 1500
-victory = False
-victory_event = 0
-death_time = 0
 death_init = True
-death_loop = False
 
 #set up the window
 windowSurface = pygame.display.set_mode((1024, 600))

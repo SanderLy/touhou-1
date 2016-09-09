@@ -37,6 +37,8 @@ container_p1 = pygame.image.load('UI/marisa_hp.png').convert_alpha()
 container_p2 = pygame.image.load('UI/mamizou_hp.png').convert_alpha()
 pointer  = pygame.image.load('UI/summon_pointer.png').convert_alpha()
 timer_bg  = pygame.image.load('UI/time_bg.png').convert_alpha()
+mob_normal_cd  = pygame.image.load('UI/mob_cd_blank.png').convert_alpha()
+mob_large_cd  = pygame.image.load('UI/mob_cd_blank.png').convert_alpha()
 pointer_index = 671 #position of small mob
 
 mp = pygame.image.load('UI/mp.png').convert_alpha()
@@ -76,6 +78,8 @@ time = 180
 click_event = 0
 mob_rate = 300
 resource = 500
+cd_normal = 2500 #cooldown for normal mob
+cd_large = 5000  # coooldown for large mob
 
 #---------------------------------
 
@@ -215,20 +219,30 @@ while game_flag:
                x = 226
             skill_press_event = pygame.time.get_ticks()
 
+    #summonning of mobs
     if mouse[0] and mamizou.alive():
         if now - click_event >= mob_rate and pygame.mouse.get_pos()[0] >= 556 and pygame.mouse.get_pos()[1] >= 100:
             if current_mob == 1 and resource >= 150:
                 mob = Mob('small',0,1,0.25,3,'mob')
                 resource -= 150
-            if current_mob == 2 and resource >= 250:
+                click_event = now
+            if now - click_event >= cd_normal and current_mob == 2 and resource >= 250:
                 mob = Mob('normal',0,1,0.25,6,'mob')
                 resource -= 250
-            if current_mob == 3 and resource >= 400:
+                click_event = now
+                mob_normal_cd  = pygame.image.load('UI/mob_cd_fill.png').convert_alpha()
+            if now - click_event >= cd_large and current_mob == 3 and resource >= 400:
                 mob = Mob('large',0,1,0.25,15,'mob')
                 resource -= 400
+                click_event = now
             sprites_list.add(mob)
             mob_list.add(mob)
-            click_event = now
+    #removing cooldown
+    if now - click_event >= cd_normal:
+        mob_normal_cd  = pygame.image.load('UI/mob_cd_blank.png').convert_alpha()
+    if now - click_event >= cd_large:
+        mob_normal_cd  = pygame.image.load('UI/mob_cd_blank.png').convert_alpha()
+            
             
     for mob in mob_list:
             if mob.fname == 'small':
@@ -365,6 +379,8 @@ while game_flag:
     windowSurface.blit(container_p2,(583,0))
     windowSurface.blit(timer_bg,(447.5,0))
     windowSurface.blit(pointer,(pointer_index,60)) #673 = small, 742 = normal,
+    windowSurface.blit(mob_normal_cd,(737,40)) #cooldown locations 737 = normal, 803 = large
+    windowSurface.blit(mob_large_cd,(803,40)) #cooldown locations 737 = normal, 803 = large
     windowSurface.blit(crop_hp1,(125,22))
     windowSurface.blit(crop_hp2,(591 + x_p2,22))
     windowSurface.blit(crop_mp,(122,44)) #122 and 44

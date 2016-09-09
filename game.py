@@ -62,8 +62,9 @@ draw_win = pygame.image.load('UI/draw.png').convert_alpha()
 marisa = Marisa('marisa',332,345,0.05, 30,'character')
 mamizou = Mamizou('mamizou',1,15,0.09,50,'character')
 laser = Character('skill',11,18,0.025,90,'character')
-marisa_death = Character('marisa',19,31,0.1,'') #19 31 false loop 32 35 true loop
-mamizou_death = Character('mamizou',16,22,0.1,'') #16 22 false loop 23 27 true loop
+marisa_death = Character('marisa',32,35,0.1,'') #19 31 false loop 32 35 true loop
+marisa_death.animation = marisa.animate(19,31,0.1)
+mamizou_death = Character('mamizou',23,27,0.1,'') #16 22 false loop 23 27 true loop
 
 #add each sprite inside the list of sprites for hitbox checking
 sprites_list.add(marisa)
@@ -175,7 +176,6 @@ while game_flag:
                 if current_mob < 1 : 
                     current_mob = 3
                     pointer_index = 811 # move to the last type of mob
-            print current_mob
     mob_lower, mob_upper = type_mob[current_mob]
        
     keys = pygame.key.get_pressed()  #checking pressed keys and mousebuttons
@@ -213,7 +213,7 @@ while game_flag:
     if keys[pygame.K_j] and skill_press == False and marisa.alive():
         if now - press_event >= rate:
             if marisa.alive():
-                bullet = Bullet('marisa','character',1)
+                bullet = Bullet('marisa','character',100)
                 bullet.rect.x = marisa.rect.x+76
                 bullet.rect.y = marisa.rect.y+25
                 projectile_list.add(bullet)
@@ -305,7 +305,6 @@ while game_flag:
     for sprite in skill_collide:
         if sprite.ctype == 'character' or sprite.ctype == 'mob':
             sprite.hp -= skill_dmg
-            print sprite.hp
             if sprite.fname=='marisa':
                 if marisa.hp> 1:
                     x_p1 = x_p1 + 306/(30/skill_dmg)# 30 is the full hp of marisa
@@ -422,29 +421,33 @@ while game_flag:
     windowSurface.blit(lblTime,(478,-3))
 
     #check for victor
+    #19 31 false loop 32 35 true loop
     if not marisa.alive():
         if death_init == True:
-            death_time = pygame.time.get_ticks()
-            death_init = False
-        if now - death_time >= 500 and death_loop == False:
-            death_loop = True
-            marisa_death.animation2 = marisa.animate(32,35,0.1)
+            marisa_death.animation2 = marisa.animate(19,31,0.1)
+            marisa_death.animation2.loop = False
             marisa_death.animation2.play()
-
-        marisa_death.animation2.blit(windowSurface, (marisa_x,marisa_y))    
+            death_init = False
+        elif marisa_death.animation2.isFinished():
+            marisa_death.animation2 = marisa.animate(32,35,0.1)
+            marisa_death.animation2.loop = True
+            marisa_death.animation2.play()
+        marisa_death.animation2.blit(windowSurface, (marisa_x, marisa_y))
         windowSurface.blit(def_win, (0,200))
+
     if not mamizou.alive():
         if death_init == True:
-            death_time = pygame.time.get_ticks()
+            mamizou_death.animation2 = mamizou.animate(16,22,0.1)
+            mamizou_death.animation2.loop = False
+            mamizou_death.animation2.play()
             death_init = False
-        if now - death_time >= 150 and death_loop == False:
-            death_loop = True
+        elif mamizou_death.animation2.isFinished():
             mamizou_death.animation2 = mamizou.animate(23,27,0.1)
             mamizou_death.animation2.loop = True
             mamizou_death.animation2.play()
+        mamizou_death.animation2.blit(windowSurface, (mamizou_x, mamizou_y))
+        windowSurface.blit(shoot_win, (0,200))
 
-        mamizou_death.animation2.blit(windowSurface, (mamizou_x,mamizou_y))
-        windowSurface.blit(shoot_win, (0,200))        
     if not marisa.alive() and not mamizou.alive():
         windowSurface.blit(draw_win, (0,200))
         

@@ -18,6 +18,9 @@ skill_press = False
 skill_rate = 1500
 victory = False
 victory_event = 0
+death_time = 0
+death_init = True
+death_loop = False
 
 #set up the window
 windowSurface = pygame.display.set_mode((1024, 600))
@@ -59,6 +62,8 @@ draw_win = pygame.image.load('UI/draw.png').convert_alpha()
 marisa = Marisa('marisa',332,345,0.05, 30,'character')
 mamizou = Mamizou('mamizou',1,15,0.09,50,'character')
 laser = Character('skill',11,18,0.025,90,'character')
+marisa_death = Character('marisa',19,31,0.1,'') #19 31 false loop 32 35 true loop
+mamizou_death = Character('mamizou',16,22,0.1,'') #16 22 false loop 23 27 true loop
 
 #add each sprite inside the list of sprites for hitbox checking
 sprites_list.add(marisa)
@@ -117,6 +122,10 @@ while game_flag:
     now2 = pygame.time.get_ticks()
     lblRes = font.render(str(resource),1,(255,255,100))# show label
     lblTime = time_f.render(str(time),1,(255,255,255))# show label
+    marisa_x = marisa.rect.x
+    marisa_y = marisa.rect.y
+    mamizou_x = mamizou.rect.x
+    mamizou_y = mamizou.rect.y
     
     #changing of hp and mp bar
     chop_rect = (0,0,x,0)
@@ -183,25 +192,25 @@ while game_flag:
     y-axis bottom boundary = frame height - model height
     """
    
-    if keys[pygame.K_UP]:
+    if keys[pygame.K_UP] and mamizou.alive():
         if mamizou.rect.y > 80:
             mamizou.rect.y-=10
-    if keys[pygame.K_DOWN]:
+    if keys[pygame.K_DOWN] and mamizou.alive():
         if mamizou.rect.y < 530:
             mamizou.rect.y+=10
-    if keys[pygame.K_a] and skill_press == False:
+    if keys[pygame.K_a] and skill_press == False and marisa.alive():
         if marisa.rect.x>0:
             marisa.move_left()
     if keys[pygame.K_d] and skill_press == False:
-        if marisa.rect.x<914 and marisa.rect.x < 456:
+        if marisa.rect.x<914 and marisa.rect.x < 456 and marisa.alive():
             marisa.move_right()         
-    if keys[pygame.K_w] and skill_press == False:
+    if keys[pygame.K_w] and skill_press == False and marisa.alive():
         if marisa.rect.y > 80:
             marisa.move_up()
-    if keys[pygame.K_s] and skill_press == False:
+    if keys[pygame.K_s] and skill_press == False and marisa.alive():
         if marisa.rect.y < 524:
             marisa.move_down()
-    if keys[pygame.K_j] and skill_press == False:
+    if keys[pygame.K_j] and skill_press == False and marisa.alive():
         if now - press_event >= rate:
             if marisa.alive():
                 bullet = Bullet('marisa','character',1)
@@ -210,7 +219,7 @@ while game_flag:
                 projectile_list.add(bullet)
                 skill_press = False
             press_event = pygame.time.get_ticks()
-    if keys[pygame.K_k] and skill_press == False:
+    if keys[pygame.K_k] and skill_press == False and marisa.alive():
         if now - skill_press_event >= 1500:
             if marisa.alive() and charges > 0:
                skill_press = True
@@ -414,10 +423,26 @@ while game_flag:
 
     #check for victor
     if not marisa.alive():
+        if death_init == True:
+            death_time = pygame.time.get_ticks()
+            death_init = False
+        if now - death_time >= 500 and death_loop == False:
+            death_loop = True
+            marisa_death.animation2 = marisa.animate(32,35,0.1)
+            marisa_death.animation2.play()
         windowSurface.blit(def_win, (0,200))
+        marisa_death.animation2.blit(windowSurface, (marisa_x,marisa_y))
     if not mamizou.alive():
+        if death_init == True:
+            death_time = pygame.time.get_ticks()
+            death_init = False
+        if now - death_time >= 150 and death_loop == False:
+            death_loop = True
+            mamizou_death.animation2 = mamizou.animate(23,27,0.1)
+            mamizou_death.animation2.loop = True
+            mamizou_death.animation2.play()
         windowSurface.blit(shoot_win, (0,200))
-        print now - victory_event
+        mamizou_death.animation2.blit(windowSurface, (mamizou_x,mamizou_y))
     if not marisa.alive() and not mamizou.alive():
         windowSurface.blit(draw_win, (0,200))
         

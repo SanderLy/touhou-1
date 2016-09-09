@@ -113,10 +113,10 @@ cooldown = 1
 x = 226
 x_p1 = 0
 x_p2 = 0
-charges = 0
+charges = 3
 
 while game_flag:
-    charges = 3
+    
 
     windowSurface.blit(background,(0,0))
     now = pygame.time.get_ticks()
@@ -226,7 +226,7 @@ while game_flag:
                marisa.animation2 = marisa.animate(125,127,0.1)
                marisa.animation2.loop = False
                marisa.animation2.play()
-               skill = Bullet('marisa', 'skill', 0.2, True)
+               skill = Bullet('marisa', 'skill', 0.5, True)
                skill.rect.x = marisa.rect.x+90
                skill.rect.y = marisa.rect.y+15
                laser.rect.x = marisa.rect.x + 90
@@ -317,8 +317,16 @@ while game_flag:
                 if mamizou.hp <= 1:
                     x_p2 += x_p2
             if sprite.hp <= 0:
-                if sprite.ctype == 'mob':
-                        x-=20
+                sprite_hit = True
+                if sprite.ctype == 'mob' and mob.fname == 'small':                    
+                    mob_death.animation = mob_death.animate(0,3,0.1)
+                    x-=20
+                if sprite.ctype == 'mob' and mob.fname == 'normal':
+                    x-=30
+                    mob_death.animation = mob_death.animate(4,7,0.1)
+                if sprite.ctype == 'mob' and mob.fname == 'large':
+                    mob_death.animation = mob_death.animate(8,11,0.1)
+                    x-=50
                 if x <= 0:
                     x = 226
                 sprite.kill()

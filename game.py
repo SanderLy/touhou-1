@@ -18,7 +18,7 @@ skill_press = False
 skill_rate = 1500
 death_init = True
 skill_animate = False
-
+sprite_hit = False
 
 #set up the window
 windowSurface = pygame.display.set_mode((1024, 600))
@@ -63,6 +63,7 @@ laser = Character('skill',11,18,0.025,90,'character')
 marisa_death = Character('marisa',32,35,0.1,'') #19 31 false loop 32 35 true loop
 marisa_death.animation = marisa.animate(19,31,0.1)
 mamizou_death = Character('mamizou',23,27,0.1,'') #16 22 false loop 23 27 true loop
+mob_death = Character('death',0,1,0.05,'')
 
 #add each sprite inside the list of sprites for hitbox checking
 sprites_list.add(marisa)
@@ -248,7 +249,7 @@ while game_flag:
                 click_event = now
                 mob_normal_cd  = pygame.image.load('UI/mob_cd_fill.png').convert_alpha()
             if now - click_event >= cd_large and current_mob == 3 and resource >= 400:
-                mob = Mob('large',0,1,0.25,15,'mob')
+                mob = Mob('large',0,1,0.25,15,'mob') 
                 resource -= 400
                 click_event = now
                 mob_large_cd  = pygame.image.load('UI/mob_cd_fill.png').convert_alpha()
@@ -300,7 +301,7 @@ while game_flag:
     for projectile in skill_collide2:
         skill_dmg = projectile.dmg
 
-    #projectiles
+    #skill damage
     skill_collide = pygame.sprite.groupcollide(sprites_list, skill_list, False, False)
     for sprite in skill_collide:
         if sprite.ctype == 'character' or sprite.ctype == 'mob':
@@ -321,7 +322,6 @@ while game_flag:
                 if x <= 0:
                     x = 226
                 sprite.kill()
-                #hello
      
     
     #sets damage of colliding projectile
@@ -336,6 +336,8 @@ while game_flag:
     #check sprite if character or mob
     #checks if a sprite hits 0 hp per collide
     for sprite in collide_list:
+        sprite_x = sprite.rect.x
+        sprite_y = sprite.rect.y
         if sprite.ctype == 'character' or sprite.ctype == 'mob':
             sprite.hp -= dmg
             x -= 5
@@ -354,17 +356,31 @@ while game_flag:
                 if mamizou.hp < 1:
                     x_p2 += x_p2
             if sprite.hp <= 0:
-                if sprite.ctype == 'mob' and mob.fname == 'small':
-                        x-=20
+                sprite_hit = True
+                if sprite.ctype == 'mob' and mob.fname == 'small':                    
+                    mob_death.animation = mob_death.animate(0,3,0.1)
+                    x-=20
                 if sprite.ctype == 'mob' and mob.fname == 'normal':
-                        x-=30
+                    x-=30
+                    mob_death.animation = mob_death.animate(4,7,0.1)
                 if sprite.ctype == 'mob' and mob.fname == 'large':
-                        x-=50
+                    mob_death.animation = mob_death.animate(8,11,0.1)
+                    x-=50
                 if x < 0:
                     if charges <= 3:
                         charges+=1
                     x = 266
+                mob_death.animation.loop = False
+                mob_death.animation.play()
                 sprite.kill()
+
+    if sprite_hit == True:
+        mob_death.animation.blit(windowSurface, (sprite_x, sprite_y))
+        if mob_death.animation.isFinished():
+            print 'done'
+            sprite_hit = False
+
+
     if charges == 0:
         charge_1 = pygame.image.load('UI/skill_charge_empty.png').convert_alpha()
         charge_2 = pygame.image.load('UI/skill_charge_empty.png').convert_alpha()

@@ -16,6 +16,8 @@ pygame.init()
 game_flag = True
 skill_press = False
 skill_rate = 1500
+victory = False
+victory_event = 0
 
 #set up the window
 windowSurface = pygame.display.set_mode((1024, 600))
@@ -209,7 +211,6 @@ while game_flag:
             press_event = pygame.time.get_ticks()
     if keys[pygame.K_k] and skill_press == False:
         if now - skill_press_event >= 1500:
-            x = 0
             if marisa.alive() and x == 0 and charges > 0:
                skill_press = True
                marisa.animation2 = marisa.animate(128,129,0.1)
@@ -384,15 +385,7 @@ while game_flag:
             marisa.animation2 = marisa.animate(332,345,0.05)
             marisa.animation2.play()
             skill_press = False
-            skill_list.remove(skill)
-
-    #check for victor
-    if not marisa.alive():
-        windowSurface.blit(shoot_win, (0,200))
-    if not mamizou.alive():
-        windowSurface.blit(def_win, (0,200))
-    if not marisa.alive() and not mamizou.alive():
-        windowSurface.blit(draw_win, (0,200))
+            skill_list.remove(skill)   
 
 
     skill_list.draw(windowSurface)
@@ -413,11 +406,16 @@ while game_flag:
     windowSurface.blit(crop_mp,(122,44)) #122 and 44
     windowSurface.blit(lblRes,(600,50))
     windowSurface.blit(lblTime,(478,-3))
+
     #check for victor
     if not marisa.alive():
-        windowSurface.blit(shoot_win, (0,200))
-    if not mamizou.alive():
         windowSurface.blit(def_win, (0,200))
+    if not mamizou.alive():
+        windowSurface.blit(shoot_win, (0,200))
+        print now - victory_event
+    if not marisa.alive() and not mamizou.alive():
+        windowSurface.blit(draw_win, (0,200))
+        
     pygame.display.flip()
     pygame.display.update()
     

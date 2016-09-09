@@ -11,7 +11,7 @@ menu  = pygame.image.load('UI/how_to_play.png').convert_alpha()
 mainClock = pygame.time.Clock()
 pygame.mixer.music.load('sfx/bgm1.ogg')
 pygame.mixer.music.play(-1,0.0)
-menu_accept = pygame.mixer.Sound('sfx/menu_accept.wav')
+menu_accept = pygame.mixer.Sound('sfx/menu_decline.wav')
 
 while 1:
 	windowSurface.blit(menu,(0,0))

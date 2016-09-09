@@ -24,6 +24,12 @@ sprite_hit = False
 r_f = True
 go = False
 
+#bgm play and sfx initializations
+pygame.mixer.music.load('sfx/bgm2.ogg')
+pygame.mixer.music.play(-1,0.0)
+skill_sfx = pygame.mixer.Sound('sfx/skill_3.wav')
+skill_sfx.set_volume(0.75)
+
 #set up the window
 windowSurface = pygame.display.set_mode((1024, 600))
 pygame.display.set_caption('Project Touhou: Minus 1.0')
@@ -118,7 +124,7 @@ cooldown = 1
 x = 226
 x_p1 = 0
 x_p2 = 0
-charges = 0
+charges = 3
 
 while game_flag:
     
@@ -163,6 +169,7 @@ while game_flag:
 
         for event in pygame.event.get():
             if event.type == QUIT or (event.type == KEYDOWN and event.key == K_ESCAPE):
+                pygame.mixer.music.fadeout(1000)
                 execfile('menu.py')
                 sys.exit()    
             if event.type == KEYUP and skill_press == False:
@@ -182,6 +189,7 @@ while game_flag:
                 if event.key == K_d and skill_press == False:                
                     marisa.animation2 = marisa.animate(4120,4127,0.05)
                     marisa.animation2.play()
+
 
                 # if event.key == K_j:
                 #     marisa.animation2 = marisa.animate(125,129,0.1)
@@ -230,6 +238,7 @@ while game_flag:
         if keys[pygame.K_j] and skill_press == False and marisa.alive():
             if now - press_event >= rate:
                 if marisa.alive():
+                    pygame.mixer.Sound('sfx/fire.wav').play()
                     bullet = Bullet('marisa','character',1)
                     bullet.rect.x = marisa.rect.x+76
                     bullet.rect.y = marisa.rect.y+25
@@ -239,33 +248,34 @@ while game_flag:
         if keys[pygame.K_k] and skill_press == False and marisa.alive():
             if now - skill_press_event >= 1500:
                 if marisa.alive() and charges > 0:
-                   skill_press = True
-                   marisa.animation2 = marisa.animate(125,127,0.1)
-                   marisa.animation2.loop = False
-                   marisa.animation2.play()
-                   skill = Bullet('marisa', 'skill', 0.5, True)
-                   skill.rect.x = marisa.rect.x+90
-                   skill.rect.y = marisa.rect.y+15
-                   laser.rect.x = marisa.rect.x + 90
-                   laser.rect.y = marisa.rect.y - 85
-                   
-                   x = 226
-                   charges-=1
+                    skill_press = True
+                    marisa.animation2 = marisa.animate(125,127,0.1)
+                    marisa.animation2.loop = False
+                    marisa.animation2.play()
+                    skill = Bullet('marisa', 'skill', 0.5, True)
+                    skill.rect.x = marisa.rect.x+90
+                    skill.rect.y = marisa.rect.y+15
+                    laser.rect.x = marisa.rect.x + 90
+                    laser.rect.y = marisa.rect.y - 85
+                    charges-=1
                 skill_press_event = pygame.time.get_ticks()
 
         #summonning of mobs
         if mouse[0] and mamizou.alive():
             if now - click_event >= mob_rate and pygame.mouse.get_pos()[0] >= 556 and pygame.mouse.get_pos()[1] >= 100:
                 if current_mob == 1 and resource >= 150:
+                    pygame.mixer.Sound('sfx/spawn1.wav').play()
                     mob = Mob('small',0,1,0.25,3,'mob')
                     resource -= 150
                     click_event = now
                 if now - click_event >= cd_normal and current_mob == 2 and resource >= 250:
+                    pygame.mixer.Sound('sfx/spawn2.wav').play()
                     mob = Mob('normal',0,1,0.25,6,'mob')
                     resource -= 250
                     click_event = now
                     mob_normal_cd  = pygame.image.load('UI/mob_cd_fill.png').convert_alpha()
                 if now - click_event >= cd_large and current_mob == 3 and resource >= 400:
+                    pygame.mixer.Sound('sfx/spawn3.wav').play()
                     mob = Mob('large',0,1,0.25,15,'mob') 
                     resource -= 400
                     click_event = now
@@ -335,14 +345,16 @@ while game_flag:
                 if mamizou.hp <= 1:
                     x_p2 += x_p2
             if sprite.hp <= 0:
-                sprite_hit = True
-                if sprite.ctype == 'mob' and mob.fname == 'small':                    
+                if sprite.ctype == 'mob' and mob.fname == 'small':
+                    sprite_hit = True                    
                     mob_death.animation = mob_death.animate(0,3,0.1)
                     x-=20
                 if sprite.ctype == 'mob' and mob.fname == 'normal':
+                    sprite_hit = True
                     x-=30
                     mob_death.animation = mob_death.animate(4,7,0.1)
                 if sprite.ctype == 'mob' and mob.fname == 'large':
+                    sprite_hit = True
                     mob_death.animation = mob_death.animate(8,11,0.1)
                     x-=50
                 if x <= 0:
@@ -381,15 +393,17 @@ while game_flag:
                     x_p2 = x_p2 + 306/(50/dmg)#50 full hp of mamizou
                 if mamizou.hp < 1:
                     x_p2 += x_p2
-            if sprite.hp <= 0:
-                sprite_hit = True
-                if sprite.ctype == 'mob' and mob.fname == 'small':                    
+            if sprite.hp <= 0:                
+                if sprite.ctype == 'mob' and mob.fname == 'small':
+                    sprite_hit = True                    
                     mob_death.animation = mob_death.animate(0,3,0.1)
                     x-=20
                 if sprite.ctype == 'mob' and mob.fname == 'normal':
+                    sprite_hit = True
                     x-=30
                     mob_death.animation = mob_death.animate(4,7,0.1)
                 if sprite.ctype == 'mob' and mob.fname == 'large':
+                    sprite_hit = True
                     mob_death.animation = mob_death.animate(8,11,0.1)
                     x-=50
                 if x < 0:
@@ -441,9 +455,11 @@ while game_flag:
                 marisa.animation2.loop = True
                 marisa.animation2.play()
                 skill_animate = True
-            skill_list.add(skill)
+                skill_sfx.play()
+            skill_list.add(skill)            
             laser.animation2.blit(windowSurface, (marisa.rect.x+90,marisa.rect.y-85))
         if now - skill_press_event > skill_rate:
+            skill_sfx.stop()
             marisa.animation2 = marisa.animate(332,345,0.05)
             marisa.animation2.play()
             skill_press = False
@@ -471,9 +487,10 @@ while game_flag:
     windowSurface.blit(lblTime,(478,-3))
     ready_fight.animation.blit(windowSurface, (0,200))
 
-    #check for victor
+    #check for victor and death animation
     if not marisa.alive():
         if death_init == True:
+            pygame.mixer.Sound('sfx/marisa_dead.wav').play()
             marisa_death.animation2 = marisa.animate(19,31,0.1)
             marisa_death.animation2.loop = False
             marisa_death.animation2.play()

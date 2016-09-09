@@ -430,8 +430,9 @@ while game_flag:
             death_loop = True
             marisa_death.animation2 = marisa.animate(32,35,0.1)
             marisa_death.animation2.play()
+
+        marisa_death.animation2.blit(windowSurface, (marisa_x,marisa_y))    
         windowSurface.blit(def_win, (0,200))
-        marisa_death.animation2.blit(windowSurface, (marisa_x,marisa_y))
     if not mamizou.alive():
         if death_init == True:
             death_time = pygame.time.get_ticks()
@@ -441,8 +442,9 @@ while game_flag:
             mamizou_death.animation2 = mamizou.animate(23,27,0.1)
             mamizou_death.animation2.loop = True
             mamizou_death.animation2.play()
-        windowSurface.blit(shoot_win, (0,200))
+
         mamizou_death.animation2.blit(windowSurface, (mamizou_x,mamizou_y))
+        windowSurface.blit(shoot_win, (0,200))        
     if not marisa.alive() and not mamizou.alive():
         windowSurface.blit(draw_win, (0,200))
         

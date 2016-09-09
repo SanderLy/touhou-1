@@ -132,8 +132,8 @@ while game_flag:
     if frame == 30: # 30 = 1 sec
         time-=1
         frame = 0
-
-    
+    if charges == 3:
+        x = 226    
 
     for event in pygame.event.get():
         if event.type == QUIT or (event.type == KEYDOWN and event.key == K_ESCAPE):
@@ -166,6 +166,7 @@ while game_flag:
                 if current_mob < 1 : 
                     current_mob = 3
                     pointer_index = 811 # move to the last type of mob
+            print current_mob
     mob_lower, mob_upper = type_mob[current_mob]
        
     keys = pygame.key.get_pressed()  #checking pressed keys and mousebuttons
@@ -211,7 +212,7 @@ while game_flag:
             press_event = pygame.time.get_ticks()
     if keys[pygame.K_k] and skill_press == False:
         if now - skill_press_event >= 1500:
-            if marisa.alive() and x == 0 and charges > 0:
+            if marisa.alive() and charges > 0:
                skill_press = True
                marisa.animation2 = marisa.animate(128,129,0.1)
                marisa.animation2.play()
@@ -241,13 +242,15 @@ while game_flag:
                 mob = Mob('large',0,1,0.25,15,'mob')
                 resource -= 400
                 click_event = now
+                mob_large_cd  = pygame.image.load('UI/mob_cd_fill.png').convert_alpha()
+            
             sprites_list.add(mob)
             mob_list.add(mob)
-    #removing cooldown
+    #removing cooldownz
     if now - click_event >= cd_normal:
         mob_normal_cd  = pygame.image.load('UI/mob_cd_blank.png').convert_alpha()
     if now - click_event >= cd_large:
-        mob_normal_cd  = pygame.image.load('UI/mob_cd_blank.png').convert_alpha()
+        mob_large_cd  = pygame.image.load('UI/mob_cd_blank.png').convert_alpha()
             
             
     for mob in mob_list:
@@ -307,9 +310,10 @@ while game_flag:
             if sprite.hp <= 0:
                 if sprite.ctype == 'mob':
                         x-=20
-                if x < 0:
+                if x <= 0:
                     x = 226
                 sprite.kill()
+                #hello
      
     
     #sets damage of colliding projectile
@@ -327,8 +331,10 @@ while game_flag:
         if sprite.ctype == 'character' or sprite.ctype == 'mob':
             sprite.hp -= dmg
             x -= 5
-            if x < 0:
-                x = 0
+            if x <= 0:
+                x = 226
+                if charges <= 3:
+                    charges+=1
             if sprite.fname=='marisa':
                 if marisa.hp> 1:
                     x_p1 = x_p1 + 306/(30/dmg)# 30 is the full hp of marisa
@@ -347,10 +353,9 @@ while game_flag:
                 if sprite.ctype == 'mob' and mob.fname == 'large':
                         x-=50
                 if x < 0:
-                    x = 266
-                    if charges < 4:
+                    if charges <= 3:
                         charges+=1
-                print charges
+                    x = 266
                 sprite.kill()
     if charges == 0:
         charge_1 = pygame.image.load('UI/skill_charge_empty.png').convert_alpha()

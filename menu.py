@@ -38,8 +38,8 @@ while menu_flag:
 					menu_cursor_index = 2
 			if event.key == K_RETURN:
 				if menu_cursor_index == 0:
-					os.system('game.py')
-					# windowSurface = pygame.display.set_mode((1024, 600))
+					execfile('game.py')
+					sys.exit()
 				elif menu_cursor_index == 2:
 					pygame.quit()
 					sys.exit()

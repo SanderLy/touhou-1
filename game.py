@@ -163,7 +163,8 @@ while game_flag:
 
         for event in pygame.event.get():
             if event.type == QUIT or (event.type == KEYDOWN and event.key == K_ESCAPE):
-                game_flag = False       
+                execfile('menu.py')
+                sys.exit()    
             if event.type == KEYUP and skill_press == False:
                 if event.key == K_d:# or event.key == K_j or event.key == K_k:
                     marisa.animation2 = marisa.animate(332,345,0.05)

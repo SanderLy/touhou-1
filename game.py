@@ -23,6 +23,17 @@ skill_animate = False
 sprite_hit = False
 r_f = True
 go = False
+go_l = False
+ready_event = 0
+r_f_done = False
+finish = 0
+
+#bgm play and sfx initializations
+pygame.mixer.music.load('sfx/bgm2.ogg')
+pygame.mixer.music.play(-1,0.0)
+# skill_sfx = pygame.mixer.Sound('sfx/skill_3.wav')
+skill_sfx = pygame.mixer.Sound('sfx/explosion.ogg')
+#skill_sfx.set_volume(0.75)
 
 #set up the window
 windowSurface = pygame.display.set_mode((1024, 600))
@@ -61,8 +72,8 @@ draw_win = pygame.image.load('UI/draw.png').convert_alpha()
 
 
 #instantiate sprites
-marisa = Marisa('marisa',332,345,0.05, 30,'character')
-mamizou = Mamizou('mamizou',1,15,0.09,50,'character')
+marisa = Marisa('marisa',332,345,0.05, 60,'character')
+mamizou = Mamizou('mamizou',1,15,0.09,80,'character')
 laser = Character('skill',11,18,0.025,90,'character')
 marisa_death = Character('marisa',32,35,0.1,'') #19 31 false loop 32 35 true loop
 marisa_death.animation = marisa.animate(19,31,0.1)
@@ -85,7 +96,7 @@ marisa_animation = marisa_idle
 press_event  = 0
 skill_press_event = 0
 snow = 0
-rate = 300
+rate = 250
 time = 180
 
 #mob respawn rate 
@@ -94,7 +105,8 @@ mob_rate = 300
 resource = 500
 cd_normal = 2500 #cooldown for normal mob
 cd_large = 5000  # coooldown for large mob
-
+click_normal = 0 #last click event for mobs
+click_large = 0
 #---------------------------------
 
 #mob indices
@@ -118,10 +130,10 @@ cooldown = 1
 x = 226
 x_p1 = 0
 x_p2 = 0
-charges = 0
+charges = 1
 
 while game_flag:
-    
+        
 
     windowSurface.blit(background,(0,0))
     now = pygame.time.get_ticks()
@@ -133,15 +145,21 @@ while game_flag:
     mamizou_x = mamizou.rect.x
     mamizou_y = mamizou.rect.y
 
-    #ready fight start windowSurface.blit(def_win, (0,200))
+    #ready fight start 
+
     if r_f == True:
         ready_fight.animation = ready_fight.animate(0,70,0.05)
         ready_fight.animation.loop = False
         ready_fight.animation.play()
-        r_f = False 
-    if r_f == False and ready_fight.animation.isFinished():
+        pygame.mixer.Sound('sfx/game_ready.ogg').play()
+        ready_event = pygame.time.get_ticks()
+        r_f = False     
+    if now - ready_event >= 2750 and r_f_done == False:
+        pygame.mixer.Sound('sfx/explosion.ogg').play()
+        r_f_done = True
+    if r_f == False and ready_fight.animation.isFinished() and go_l == False: #go_l to prevent go = True per main loop
         go = True
-   
+        go_l = True
 
     #changing of hp and mp bar
     chop_rect = (0,0,x,0)
@@ -163,6 +181,8 @@ while game_flag:
 
         for event in pygame.event.get():
             if event.type == QUIT or (event.type == KEYDOWN and event.key == K_ESCAPE):
+                pygame.mixer.music.fadeout(1000)
+                skill_sfx.stop()
                 execfile('menu.py')
                 sys.exit()    
             if event.type == KEYUP and skill_press == False:
@@ -183,6 +203,7 @@ while game_flag:
                     marisa.animation2 = marisa.animate(4120,4127,0.05)
                     marisa.animation2.play()
 
+
                 # if event.key == K_j:
                 #     marisa.animation2 = marisa.animate(125,129,0.1)
                 #     marisa.animation2.play()
@@ -199,7 +220,7 @@ while game_flag:
         mouse = pygame.mouse.get_pressed()
 
     for projectile in projectile_list:
-        if projectile.rect.x > 1000 or projectile.rect.x < 0:
+        if projectile.rect.x > 1000 or projectile.rect.x < -300:
             projectile_list.remove(projectile)
 
 
@@ -230,6 +251,7 @@ while game_flag:
         if keys[pygame.K_j] and skill_press == False and marisa.alive():
             if now - press_event >= rate:
                 if marisa.alive():
+                    pygame.mixer.Sound('sfx/fire.wav').play()
                     bullet = Bullet('marisa','character',1)
                     bullet.rect.x = marisa.rect.x+76
                     bullet.rect.y = marisa.rect.y+25
@@ -239,36 +261,37 @@ while game_flag:
         if keys[pygame.K_k] and skill_press == False and marisa.alive():
             if now - skill_press_event >= 1500:
                 if marisa.alive() and charges > 0:
-                   skill_press = True
-                   marisa.animation2 = marisa.animate(125,127,0.1)
-                   marisa.animation2.loop = False
-                   marisa.animation2.play()
-                   skill = Bullet('marisa', 'skill', 0.5, True)
-                   skill.rect.x = marisa.rect.x+90
-                   skill.rect.y = marisa.rect.y+15
-                   laser.rect.x = marisa.rect.x + 90
-                   laser.rect.y = marisa.rect.y - 85
-                   
-                   x = 226
-                   charges-=1
+                    skill_press = True
+                    marisa.animation2 = marisa.animate(125,127,0.1)
+                    marisa.animation2.loop = False
+                    marisa.animation2.play()
+                    skill = Bullet('marisa', 'skill', 0.5, True)
+                    skill.rect.x = marisa.rect.x+90
+                    skill.rect.y = marisa.rect.y+15
+                    laser.rect.x = marisa.rect.x + 90
+                    laser.rect.y = marisa.rect.y - 85
+                    charges-=1
                 skill_press_event = pygame.time.get_ticks()
 
         #summonning of mobs
         if mouse[0] and mamizou.alive():
             if now - click_event >= mob_rate and pygame.mouse.get_pos()[0] >= 556 and pygame.mouse.get_pos()[1] >= 100:
                 if current_mob == 1 and resource >= 150:
+                    pygame.mixer.Sound('sfx/spawn1.wav').play()
                     mob = Mob('small',0,1,0.25,3,'mob')
                     resource -= 150
                     click_event = now
-                if now - click_event >= cd_normal and current_mob == 2 and resource >= 250:
+                if now - click_normal >= cd_normal and current_mob == 2 and resource >= 250:
+                    pygame.mixer.Sound('sfx/spawn2.wav').play()
                     mob = Mob('normal',0,1,0.25,6,'mob')
                     resource -= 250
-                    click_event = now
+                    click_normal = now
                     mob_normal_cd  = pygame.image.load('UI/mob_cd_fill.png').convert_alpha()
-                if now - click_event >= cd_large and current_mob == 3 and resource >= 400:
-                    mob = Mob('large',0,1,0.25,15,'mob') 
+                if now - click_large >= cd_large and current_mob == 3 and resource >= 400:
+                    pygame.mixer.Sound('sfx/spawn3.wav').play()
+                    mob = Mob('large',0,1,0.25,5000,'mob') 
                     resource -= 400
-                    click_event = now
+                    click_large = now
                     mob_large_cd  = pygame.image.load('UI/mob_cd_fill.png').convert_alpha()
                 
                 sprites_list.add(mob)
@@ -294,18 +317,21 @@ while game_flag:
                 rand = random.randint(7,15)
 
             if mob.fname == 'large':
-                bullet_mob = Bullet('large','mob',3)
-                bullet_mob.rect.x = mob.rect.x - -50
-                bullet_mob.rect.y = mob.rect.y + 110
-                rand = random.randint(6,15)
+                if now - click_large > 15000:
+                    mob.hp = 0
 
-            if now - mob.last_fire >= rand * 100:
-                projectile_list.add(bullet_mob)
-                mob.last_fire = now
+            if mob.fname == 'small' or mob.fname == 'normal':
+                if now - mob.last_fire >= rand * 100:
+                    projectile_list.add(bullet_mob)
+                    mob.last_fire = now
 
     #resource increase per tick
     if go == True:
-        resource+=1
+        if time <= 90:
+            resource+=3
+        else:
+            resource+=2
+
 
     #update for sprite lists
     projectile_list.update()
@@ -322,34 +348,43 @@ while game_flag:
     #skill damage
     skill_collide = pygame.sprite.groupcollide(sprites_list, skill_list, False, False)
     for sprite in skill_collide:
+        x -= 2
         if sprite.ctype == 'character' or sprite.ctype == 'mob':
             sprite.hp -= skill_dmg
             if sprite.fname=='marisa':
                 if marisa.hp> 1:
-                    x_p1 = x_p1 + 306/(30/skill_dmg)# 30 is the full hp of marisa
+                    x_p1 = x_p1 + 306/(marisa.max_hp/skill_dmg)#60 is the full hp of marisa
                 if marisa.hp <=1:
                     x_p1 += x_p1
             if sprite.fname== 'mamizou':
                 if mamizou.hp> 1:
-                    x_p2 = x_p2 + 306/(50/skill_dmg)#50 full hp of mamizou
+                    x_p2 = x_p2 + 306/(mamizou.max_hp/skill_dmg)#100 full hp of mamizou
                 if mamizou.hp <= 1:
                     x_p2 += x_p2
             if sprite.hp <= 0:
-                sprite_hit = True
-                if sprite.ctype == 'mob' and mob.fname == 'small':                    
+                if sprite.ctype == 'mob' and mob.fname == 'small':
+                    sprite_hit = True                    
                     mob_death.animation = mob_death.animate(0,3,0.1)
                     x-=20
                 if sprite.ctype == 'mob' and mob.fname == 'normal':
+                    sprite_hit = True
                     x-=30
                     mob_death.animation = mob_death.animate(4,7,0.1)
                 if sprite.ctype == 'mob' and mob.fname == 'large':
+                    sprite_hit = True
                     mob_death.animation = mob_death.animate(8,11,0.1)
                     x-=50
                 if x <= 0:
                     x = 226
+                mob_death.animation.loop = False
+                mob_death.animation.play()
                 sprite.kill()
      
-    
+    if sprite_hit == True:
+        mob_death.animation.blit(windowSurface, (sprite_x, sprite_y))
+        if mob_death.animation.isFinished():
+            print 'done'
+            sprite_hit = False
     #sets damage of colliding projectile
     collide_list2 = pygame.sprite.groupcollide(projectile_list, sprites_list, False, False)
     for projectile in collide_list2:
@@ -366,30 +401,35 @@ while game_flag:
         sprite_y = sprite.rect.y
         if sprite.ctype == 'character' or sprite.ctype == 'mob':
             sprite.hp -= dmg
-            x -= 5
+            if time <= 90:
+                x -= 10
+            else:
+                x -= 5
             if x <= 0:
                 x = 226
                 if charges <= 3:
                     charges+=1
             if sprite.fname=='marisa':
                 if marisa.hp> 1:
-                    x_p1 = x_p1 + 306/(30/dmg)# 30 is the full hp of marisa
+                    x_p1 = x_p1 + 306/(marisa.max_hp/dmg)# 30 is the full hp of marisa
                 if marisa.hp <1:
                     x_p1 += x_p1
             if sprite.fname== 'mamizou':
                 if mamizou.hp> 1:
-                    x_p2 = x_p2 + 306/(50/dmg)#50 full hp of mamizou
+                    x_p2 = x_p2 + 306/(mamizou.max_hp/dmg)#50 full hp of mamizou
                 if mamizou.hp < 1:
                     x_p2 += x_p2
-            if sprite.hp <= 0:
-                sprite_hit = True
-                if sprite.ctype == 'mob' and mob.fname == 'small':                    
+            if sprite.hp <= 0:                
+                if sprite.ctype == 'mob' and mob.fname == 'small':
+                    sprite_hit = True                    
                     mob_death.animation = mob_death.animate(0,3,0.1)
                     x-=20
                 if sprite.ctype == 'mob' and mob.fname == 'normal':
+                    sprite_hit = True
                     x-=30
                     mob_death.animation = mob_death.animate(4,7,0.1)
                 if sprite.ctype == 'mob' and mob.fname == 'large':
+                    sprite_hit = True
                     mob_death.animation = mob_death.animate(8,11,0.1)
                     x-=50
                 if x < 0:
@@ -437,13 +477,17 @@ while game_flag:
     if skill_press == True:
         if now - skill_press_event > 290:
             if skill_animate == False:
+                marisa.ctype = ''
                 marisa.animation2 = marisa.animate(128,129,0.2)
                 marisa.animation2.loop = True
                 marisa.animation2.play()
                 skill_animate = True
-            skill_list.add(skill)
+                skill_sfx.play()
+            skill_list.add(skill)            
             laser.animation2.blit(windowSurface, (marisa.rect.x+90,marisa.rect.y-85))
         if now - skill_press_event > skill_rate:
+            #skill_sfx.stop()
+            marisa.ctype = 'character'
             marisa.animation2 = marisa.animate(332,345,0.05)
             marisa.animation2.play()
             skill_press = False
@@ -471,9 +515,12 @@ while game_flag:
     windowSurface.blit(lblTime,(478,-3))
     ready_fight.animation.blit(windowSurface, (0,200))
 
-    #check for victor
+    #check for victor and death animation
     if not marisa.alive():
         if death_init == True:
+            go = False
+            finish = pygame.time.get_ticks()
+            pygame.mixer.Sound('sfx/marisa_dead.wav').play()
             marisa_death.animation2 = marisa.animate(19,31,0.1)
             marisa_death.animation2.loop = False
             marisa_death.animation2.play()
@@ -489,6 +536,8 @@ while game_flag:
 
     if not mamizou.alive():
         if death_init == True:
+            finish = pygame.time.get_ticks()
+            go = False
             mamizou_death.animation2 = mamizou.animate(16,22,0.1)
             mamizou_death.animation2.loop = False
             mamizou_death.animation2.play()
@@ -502,9 +551,15 @@ while game_flag:
         mamizou_death.animation2.blit(windowSurface, (mamizou_x, mamizou_y))
         windowSurface.blit(shoot_win, (0,200))
 
-    if not marisa.alive() and not mamizou.alive():
-        windowSurface.blit(draw_win, (0,200))
-        
+    # if not marisa.alive() and not mamizou.alive():
+    #     windowSurface.blit(draw_win, (0,200))
+    if finish != 0:
+        if now - finish >= 3000:
+            pygame.mixer.music.fadeout(1000)
+            skill_sfx.stop()
+            execfile('menu.py')
+            sys.exit()      
+
     pygame.display.flip()
     pygame.display.update()
     

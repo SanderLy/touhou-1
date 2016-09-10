@@ -12,6 +12,7 @@ class Character(pygame.sprite.Sprite):
         """
         self.fname = fname
         self.hp = hp
+        self.max_hp = hp
         self.ctype = ctype
         super(Character,self).__init__()
         

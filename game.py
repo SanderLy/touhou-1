@@ -11,6 +11,15 @@ from bullet import *
 from mob import *
 os.environ['SDL_VIDEO_WINDOW_POS'] = "%d,%d" % (50,50) # set initial screen position
 
+"""
+To-do list:
+>Normal attack animation
+>Master Spark
+>30% HP below will give buffs
+>invalid sounds when invalid input (cooldown, charge insufiicient, etc)
+>Mamizou death voice
+>add buff animation
+"""
 
 pygame.init()
 
@@ -281,7 +290,8 @@ while game_flag:
                     skill.rect.y = marisa.rect.y + 15
                     charges-=1
                 skill_press_event = pygame.time.get_ticks()
-
+        
+        #triple laser skill        
         if keys[pygame.K_l] and skill_press == False and marisa.alive() and now - skill_press_event >= 1500 and charges >= 3:
             skill_press2 = True
             skill_press = True
@@ -299,6 +309,8 @@ while game_flag:
             skill3.rect.y = marisa.rect.y + 100
             charges-=3
             skill_press_event = pygame.time.get_ticks()
+
+        #buff skill
         if keys[pygame.K_u] and skill_press == False and marisa.alive() and charges >= 1 and buff== False:
             charges -= 1
             buff = True
@@ -360,9 +372,13 @@ while game_flag:
     #resource increase per tick
     if go == True:
         if time <= 90:
-            resource+=3
+            resource+=5
         else:
-            resource+=2
+            resource+=3
+
+    if mamizou.hp <= (mamizou.max_hp*.30):
+        resource += 2
+
 
 
     #update for sprite lists
@@ -381,6 +397,8 @@ while game_flag:
     skill_collide = pygame.sprite.groupcollide(sprites_list, skill_list, False, False)
     for sprite in skill_collide:
         x -= 2
+        if marisa.hp <= (marisa.max_hp*.30):
+            x -= 1
         if sprite.ctype == 'character' or sprite.ctype == 'mob':
             sprite.hp -= skill_dmg
             if sprite.fname=='marisa':
@@ -406,16 +424,17 @@ while game_flag:
                     sprite_hit = True
                     mob_death.animation = mob_death.animate(8,11,0.1)
                     x-=50
-                if x <= 0:
-                    x = 226
                 mob_death.animation.loop = False
                 mob_death.animation.play()
                 sprite.kill()
+                if x <= 0:
+                    x = 226
+                
      
     if sprite_hit == True:
         mob_death.animation.blit(windowSurface, (sprite_x, sprite_y))
         if mob_death.animation.isFinished():
-            print 'done'
+            
             sprite_hit = False
     #sets damage of colliding projectile
     collide_list2 = pygame.sprite.groupcollide(projectile_list, sprites_list, False, False)
@@ -432,6 +451,9 @@ while game_flag:
         sprite_x = sprite.rect.x
         sprite_y = sprite.rect.y
         if sprite.ctype == 'character' or sprite.ctype == 'mob':
+            x -= 2
+            if marisa.hp <= (marisa.max_hp*.30):
+                x -= 2
             sprite.hp -= dmg
             if time <= 90:
                 x -= 10
@@ -475,7 +497,6 @@ while game_flag:
     if sprite_hit == True:
         mob_death.animation.blit(windowSurface, (sprite_x, sprite_y))
         if mob_death.animation.isFinished():
-            print 'done'
             sprite_hit = False
 
 

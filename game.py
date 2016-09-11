@@ -329,9 +329,9 @@ while game_flag:
                 sprites_list.add(mob)
                 mob_list.add(mob)
     #removing cooldownz
-        if now - click_event >= cd_normal:
+        if now - click_normal >= cd_normal:
             mob_normal_cd  = pygame.image.load('UI/mob_cd_blank.png').convert_alpha()
-        if now - click_event >= cd_large:
+        if now - click_large >= cd_large:
             mob_large_cd  = pygame.image.load('UI/mob_cd_blank.png').convert_alpha()
             
             

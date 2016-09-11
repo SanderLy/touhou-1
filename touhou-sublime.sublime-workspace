@@ -4,16 +4,36 @@
 		"selected_items":
 		[
 			[
+				"buf",
+				"buff"
+			],
+			[
+				"buff",
+				"buff_time"
+			],
+			[
+				"proje",
+				"projectile_list"
+			],
+			[
+				"skill",
+				"skill_list"
+			],
+			[
+				"ready",
+				"ready_event"
+			],
+			[
+				"ready_",
+				"ready_sfx"
+			],
+			[
 				"m",
 				"music"
 			],
 			[
 				"true",
 				"True"
-			],
-			[
-				"ready",
-				"ready_fight"
 			],
 			[
 				"anim",
@@ -108,10 +128,6 @@
 				"shoot_win"
 			],
 			[
-				"skill",
-				"skill_press"
-			],
-			[
 				"skil",
 				"skill_collide"
 			],
@@ -133,10 +149,6 @@
 			],
 			[
 				"proj",
-				"projectile"
-			],
-			[
-				"proje",
 				"projectile"
 			],
 			[
@@ -502,18 +514,6 @@
 			[
 				"item",
 				"item_conv"
-			],
-			[
-				"L",
-				"Lconvert"
-			],
-			[
-				"Lc",
-				"Lcombined2"
-			],
-			[
-				"l",
-				"Lcombined"
 			]
 		]
 	},
@@ -523,36 +523,15 @@
 			"file": "game.py",
 			"settings":
 			{
-				"buffer_size": 20743,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "menu.py",
-			"settings":
-			{
-				"buffer_size": 1699,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "htp.py",
-			"settings":
-			{
-				"buffer_size": 744,
+				"buffer_size": 23835,
 				"line_ending": "Windows"
 			}
 		}
 	],
 	"build_system": "",
-	"build_system_choices":
-	[
-	],
-	"build_varint": "",
 	"command_palette":
 	{
 		"height": 0.0,
-		"last_filter": "",
 		"selected_items":
 		[
 		],
@@ -560,10 +539,7 @@
 	},
 	"console":
 	{
-		"height": 0.0,
-		"history":
-		[
-		]
+		"height": 0.0
 	},
 	"distraction_free":
 	{
@@ -574,16 +550,13 @@
 		"side_bar_visible": false,
 		"status_bar_visible": false
 	},
-	"expanded_folders":
-	[
-		"/C/touhou-1"
-	],
 	"file_history":
 	[
-		"/C/Git/touhou-1/mob.py",
 		"/C/Git/touhou-1/character.py",
 		"/C/Git/touhou-1/game.py",
+		"/C/Git/touhou-1/htp.py",
 		"/C/Git/touhou-1/menu.py",
+		"/C/Git/touhou-1/mob.py",
 		"/C/Git/onelinerizer/game.py",
 		"/C/Git/touhou-1/bullet.py",
 		"/C/Git/touhou-1/marisa.py",
@@ -706,8 +679,7 @@
 		"/C/Python34/Scripts/classes01.py",
 		"/C/Python34/Scripts/IO01.py",
 		"/C/wamp/www/iCAPTCHA/sql_testing.php",
-		"/C/Python34/Scripts/hands04.py",
-		"/C/Python34/Scripts/lambda.py"
+		"/C/Python34/Scripts/hands04.py"
 	],
 	"find":
 	{
@@ -726,6 +698,7 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"sfx",
 			"quit",
 			"sprite_hit",
 			"sprite_x",
@@ -870,18 +843,17 @@
 				{
 					"buffer": 0,
 					"file": "game.py",
-					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 20743,
+						"buffer_size": 23835,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
+								20825,
+								20825
 							]
 						],
 						"settings":
@@ -891,68 +863,9 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 4211.0,
+						"translation.y": 7574.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "menu.py",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1699,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1295,
-								1303
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 305.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "htp.py",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 744,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								490,
-								490
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
 					"type": "text"
 				}
 			]
@@ -997,8 +910,6 @@
 	{
 		"height": 0.0
 	},
-	"pinned_build_system": "Packages/Python/Python.sublime-build",
-	"project": "touhou-sublime.sublime-project",
 	"replace":
 	{
 		"height": 48.0
@@ -1007,7 +918,6 @@
 	"select_file":
 	{
 		"height": 0.0,
-		"last_filter": "",
 		"selected_items":
 		[
 		],
@@ -1016,32 +926,15 @@
 	"select_project":
 	{
 		"height": 0.0,
-		"last_filter": "",
 		"selected_items":
 		[
 		],
 		"width": 0.0
-	},
-	"select_symbol":
-	{
-		"height": 0.0,
-		"last_filter": "",
-		"selected_items":
-		[
-		],
-		"width": 0.0
-	},
-	"selected_group": 0,
-	"settings":
-	{
 	},
 	"show_minimap": true,
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
 	"side_bar_width": 221.0,
-	"status_bar_visible": true,
-	"template_settings":
-	{
-	}
+	"status_bar_visible": true
 }

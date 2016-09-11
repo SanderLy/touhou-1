@@ -17,6 +17,7 @@ pygame.init()
 #misc initializations
 game_flag = True
 skill_press = False
+skill_press2 = False
 skill_rate = 1500
 death_init = True
 skill_animate = False
@@ -27,7 +28,8 @@ go_l = False
 ready_event = 0
 r_f_done = False
 finish = 0
-
+buff = False
+buff_time = 0
 #bgm play and sfx initializations
 pygame.mixer.music.load('sfx/bgm2.ogg')
 pygame.mixer.music.play(-1,0.0)
@@ -256,6 +258,15 @@ while game_flag:
                     bullet.rect.x = marisa.rect.x+76
                     bullet.rect.y = marisa.rect.y+25
                     projectile_list.add(bullet)
+                    if buff == True:
+                        bullet2 = Bullet('marisa','character',1)
+                        bullet3 = Bullet('marisa','character',1)
+                        bullet2.rect.x = marisa.rect.x+76
+                        bullet2.rect.y = marisa.rect.y-5
+                        bullet3.rect.x = marisa.rect.x+76
+                        bullet3.rect.y = marisa.rect.y+55
+                        projectile_list.add(bullet2)
+                        projectile_list.add(bullet3)
                     skill_press = False
                 press_event = pygame.time.get_ticks()
         if keys[pygame.K_k] and skill_press == False and marisa.alive():
@@ -266,12 +277,33 @@ while game_flag:
                     marisa.animation2.loop = False
                     marisa.animation2.play()
                     skill = Bullet('marisa', 'skill', 0.5, True)
-                    skill.rect.x = marisa.rect.x+90
-                    skill.rect.y = marisa.rect.y+15
-                    laser.rect.x = marisa.rect.x + 90
-                    laser.rect.y = marisa.rect.y - 85
+                    skill.rect.x = marisa.rect.x + 90
+                    skill.rect.y = marisa.rect.y + 15
                     charges-=1
                 skill_press_event = pygame.time.get_ticks()
+
+        if keys[pygame.K_l] and skill_press == False and marisa.alive() and now - skill_press_event >= 1500 and charges >= 3:
+            skill_press2 = True
+            skill_press = True
+            marisa.animation2 = marisa.animate(125,127,0.1)
+            marisa.animation2.loop = False
+            marisa.animation2.play()
+            skill = Bullet('marisa', 'skill', 0.5, True)
+            skill2 = Bullet('marisa','skill',0.5, True)
+            skill3 = Bullet('marisa','skill',0.5, True)
+            skill.rect.x = marisa.rect.x + 90
+            skill.rect.y = marisa.rect.y + 15
+            skill2.rect.x = marisa.rect.x + 90
+            skill2.rect.y = marisa.rect.y - 70
+            skill3.rect.x = marisa.rect.x + 90
+            skill3.rect.y = marisa.rect.y + 100
+            charges-=3
+            skill_press_event = pygame.time.get_ticks()
+        if keys[pygame.K_u] and skill_press == False and marisa.alive() and charges >= 1 and buff== False:
+            charges -= 1
+            buff = True
+            buff_time = pygame.time.get_ticks()
+
 
         #summonning of mobs
         if mouse[0] and mamizou.alive():
@@ -483,8 +515,14 @@ while game_flag:
                 marisa.animation2.play()
                 skill_animate = True
                 skill_sfx.play()
-            skill_list.add(skill)            
+            if skill_press2 == True:
+                skill_list.add(skill2)
+                skill_list.add(skill3)
+                laser.animation2.blit(windowSurface, (marisa.rect.x+90,marisa.rect.y-170))
+                laser.animation2.blit(windowSurface, (marisa.rect.x+90,marisa.rect.y))            
+            skill_list.add(skill)
             laser.animation2.blit(windowSurface, (marisa.rect.x+90,marisa.rect.y-85))
+            
         if now - skill_press_event > skill_rate:
             #skill_sfx.stop()
             marisa.ctype = 'character'
@@ -492,7 +530,15 @@ while game_flag:
             marisa.animation2.play()
             skill_press = False
             skill_animate = False
-            skill_list.remove(skill)   
+            skill_list.remove(skill)
+            if skill_press2 == True:
+                skill_list.remove(skill2)
+                skill_list.remove(skill3)
+                skill_press2 = False   
+    
+    if now - buff_time > 10000 and buff == True:
+        buff = False
+
 
 
     skill_list.draw(windowSurface)

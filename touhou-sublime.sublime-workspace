@@ -4,6 +4,58 @@
 		"selected_items":
 		[
 			[
+				"marisa_v",
+				"marisa_buff_voice"
+			],
+			[
+				"marisa_voice",
+				"marisa_ulti_voice"
+			],
+			[
+				"mami",
+				"mamizou_death"
+			],
+			[
+				"lar",
+				"large"
+			],
+			[
+				"large",
+				"large_on_cd"
+			],
+			[
+				"cli",
+				"click_large"
+			],
+			[
+				"norm",
+				"norm_on_cd"
+			],
+			[
+				"nor",
+				"norm_on_cd"
+			],
+			[
+				"men",
+				"menu_select"
+			],
+			[
+				"click",
+				"click_normal"
+			],
+			[
+				"cd_",
+				"cd_normal"
+			],
+			[
+				"inval",
+				"invalid_sfx"
+			],
+			[
+				"inva",
+				"invalid_sfx"
+			],
+			[
 				"mamiz",
 				"mamizou"
 			],
@@ -66,10 +118,6 @@
 			[
 				"animat",
 				"animation2"
-			],
-			[
-				"mami",
-				"mami_ideath"
 			],
 			[
 				"death",
@@ -466,54 +514,6 @@
 			[
 				"date",
 				"date_load"
-			],
-			[
-				"time",
-				"time_post"
-			],
-			[
-				"timer",
-				"time_pre"
-			],
-			[
-				"timep",
-				"time_post"
-			],
-			[
-				"shuff",
-				"shuffled_indices"
-			],
-			[
-				"las",
-				"lastname"
-			],
-			[
-				"fi",
-				"firstname"
-			],
-			[
-				"fir",
-				"first"
-			],
-			[
-				"ans",
-				"ans2"
-			],
-			[
-				"tes",
-				"test1"
-			],
-			[
-				"tes2",
-				"test2"
-			],
-			[
-				"perm",
-				"permutations"
-			],
-			[
-				"item",
-				"item_conv"
 			]
 		]
 	},
@@ -523,7 +523,15 @@
 			"file": "game.py",
 			"settings":
 			{
-				"buffer_size": 24363,
+				"buffer_size": 25953,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "menu.py",
+			"settings":
+			{
+				"buffer_size": 1745,
 				"line_ending": "Windows"
 			}
 		}
@@ -698,6 +706,8 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"cd_normal",
+			"invalid_",
 			"deco_list",
 			"small",
 			"-= ",
@@ -823,8 +833,7 @@
 			"47C9AF",
 			"100px",
 			"draggable",
-			"f",
-			";\n"
+			"f"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -857,15 +866,15 @@
 					"file": "game.py",
 					"settings":
 					{
-						"buffer_size": 24363,
+						"buffer_size": 25953,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								21552,
-								21552
+								24923,
+								24923
 							]
 						],
 						"settings":
@@ -875,7 +884,34 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 230.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "menu.py",
+					"settings":
+					{
+						"buffer_size": 1745,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								646,
+								646
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 135.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"

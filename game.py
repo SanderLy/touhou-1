@@ -13,12 +13,12 @@ os.environ['SDL_VIDEO_WINDOW_POS'] = "%d,%d" % (50,50) # set initial screen posi
 
 """
 To-do list:
->Normal attack animation
->Master Spark (reconsider)
+>Normal attack animation - done
+>Master Spark (reconsider) - removed
 >30% HP below will give buffs - done
 >invalid sounds when invalid input (cooldown, charge insufiicient, etc) - done
 >Mamizou death voice - done
->add buff animation
+>add buff animation - done
 """
 
 pygame.init()
@@ -40,11 +40,12 @@ finish = 0
 buff = False
 buff_time = 0
 norm_on_cd = False
+normal_attack_animation = False
 
 #bgm play and sfx initializations
 pygame.mixer.music.load('sfx/bgm2.ogg')
 pygame.mixer.music.play(-1,0.0)
-# skill_sfx = pygame.mixer.Sound('sfx/skill_3.wav')
+fire_sfx = pygame.mixer.Sound('sfx/fire.wav')
 skill_sfx = pygame.mixer.Sound('sfx/skill_3.wav')
 skill_sfx.set_volume(0.75)
 invalid_sfx = pygame.mixer.Sound('sfx/invalid.ogg')
@@ -96,6 +97,11 @@ marisa_death.animation = marisa.animate(19,31,0.1)
 mamizou_death = Character('mamizou',23,27,0.1,'') #16 22 false loop 23 27 true loop
 mob_death = Character('death',0,1,0.05,'')
 ready_fight = Character('ready_fight',0,70,0.05,'')
+marisa_near_death = Character('near_death',8,15,0.1,'')
+mamizou_near_death = Character('near_death',0,7,0.1,'')
+normal_attack = Character('skill',29,37,0.025,'')
+normal_attack.animation2.loop = False
+buff_animation = Character('skill',19,28,0.05,'')
 
 #add each sprite inside the list of sprites for hitbox checking
 sprites_list.add(marisa)
@@ -205,6 +211,9 @@ while game_flag:
                 if event.key == K_d:# or event.key == K_j or event.key == K_k:
                     marisa.animation2 = marisa.animate(332,345,0.05)
                     marisa.animation2.play()
+            if event.type == KEYUP and normal_attack_animation == True:
+                if event.key == K_j:
+                    normal_attack_animation = False
             if event.type == KEYDOWN: #  changing the type of mob     
                 if event.key == K_RIGHT:
                     current_mob+=1
@@ -260,7 +269,9 @@ while game_flag:
         if keys[pygame.K_j] and skill_press == False and marisa.alive():
             if now - press_event >= rate:
                 if marisa.alive():
-                    pygame.mixer.Sound('sfx/fire.wav').play()
+                    normal_attack_animation = True
+                    fire_sfx.stop()
+                    fire_sfx.play()                    
                     bullet = Bullet('marisa','character',1)
                     bullet.rect.x = marisa.rect.x+76
                     bullet.rect.y = marisa.rect.y+25
@@ -405,7 +416,12 @@ while game_flag:
             resource+=3
         #resource increase by 2 if mamizou hp <= 30%
         if mamizou.hp <= (mamizou.max_hp*.30):
+            mamizou_near_death.animation2.blit(windowSurface, (670,0))
             resource += 2
+
+        #near-death animation for Marisa 
+        if marisa.hp <= (marisa.max_hp*.30):       
+            marisa_near_death.animation2.blit(windowSurface, (330,0))
 
 
 
@@ -559,6 +575,14 @@ while game_flag:
         else:
             sprite.animation.blit(windowSurface, (sprite.rect.x, sprite.rect.y))
 
+    #normal attack animation
+    if normal_attack_animation == True:
+        normal_attack.animation2.blit(windowSurface, (marisa.rect.x+85,marisa.rect.y+25))
+        if buff == True:
+            normal_attack.animation2.blit(windowSurface, (marisa.rect.x+85,marisa.rect.y-5))        
+            normal_attack.animation2.blit(windowSurface, (marisa.rect.x+85,marisa.rect.y+55))
+        normal_attack.animation2.play()
+
     #skill animation
     if skill_press == True:
         if now - skill_press_event > 290:
@@ -590,6 +614,10 @@ while game_flag:
                 skill_list.remove(skill3)
                 skill_press2 = False   
     
+    if buff == True:
+        buff_animation.animation2.blit(windowSurface, (marisa.rect.x + 85, marisa.rect.y + 15))
+        buff_animation.animation2.play()
+
     if now - buff_time > 10000 and buff == True:
         buff = False
 
@@ -614,6 +642,14 @@ while game_flag:
     windowSurface.blit(lblRes,(600,50))
     windowSurface.blit(lblTime,(478,-3))
     ready_fight.animation.blit(windowSurface, (0,200))
+
+    #near-death animation for Marisa 
+    if mamizou.hp <= (mamizou.max_hp*.30):
+        mamizou_near_death.animation2.blit(windowSurface, (670,0))
+    
+    if marisa.hp <= (marisa.max_hp*.30):       
+        marisa_near_death.animation2.blit(windowSurface, (330,0))
+    
 
     #check for victor and death animation
     #place at bottom of draws and blits to get to top layer

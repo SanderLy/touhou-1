@@ -9,7 +9,7 @@ windowSurface = pygame.display.set_mode((1024, 600))
 pygame.display.set_caption('Project Touhou: Minus 1.0')
 menu  = pygame.image.load('UI/how_to_play.png').convert_alpha()
 mainClock = pygame.time.Clock()
-pygame.mixer.music.load('sfx/bgm1.ogg')
+pygame.mixer.music.load('sfx/bgm3.ogg')
 pygame.mixer.music.play(-1,0.0)
 menu_accept = pygame.mixer.Sound('sfx/menu_decline.wav')
 

@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"mamiz",
+				"mamizou"
+			],
+			[
 				"buf",
 				"buff"
 			],
@@ -66,10 +70,6 @@
 			[
 				"mami",
 				"mami_ideath"
-			],
-			[
-				"mamiz",
-				"mamizou_death"
 			],
 			[
 				"death",
@@ -523,7 +523,7 @@
 			"file": "game.py",
 			"settings":
 			{
-				"buffer_size": 23835,
+				"buffer_size": 24259,
 				"line_ending": "Windows"
 			}
 		}
@@ -698,6 +698,17 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"small",
+			"-= ",
+			"-= 7",
+			"-= ",
+			"-= 7",
+			"rse",
+			"print",
+			"skill_list",
+			"*.30",
+			"-=",
+			"mob_cd_fill",
 			"sfx",
 			"quit",
 			"sprite_hit",
@@ -817,7 +828,7 @@
 		"highlight": true,
 		"in_selection": false,
 		"preserve_case": false,
-		"regex": true,
+		"regex": false,
 		"replace_history":
 		[
 			"marisa",
@@ -845,15 +856,15 @@
 					"file": "game.py",
 					"settings":
 					{
-						"buffer_size": 23835,
+						"buffer_size": 24259,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								20825,
-								20825
+								11711,
+								11711
 							]
 						],
 						"settings":
@@ -863,7 +874,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 7574.0,
+						"translation.y": 4612.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"

@@ -15,7 +15,7 @@ os.environ['SDL_VIDEO_WINDOW_POS'] = "%d,%d" % (50,50) # set initial screen posi
 To-do list:
 >Normal attack animation
 >Master Spark
->30% HP below will give buffs
+>30% HP below will give buffs - done
 >invalid sounds when invalid input (cooldown, charge insufiicient, etc)
 >Mamizou death voice
 >add buff animation
@@ -43,8 +43,8 @@ buff_time = 0
 pygame.mixer.music.load('sfx/bgm2.ogg')
 pygame.mixer.music.play(-1,0.0)
 # skill_sfx = pygame.mixer.Sound('sfx/skill_3.wav')
-skill_sfx = pygame.mixer.Sound('sfx/explosion.ogg')
-#skill_sfx.set_volume(0.75)
+skill_sfx = pygame.mixer.Sound('sfx/skill_3.wav')
+skill_sfx.set_volume(0.75)
 
 #set up the window
 windowSurface = pygame.display.set_mode((1024, 600))
@@ -200,9 +200,6 @@ while game_flag:
                 if event.key == K_d:# or event.key == K_j or event.key == K_k:
                     marisa.animation2 = marisa.animate(332,345,0.05)
                     marisa.animation2.play()
-                    # marisa_animation.pause()
-                    # marisa_animation = marisa_idle
-                    # marisa_animation.play()
             if event.type == KEYDOWN: #  changing the type of mob     
                 if event.key == K_RIGHT:
                     current_mob+=1
@@ -213,11 +210,6 @@ while game_flag:
                 if event.key == K_d and skill_press == False:                
                     marisa.animation2 = marisa.animate(4120,4127,0.05)
                     marisa.animation2.play()
-
-
-                # if event.key == K_j:
-                #     marisa.animation2 = marisa.animate(125,129,0.1)
-                #     marisa.animation2.play()
 
                 if event.key == K_LEFT:
                     current_mob-=1
@@ -230,6 +222,7 @@ while game_flag:
         keys = pygame.key.get_pressed()  #checking pressed keys and mousebuttons
         mouse = pygame.mouse.get_pressed()
 
+    #removal of projectiles out of the window
     for projectile in projectile_list:
         if projectile.rect.x > 1000 or projectile.rect.x < -300:
             projectile_list.remove(projectile)
@@ -340,13 +333,13 @@ while game_flag:
                 
                 sprites_list.add(mob)
                 mob_list.add(mob)
-    #removing cooldownz
+    #removing cooldowns
         if now - click_normal >= cd_normal:
             mob_normal_cd  = pygame.image.load('UI/mob_cd_blank.png').convert_alpha()
         if now - click_large >= cd_large:
             mob_large_cd  = pygame.image.load('UI/mob_cd_blank.png').convert_alpha()
             
-            
+    #firing of bullets from summoned mobs      
     for mob in mob_list:
             if mob.fname == 'small':
                 bullet_mob = Bullet('small','mob')
@@ -375,7 +368,7 @@ while game_flag:
             resource+=5
         else:
             resource+=3
-
+    #resource increase by 2 if mamizou hp <= 30%
     if mamizou.hp <= (mamizou.max_hp*.30):
         resource += 2
 
@@ -396,6 +389,9 @@ while game_flag:
     #skill damage
     skill_collide = pygame.sprite.groupcollide(sprites_list, skill_list, False, False)
     for sprite in skill_collide:
+        if sprite.ctype == 'mob':
+            sprite_x = sprite.rect.x
+            sprite_y = sprite.rect.y
         x -= 2
         if marisa.hp <= (marisa.max_hp*.30):
             x -= 1
@@ -448,8 +444,9 @@ while game_flag:
     #check sprite if character or mob
     #checks if a sprite hits 0 hp per collide
     for sprite in collide_list:
-        sprite_x = sprite.rect.x
-        sprite_y = sprite.rect.y
+        if sprite.ctype == 'mob':
+            sprite_x = sprite.rect.x
+            sprite_y = sprite.rect.y
         if sprite.ctype == 'character' or sprite.ctype == 'mob':
             x -= 2
             if marisa.hp <= (marisa.max_hp*.30):
@@ -494,12 +491,13 @@ while game_flag:
                 mob_death.animation.play()
                 sprite.kill()
 
+    #death animation for mobs
     if sprite_hit == True:
         mob_death.animation.blit(windowSurface, (sprite_x, sprite_y))
         if mob_death.animation.isFinished():
             sprite_hit = False
 
-
+    #putting appropriate charge images
     if charges == 0:
         charge_1 = pygame.image.load('UI/skill_charge_empty.png').convert_alpha()
         charge_2 = pygame.image.load('UI/skill_charge_empty.png').convert_alpha()
@@ -518,7 +516,7 @@ while game_flag:
         charge_3 = pygame.image.load('UI/skill_charge.png').convert_alpha()
              
     
-    #check if sprite is alive (hp != 0)
+    #check if sprite is alive (hp > 0)
     #play appropriate animation
     for sprite in sprites_list:
         if sprite.alive():
@@ -545,7 +543,7 @@ while game_flag:
             laser.animation2.blit(windowSurface, (marisa.rect.x+90,marisa.rect.y-85))
             
         if now - skill_press_event > skill_rate:
-            #skill_sfx.stop()
+            skill_sfx.stop()
             marisa.ctype = 'character'
             marisa.animation2 = marisa.animate(332,345,0.05)
             marisa.animation2.play()
@@ -583,6 +581,7 @@ while game_flag:
     ready_fight.animation.blit(windowSurface, (0,200))
 
     #check for victor and death animation
+    #place at bottom of draws and blits to get to top layer
     if not marisa.alive():
         if death_init == True:
             go = False
@@ -620,6 +619,8 @@ while game_flag:
 
     # if not marisa.alive() and not mamizou.alive():
     #     windowSurface.blit(draw_win, (0,200))
+
+    #3 seconds out after winning
     if finish != 0:
         if now - finish >= 3000:
             pygame.mixer.music.fadeout(1000)
@@ -630,4 +631,4 @@ while game_flag:
     pygame.display.flip()
     pygame.display.update()
     
-    mainClock.tick(30) # Feel free to experiment with any FPS setting.
+    mainClock.tick(30)

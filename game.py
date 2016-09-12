@@ -16,7 +16,7 @@ To-do list:
 >Normal attack animation
 >Master Spark
 >30% HP below will give buffs - done
->invalid sounds when invalid input (cooldown, charge insufiicient, etc)
+>invalid sounds when invalid input (cooldown, charge insufiicient, etc) - done
 >Mamizou death voice
 >add buff animation
 """
@@ -39,12 +39,15 @@ r_f_done = False
 finish = 0
 buff = False
 buff_time = 0
+norm_on_cd = False
+
 #bgm play and sfx initializations
 pygame.mixer.music.load('sfx/bgm2.ogg')
 pygame.mixer.music.play(-1,0.0)
 # skill_sfx = pygame.mixer.Sound('sfx/skill_3.wav')
 skill_sfx = pygame.mixer.Sound('sfx/skill_3.wav')
 skill_sfx.set_volume(0.75)
+invalid_sfx = pygame.mixer.Sound('sfx/menu_decline.wav')
 
 #set up the window
 windowSurface = pygame.display.set_mode((1024, 600))
@@ -283,31 +286,42 @@ while game_flag:
                     skill.rect.y = marisa.rect.y + 15
                     charges-=1
                 skill_press_event = pygame.time.get_ticks()
+            else:
+                invalid_sfx.stop() #stop for previous invalid press
+                invalid_sfx.play()
         
         #triple laser skill        
-        if keys[pygame.K_l] and skill_press == False and marisa.alive() and now - skill_press_event >= 1500 and charges >= 3:
-            skill_press2 = True
-            skill_press = True
-            marisa.animation2 = marisa.animate(125,127,0.1)
-            marisa.animation2.loop = False
-            marisa.animation2.play()
-            skill = Bullet('marisa', 'skill', 0.5, True)
-            skill2 = Bullet('marisa','skill',0.5, True)
-            skill3 = Bullet('marisa','skill',0.5, True)
-            skill.rect.x = marisa.rect.x + 90
-            skill.rect.y = marisa.rect.y + 15
-            skill2.rect.x = marisa.rect.x + 90
-            skill2.rect.y = marisa.rect.y - 70
-            skill3.rect.x = marisa.rect.x + 90
-            skill3.rect.y = marisa.rect.y + 100
-            charges-=3
-            skill_press_event = pygame.time.get_ticks()
+        if keys[pygame.K_l] and skill_press == False:
+            if marisa.alive() and now - skill_press_event >= 1500 and charges >= 3:
+                skill_press2 = True
+                skill_press = True
+                marisa.animation2 = marisa.animate(125,127,0.1)
+                marisa.animation2.loop = False
+                marisa.animation2.play()
+                skill = Bullet('marisa', 'skill', 0.5, True)
+                skill2 = Bullet('marisa','skill',0.5, True)
+                skill3 = Bullet('marisa','skill',0.5, True)
+                skill.rect.x = marisa.rect.x + 90
+                skill.rect.y = marisa.rect.y + 15
+                skill2.rect.x = marisa.rect.x + 90
+                skill2.rect.y = marisa.rect.y - 70
+                skill3.rect.x = marisa.rect.x + 90
+                skill3.rect.y = marisa.rect.y + 100
+                charges-=3
+                skill_press_event = pygame.time.get_ticks()
+            else:
+                invalid_sfx.stop()
+                invalid_sfx.play()
 
         #buff skill
-        if keys[pygame.K_u] and skill_press == False and marisa.alive() and charges >= 1 and buff== False:
-            charges -= 1
-            buff = True
-            buff_time = pygame.time.get_ticks()
+        if keys[pygame.K_u] and skill_press == False:
+            if marisa.alive() and charges >= 1 and buff== False:
+                charges -= 1
+                buff = True
+                buff_time = pygame.time.get_ticks()
+            else:
+                invalid_sfx.stop()
+                invalid_sfx.play()
 
 
         #summonning of mobs
@@ -318,26 +332,43 @@ while game_flag:
                     mob = Mob('small',0,1,0.25,3,'mob')
                     resource -= 150
                     click_event = now
+                elif current_mob == 1 and resource < 150:
+                    invalid_sfx.stop()
+                    invalid_sfx.play()
+
                 if now - click_normal >= cd_normal and current_mob == 2 and resource >= 250:
                     pygame.mixer.Sound('sfx/spawn2.wav').play()
                     mob = Mob('normal',0,1,0.25,6,'mob')
                     resource -= 250
                     click_normal = now
                     mob_normal_cd  = pygame.image.load('UI/mob_cd_fill.png').convert_alpha()
+                    norm_on_cd = True
+                elif current_mob == 2 and (resource < 250 or norm_on_cd == True) and now - click_normal > 500: #now - click normal > 500 is to account for sensitivity of click event
+                    invalid_sfx.stop()
+                    invalid_sfx.play()
+
+
                 if now - click_large >= cd_large and current_mob == 3 and resource >= 400:
                     pygame.mixer.Sound('sfx/spawn3.wav').play()
                     mob = Mob('large',0,1,0.25,5000,'mob') 
                     resource -= 400
                     click_large = now
                     mob_large_cd  = pygame.image.load('UI/mob_cd_fill.png').convert_alpha()
-                
-                sprites_list.add(mob)
-                mob_list.add(mob)
+                    large_on_cd = True
+                elif current_mob == 3 and (resource < 400 or large_on_cd == True) and now - click_large > 500: 
+                    invalid_sfx.stop()
+                    invalid_sfx.play()                
+
+                if mob.fname == 'small' or mob.fname == 'normal' or mob.fname == 'large':
+                    sprites_list.add(mob)
+                    mob_list.add(mob)
     #removing cooldowns
         if now - click_normal >= cd_normal:
             mob_normal_cd  = pygame.image.load('UI/mob_cd_blank.png').convert_alpha()
+            norm_on_cd = False
         if now - click_large >= cd_large:
             mob_large_cd  = pygame.image.load('UI/mob_cd_blank.png').convert_alpha()
+            large_on_cd = False
             
     #firing of bullets from summoned mobs      
     for mob in mob_list:

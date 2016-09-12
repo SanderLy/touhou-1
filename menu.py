@@ -28,6 +28,7 @@ while menu_flag:
 		if event.type == KEYDOWN:
 			menu_select.stop()
 			if event.key == K_DOWN:
+				menu_select.stop()
 				menu_select.play()
 				if menu_cursor_y <= 400:
 					menu_cursor_y += 100
@@ -36,6 +37,7 @@ while menu_flag:
 					menu_cursor_y = 300
 					menu_cursor_index = 0
 			if event.key == K_UP:
+				menu_select.stop()
 				menu_select.play()
 				if menu_cursor_y > 300:
 					menu_cursor_y -= 100

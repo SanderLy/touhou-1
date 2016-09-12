@@ -523,7 +523,7 @@
 			"file": "game.py",
 			"settings":
 			{
-				"buffer_size": 24259,
+				"buffer_size": 24363,
 				"line_ending": "Windows"
 			}
 		}
@@ -698,6 +698,7 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"deco_list",
 			"small",
 			"-= ",
 			"-= 7",
@@ -856,15 +857,15 @@
 					"file": "game.py",
 					"settings":
 					{
-						"buffer_size": 24259,
+						"buffer_size": 24363,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								11711,
-								11711
+								21552,
+								21552
 							]
 						],
 						"settings":
@@ -874,7 +875,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 4612.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"

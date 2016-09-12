@@ -434,12 +434,12 @@ while game_flag:
             sprite.hp -= skill_dmg
             if sprite.fname=='marisa':
                 if marisa.hp> 1:
-                    x_p1 = x_p1 + 306/(marisa.max_hp/skill_dmg)#60 is the full hp of marisa
+                    x_p1 = x_p1 + 306/(marisa.max_hp/float(skill_dmg))#60 is the full hp of marisa
                 if marisa.hp <=1:
                     x_p1 += x_p1
             if sprite.fname== 'mamizou':
                 if mamizou.hp> 1:
-                    x_p2 = x_p2 + 306/(mamizou.max_hp/skill_dmg)#100 full hp of mamizou
+                    x_p2 = x_p2 + 306/(mamizou.max_hp/float(skill_dmg))#100 full hp of mamizou
                 if mamizou.hp <= 1:
                     x_p2 += x_p2
             if sprite.hp <= 0:
@@ -497,12 +497,12 @@ while game_flag:
                     charges+=1
             if sprite.fname=='marisa':
                 if marisa.hp> 1:
-                    x_p1 = x_p1 + 306/(marisa.max_hp/dmg)# 30 is the full hp of marisa
+                    x_p1 = x_p1 + 306/(marisa.max_hp/float(dmg))# 30 is the full hp of marisa
                 if marisa.hp <1:
                     x_p1 += x_p1
             if sprite.fname== 'mamizou':
                 if mamizou.hp> 1:
-                    x_p2 = x_p2 + 306/(mamizou.max_hp/dmg)#50 full hp of mamizou
+                    x_p2 = x_p2 + 306/(mamizou.max_hp/float(dmg))#50 full hp of mamizou
                 if mamizou.hp < 1:
                     x_p2 += x_p2
             if sprite.hp <= 0:                

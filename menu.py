@@ -16,7 +16,7 @@ menu_cursor_y = 300
 mainClock = pygame.time.Clock()
 pygame.mixer.music.load('sfx/bgm1.ogg')
 pygame.mixer.music.play(-1,0.0)
-menu_select = pygame.mixer.Sound('sfx/menu_select.wav')
+menu_select = pygame.mixer.Sound('sfx/menu_select.ogg')
 menu_accept = pygame.mixer.Sound('sfx/menu_accept.wav')
 
 while menu_flag:

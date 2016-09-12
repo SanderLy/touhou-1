@@ -14,10 +14,10 @@ os.environ['SDL_VIDEO_WINDOW_POS'] = "%d,%d" % (50,50) # set initial screen posi
 """
 To-do list:
 >Normal attack animation
->Master Spark
+>Master Spark (reconsider)
 >30% HP below will give buffs - done
 >invalid sounds when invalid input (cooldown, charge insufiicient, etc) - done
->Mamizou death voice
+>Mamizou death voice - done
 >add buff animation
 """
 
@@ -47,7 +47,9 @@ pygame.mixer.music.play(-1,0.0)
 # skill_sfx = pygame.mixer.Sound('sfx/skill_3.wav')
 skill_sfx = pygame.mixer.Sound('sfx/skill_3.wav')
 skill_sfx.set_volume(0.75)
-invalid_sfx = pygame.mixer.Sound('sfx/menu_decline.wav')
+invalid_sfx = pygame.mixer.Sound('sfx/invalid.ogg')
+marisa_ulti_voice = pygame.mixer.Sound('sfx/marisa_laser.ogg')
+marisa_buff_voice = pygame.mixer.Sound('sfx/marisa_buff.ogg')
 
 #set up the window
 windowSurface = pygame.display.set_mode((1024, 600))
@@ -147,7 +149,7 @@ x_p2 = 0
 charges = 1
 
 while game_flag:
-        
+    charges = 3
 
     windowSurface.blit(background,(0,0))
     now = pygame.time.get_ticks()
@@ -165,11 +167,11 @@ while game_flag:
         ready_fight.animation = ready_fight.animate(0,70,0.05)
         ready_fight.animation.loop = False
         ready_fight.animation.play()
-        pygame.mixer.Sound('sfx/game_ready.ogg').play()
+        pygame.mixer.Sound('sfx/ready.ogg').play()
         ready_event = pygame.time.get_ticks()
         r_f = False     
     if now - ready_event >= 2750 and r_f_done == False:
-        pygame.mixer.Sound('sfx/game_fight.ogg').play()
+        pygame.mixer.Sound('sfx/fight.ogg').play()
         r_f_done = True
     if r_f == False and ready_fight.animation.isFinished() and go_l == False: #go_l to prevent go = True per main loop
         go = True
@@ -293,6 +295,7 @@ while game_flag:
         #triple laser skill        
         if keys[pygame.K_l] and skill_press == False:
             if marisa.alive() and now - skill_press_event >= 1500 and charges >= 3:
+                marisa_ulti_voice.play()
                 skill_press2 = True
                 skill_press = True
                 marisa.animation2 = marisa.animate(125,127,0.1)
@@ -316,6 +319,7 @@ while game_flag:
         #buff skill
         if keys[pygame.K_u] and skill_press == False:
             if marisa.alive() and charges >= 1 and buff== False:
+                marisa_buff_voice.play()
                 charges -= 1
                 buff = True
                 buff_time = pygame.time.get_ticks()
@@ -633,6 +637,7 @@ while game_flag:
 
     if not mamizou.alive():
         if death_init == True:
+            pygame.mixer.Sound('sfx/mamizou_death.ogg').play()
             finish = pygame.time.get_ticks()
             go = False
             mamizou_death.animation2 = mamizou.animate(16,22,0.1)

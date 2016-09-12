@@ -166,7 +166,7 @@ while game_flag:
         ready_event = pygame.time.get_ticks()
         r_f = False     
     if now - ready_event >= 2750 and r_f_done == False:
-        pygame.mixer.Sound('sfx/explosion.ogg').play()
+        pygame.mixer.Sound('sfx/game_fight.ogg').play()
         r_f_done = True
     if r_f == False and ready_fight.animation.isFinished() and go_l == False: #go_l to prevent go = True per main loop
         go = True
@@ -368,9 +368,9 @@ while game_flag:
             resource+=5
         else:
             resource+=3
-    #resource increase by 2 if mamizou hp <= 30%
-    if mamizou.hp <= (mamizou.max_hp*.30):
-        resource += 2
+        #resource increase by 2 if mamizou hp <= 30%
+        if mamizou.hp <= (mamizou.max_hp*.30):
+            resource += 2
 
 
 

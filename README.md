@@ -1,1 +1,1 @@
-Homuh u pedo
+Timmy u pedo

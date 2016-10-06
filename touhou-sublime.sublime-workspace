@@ -4,6 +4,294 @@
 		"selected_items":
 		[
 			[
+				"marisa_v",
+				"marisa_buff_voice"
+			],
+			[
+				"marisa_voice",
+				"marisa_ulti_voice"
+			],
+			[
+				"mami",
+				"mamizou_death"
+			],
+			[
+				"lar",
+				"large"
+			],
+			[
+				"large",
+				"large_on_cd"
+			],
+			[
+				"cli",
+				"click_large"
+			],
+			[
+				"norm",
+				"norm_on_cd"
+			],
+			[
+				"nor",
+				"norm_on_cd"
+			],
+			[
+				"men",
+				"menu_select"
+			],
+			[
+				"click",
+				"click_normal"
+			],
+			[
+				"cd_",
+				"cd_normal"
+			],
+			[
+				"inval",
+				"invalid_sfx"
+			],
+			[
+				"inva",
+				"invalid_sfx"
+			],
+			[
+				"mamiz",
+				"mamizou"
+			],
+			[
+				"buf",
+				"buff"
+			],
+			[
+				"buff",
+				"buff_time"
+			],
+			[
+				"proje",
+				"projectile_list"
+			],
+			[
+				"skill",
+				"skill_list"
+			],
+			[
+				"ready",
+				"ready_event"
+			],
+			[
+				"ready_",
+				"ready_sfx"
+			],
+			[
+				"m",
+				"music"
+			],
+			[
+				"true",
+				"True"
+			],
+			[
+				"anim",
+				"animation"
+			],
+			[
+				"ani",
+				"animation"
+			],
+			[
+				"mob_death",
+				"mob_death_animation"
+			],
+			[
+				"mari",
+				"marisa_x"
+			],
+			[
+				"an",
+				"animate"
+			],
+			[
+				"marisa",
+				"marisa_y"
+			],
+			[
+				"animat",
+				"animation2"
+			],
+			[
+				"death",
+				"death_init"
+			],
+			[
+				"a",
+				"animation"
+			],
+			[
+				"mam",
+				"mamizou_y"
+			],
+			[
+				"mamizou",
+				"mamizou_death"
+			],
+			[
+				"anima",
+				"animation2"
+			],
+			[
+				"mamizo",
+				"mamizou_death"
+			],
+			[
+				"wo",
+				"windowSurface"
+			],
+			[
+				"vict",
+				"victory_event"
+			],
+			[
+				"vic",
+				"victory_event"
+			],
+			[
+				"victo",
+				"victory_event"
+			],
+			[
+				"ski",
+				"skill_press"
+			],
+			[
+				"draw",
+				"draw_win"
+			],
+			[
+				"def",
+				"def_win"
+			],
+			[
+				"sho",
+				"shoot_win"
+			],
+			[
+				"skil",
+				"skill_collide"
+			],
+			[
+				"laser",
+				"laser_animation"
+			],
+			[
+				"sprite",
+				"sprites_list"
+			],
+			[
+				"pro",
+				"projectile"
+			],
+			[
+				"projec",
+				"projectile"
+			],
+			[
+				"proj",
+				"projectile"
+			],
+			[
+				"collid",
+				"collide_list2"
+			],
+			[
+				"bullet",
+				"bullet_mob"
+			],
+			[
+				"bull",
+				"bullet_mob"
+			],
+			[
+				"mob",
+				"mob_list"
+			],
+			[
+				"g",
+				"Group"
+			],
+			[
+				"colli",
+				"collide_list"
+			],
+			[
+				"window",
+				"windowSurface"
+			],
+			[
+				"hata",
+				"hata_animation"
+			],
+			[
+				"spri",
+				"sprites_list"
+			],
+			[
+				"hit",
+				"hit_list"
+			],
+			[
+				"py",
+				"pyganim"
+			],
+			[
+				"pr",
+				"projectile"
+			],
+			[
+				"get",
+				"get_ticks"
+			],
+			[
+				"f",
+				"fname"
+			],
+			[
+				"read",
+				"readlines"
+			],
+			[
+				"col",
+				"columnspan"
+			],
+			[
+				"press",
+				"press_event"
+			],
+			[
+				"prj",
+				"projY"
+			],
+			[
+				"pyga",
+				"pygame"
+			],
+			[
+				"por",
+				"projx"
+			],
+			[
+				"project",
+				"projectile_frames"
+			],
+			[
+				"wind",
+				"windowSurface"
+			],
+			[
+				"__",
+				"__init"
+			],
+			[
 				"try",
 				"try	Try/Except"
 			],
@@ -94,10 +382,6 @@
 			[
 				"ht",
 				"htmlspecialchars"
-			],
-			[
-				"get",
-				"getElementById"
 			],
 			[
 				"p",
@@ -230,282 +514,6 @@
 			[
 				"date",
 				"date_load"
-			],
-			[
-				"time",
-				"time_post"
-			],
-			[
-				"timer",
-				"time_pre"
-			],
-			[
-				"timep",
-				"time_post"
-			],
-			[
-				"a",
-				"arrayIndices"
-			],
-			[
-				"shuff",
-				"shuffled_indices"
-			],
-			[
-				"__",
-				"__	__magic__"
-			],
-			[
-				"las",
-				"lastname"
-			],
-			[
-				"fi",
-				"firstname"
-			],
-			[
-				"fir",
-				"first"
-			],
-			[
-				"ans",
-				"ans2"
-			],
-			[
-				"tes",
-				"test1"
-			],
-			[
-				"tes2",
-				"test2"
-			],
-			[
-				"perm",
-				"permutations"
-			],
-			[
-				"item",
-				"item_conv"
-			],
-			[
-				"L",
-				"Lconvert"
-			],
-			[
-				"Lc",
-				"Lcombined2"
-			],
-			[
-				"l",
-				"Lcombined"
-			],
-			[
-				"Lpo",
-				"LpossibTuple"
-			],
-			[
-				"Str",
-				"strN"
-			],
-			[
-				"current",
-				"current_index"
-			],
-			[
-				"if",
-				"if	if …"
-			],
-			[
-				"session",
-				"session_destroy"
-			],
-			[
-				"hea",
-				"head"
-			],
-			[
-				"curre",
-				"currentIndex"
-			],
-			[
-				"mys",
-				"mysqli"
-			],
-			[
-				"chec",
-				"checkConnection"
-			],
-			[
-				"print",
-				"print_r"
-			],
-			[
-				"Fisher",
-				"FisherYatesShuffle"
-			],
-			[
-				"mysql",
-				"mysql_close"
-			],
-			[
-				"for",
-				"form	Tag"
-			],
-			[
-				"f",
-				"False"
-			],
-			[
-				"pd",
-				"PODP"
-			],
-			[
-				"pri",
-				"prime_odd"
-			],
-			[
-				"str",
-				"str1"
-			],
-			[
-				"border-",
-				"border-color"
-			],
-			[
-				"background",
-				"background-color"
-			],
-			[
-				"bor",
-				"border-top"
-			],
-			[
-				"table",
-				"table-cell"
-			],
-			[
-				"bot",
-				"text-bottom"
-			],
-			[
-				"text",
-				"text-anchor"
-			],
-			[
-				"max",
-				"max-width"
-			],
-			[
-				"inli",
-				"inline-flex"
-			],
-			[
-				"lis",
-				"list2"
-			],
-			[
-				"list",
-				"list2"
-			],
-			[
-				"li",
-				"list2"
-			],
-			[
-				"ica",
-				"icaptcha_header"
-			],
-			[
-				"bak",
-				"background-position"
-			],
-			[
-				"st",
-				"style	Tag"
-			],
-			[
-				"padding",
-				"padding-top"
-			],
-			[
-				"btn",
-				"btnAudio"
-			],
-			[
-				"b",
-				"btnImage"
-			],
-			[
-				"text-a",
-				"text-align"
-			],
-			[
-				"bacl",
-				"background-color"
-			],
-			[
-				"inlin",
-				"inline-block"
-			],
-			[
-				"border",
-				"border-radius"
-			],
-			[
-				"top",
-				"margin-top"
-			],
-			[
-				"di",
-				"div	Tag"
-			],
-			[
-				"wid",
-				"width"
-			],
-			[
-				"re",
-				"retrieve_indices"
-			],
-			[
-				"ret",
-				"retrieve"
-			],
-			[
-				"mysql_fe",
-				"mysql_fetch_row"
-			],
-			[
-				"db",
-				"dbpass"
-			],
-			[
-				"Sig",
-				"SignUpForm"
-			],
-			[
-				"Si",
-				"SignUpAdmin"
-			],
-			[
-				"aut",
-				"auto_now_add"
-			],
-			[
-				"dj",
-				"django19"
-			],
-			[
-				"d",
-				"django19"
-			],
-			[
-				"font",
-				"font-size"
-			],
-			[
-				"h",
-				"h1	Tag"
 			]
 		]
 	},
@@ -515,20 +523,23 @@
 			"file": "game.py",
 			"settings":
 			{
-				"buffer_size": 3329,
+				"buffer_size": 25953,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "menu.py",
+			"settings":
+			{
+				"buffer_size": 1745,
 				"line_ending": "Windows"
 			}
 		}
 	],
 	"build_system": "",
-	"build_system_choices":
-	[
-	],
-	"build_varint": "",
 	"command_palette":
 	{
 		"height": 0.0,
-		"last_filter": "",
 		"selected_items":
 		[
 		],
@@ -536,10 +547,7 @@
 	},
 	"console":
 	{
-		"height": 0.0,
-		"history":
-		[
-		]
+		"height": 0.0
 	},
 	"distraction_free":
 	{
@@ -550,16 +558,32 @@
 		"side_bar_visible": false,
 		"status_bar_visible": false
 	},
-	"expanded_folders":
-	[
-		"/C/touhou-1",
-		"/C/touhou-1/gifs"
-	],
 	"file_history":
 	[
+		"/C/Git/touhou-1/character.py",
+		"/C/Git/touhou-1/game.py",
+		"/C/Git/touhou-1/htp.py",
+		"/C/Git/touhou-1/menu.py",
+		"/C/Git/touhou-1/mob.py",
+		"/C/Git/onelinerizer/game.py",
+		"/C/Git/touhou-1/bullet.py",
+		"/C/Git/touhou-1/marisa.py",
+		"/C/Git/touhou-1/mamizou.py",
+		"/C/Git/touhou-1/trybullets.py",
+		"/C/touhou-1/trybullets.py",
+		"/C/Users/Little Garden/Desktop/sample.txt",
+		"/G/handson.py",
+		"/C/Python27/Scripts/entry.py",
+		"/C/Users/Little Garden/Desktop/drive-download-20160822T021631Z/entry.py",
+		"/C/Python27/Scripts/checkbutton.py",
+		"/C/touhou-1/marisa.py",
+		"/C/touhou-1/game.py",
+		"/C/touhou-1/character.py",
+		"/C/Users/Little Garden/Desktop/GameDevelopment-gh-pages/examples/sprites/game.js",
+		"/C/test/test3_pyganim.py",
+		"/C/test/test1_pyganim.py",
 		"/C/Touhou/player.py",
 		"/C/Touhou/move.py",
-		"/C/test/test1_pyganim.py",
 		"/C/test/pyganim.py",
 		"/C/test/pyganim.pyc",
 		"/C/Touhou/game.py",
@@ -663,28 +687,7 @@
 		"/C/Python34/Scripts/classes01.py",
 		"/C/Python34/Scripts/IO01.py",
 		"/C/wamp/www/iCAPTCHA/sql_testing.php",
-		"/C/Python34/Scripts/hands04.py",
-		"/C/Python34/Scripts/lambda.py",
-		"/C/Python34/Scripts/hands05.py",
-		"/C/Python34/Scripts/hands03.py",
-		"/C/wamp/www/College of Law1/css/about.css",
-		"/C/wamp/www/iCAPTCHA/css backup.css",
-		"/C/Python34/Scripts/hands02.py",
-		"/C/Python34/Scripts/hands01.py",
-		"/C/wamp/www/codesnippet/scripts/sc.js",
-		"/C/wamp/www/codesnippet/scripts/script.js",
-		"/C/wamp/www/codesnippet/scripts/scripts.js",
-		"/C/wamp/www/iCAPTCHA/jquery/jquery-ui.min.js",
-		"/C/wamp/www/codesnippet/icaptcha_snippet.php",
-		"/C/wamp/www/iCAPTCHA/jquery/external/jquery/jquery.js",
-		"/C/Python34/Scripts/word_count.py",
-		"/C/Python34/Scripts/inventory.py",
-		"/C/Python34/Scripts/letter_count.py",
-		"/C/wamp/www/API/index.html",
-		"/C/wamp/www/API/test.txt",
-		"/C/wamp/www/API/rest.php",
-		"/C/wamp/www/iCAPTCHA/jquery/icaptcha.xml",
-		"/C/wamp/www/iCAPTCHA/print.py"
+		"/C/Python34/Scripts/hands04.py"
 	],
 	"find":
 	{
@@ -692,7 +695,7 @@
 	},
 	"find_in_files":
 	{
-		"height": 90.0,
+		"height": 0.0,
 		"where_history":
 		[
 			""
@@ -703,6 +706,84 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"cd_normal",
+			"invalid_",
+			"deco_list",
+			"small",
+			"-= ",
+			"-= 7",
+			"-= ",
+			"-= 7",
+			"rse",
+			"print",
+			"skill_list",
+			"*.30",
+			"-=",
+			"mob_cd_fill",
+			"sfx",
+			"quit",
+			"sprite_hit",
+			"sprite_x",
+			"charges = 0",
+			"y",
+			"100)",
+			"mamizou",
+			"print",
+			"False",
+			"100",
+			"mob",
+			"animation = ",
+			"animation",
+			"print",
+			"< 0",
+			"shoot_win",
+			"charges",
+			"sys",
+			"charges",
+			"/((\\r\\n|\\n|\\r)$)|(^(\\r\\n|\\n|\\r))|^\\s*$",
+			"^\\s*$",
+			"^\\s*",
+			"^\\s*$",
+			"dead",
+			"died",
+			"332",
+			"press_event",
+			"skill_rate",
+			"container_p1",
+			"skill_press",
+			"laser",
+			"now",
+			"play",
+			"sprites_list",
+			"skill",
+			"hitbox",
+			"press_event",
+			"self",
+			"pos",
+			"mouse",
+			"keypress",
+			"now",
+			"press",
+			"marisa",
+			"import",
+			"mob",
+			".add",
+			"x",
+			"hata",
+			".add",
+			"rect.x",
+			"animate",
+			".add",
+			"hata",
+			"block_list",
+			"sprites_list",
+			"block_list",
+			"elf.lower.get() and self.digits.get() and self.under.get()",
+			"25",
+			"window",
+			"loop",
+			"nextFrame",
+			"play",
 			"05",
 			"0.1",
 			"hata",
@@ -752,8 +833,7 @@
 			"47C9AF",
 			"100px",
 			"draggable",
-			"f",
-			";\n"
+			"f"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -761,6 +841,9 @@
 		"regex": false,
 		"replace_history":
 		[
+			"marisa",
+			"",
+			"bullet",
 			".net",
 			"slow",
 			"$_SERVER",
@@ -770,7 +853,7 @@
 		"show_context": true,
 		"use_buffer2": true,
 		"whole_word": false,
-		"wrap": true
+		"wrap": false
 	},
 	"groups":
 	[
@@ -781,31 +864,56 @@
 				{
 					"buffer": 0,
 					"file": "game.py",
-					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 3329,
+						"buffer_size": 25953,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1224,
-								1224
+								24923,
+								24923
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/Python/Python.sublime-syntax",
+							"syntax": "Packages/Python/Python.tmLanguage",
 							"tab_size": 4,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 648.0,
+						"translation.y": 230.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "menu.py",
+					"settings":
+					{
+						"buffer_size": 1745,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								646,
+								646
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 135.0,
+						"zoom_level": 1.0
+					},
 					"type": "text"
 				}
 			]
@@ -813,7 +921,7 @@
 	],
 	"incremental_find":
 	{
-		"height": 27.0
+		"height": 26.0
 	},
 	"input":
 	{
@@ -842,21 +950,22 @@
 		]
 	},
 	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 100.0
+	},
 	"output.find_results":
 	{
 		"height": 0.0
 	},
-	"pinned_build_system": "Packages/Python/Python.sublime-build",
-	"project": "touhou-sublime.sublime-project",
 	"replace":
 	{
-		"height": 62.0
+		"height": 48.0
 	},
 	"save_all_on_build": true,
 	"select_file":
 	{
 		"height": 0.0,
-		"last_filter": "",
 		"selected_items":
 		[
 		],
@@ -865,32 +974,15 @@
 	"select_project":
 	{
 		"height": 0.0,
-		"last_filter": "",
 		"selected_items":
 		[
 		],
 		"width": 0.0
-	},
-	"select_symbol":
-	{
-		"height": 0.0,
-		"last_filter": "",
-		"selected_items":
-		[
-		],
-		"width": 0.0
-	},
-	"selected_group": 0,
-	"settings":
-	{
 	},
 	"show_minimap": true,
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
 	"side_bar_width": 221.0,
-	"status_bar_visible": true,
-	"template_settings":
-	{
-	}
+	"status_bar_visible": true
 }
